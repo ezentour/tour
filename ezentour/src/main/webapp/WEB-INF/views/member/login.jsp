@@ -24,16 +24,16 @@
 
     <%@ include file="../include/menu.jsp" %>
 	 <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/16.jpg);">
+    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(${path}/resources/img/bg-img/16.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">Our Room</h2>
+                        <h2 class="page-title">로그인</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="${path}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Room</li>
+                                <li class="breadcrumb-item active" aria-current="page">Sign In</li>
                             </ol>
                         </nav>
                     </div>
