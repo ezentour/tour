@@ -20,11 +20,11 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="${path}/resources/img/core-img/logo.png" alt=""></a>
+                        <a class="nav-brand" href="${path}"><img src="${path}/resources/img/core-img/logo_ezen.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span></span>
+                            <span class="navbarToggler"><span></span></span>
                         </div>
 
                         <!-- Menu -->
