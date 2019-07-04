@@ -20,11 +20,11 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="index.html"><img src="${path}/resources/img/core-img/logo.png" alt=""></a>
+                        <a class="nav-brand" href="${path}"><img src="${path}/resources/img/core-img/ezenlogo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span></span>
+                            <span class="navbarToggler"><span></span></span>
                         </div>
 
                         <!-- Menu -->
@@ -38,8 +38,8 @@
                                 <ul id="nav">
                                     <li class="active"><a href="${path}/festival/main">축제</a></li>
                                     <li><a href="${path}/tour/main">관광</a></li>
-                                    <li><a href="${path}/hotel/main">숙박</a></li>
-                                    <li><a href="${path}/question/main">문의사항</a></li>
+                                    <li><a href="${path}/hotel/main">숙소</a></li>
+                                    <li><a href="${path}/question/main">자유게시판</a></li>
                                     <li><a href="${path}/mypage/user/main">마이(사용자)</a>
                                         <ul class="dropdown">
                                             <li><a href="">- 예약 내역</a></li>
@@ -80,7 +80,7 @@
                                 </div>
                                 -->
                                 
-                                <div class="">
+                                <div class="" >
                           	     	<a href="${path}/member/login.do">로그인</a>&nbsp;&nbsp;&nbsp;
                                 	<a href="${path}/member/signUp.do">회원 가입</a>
                             	</div>
