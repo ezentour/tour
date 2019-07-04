@@ -20,7 +20,7 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="${path}"><img src="${path}/resources/img/core-img/logo_ezen.png" alt=""></a>
+                        <a class="nav-brand" href="${path}"><img src="${path}/resources/img/core-img/ezenlogo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -80,7 +80,7 @@
                                 </div>
                                 -->
                                 
-                                <div class="">
+                                <div class="" >
                           	     	<a href="${path}/member/login.do">로그인</a>&nbsp;&nbsp;&nbsp;
                                 	<a href="${path}/member/signUp.do">회원 가입</a>
                             	</div>

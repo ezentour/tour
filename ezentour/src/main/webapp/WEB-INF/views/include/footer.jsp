@@ -10,7 +10,8 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="single-footer-widget mb-80">
                             <!-- Footer Logo -->
-                            <a href="${path}" class="footer-logo"><img src="${path}/resources/img/core-img/logo_ezen.png" alt=""></a>
+                            <a href="${path}" class="footer-logo"><img src="${path}/resources/img/core-img/ezenlogo2.png" alt=""></a>
+
                         </div>
                     </div>
                     
