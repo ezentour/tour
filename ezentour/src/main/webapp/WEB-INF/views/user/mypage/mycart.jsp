@@ -2,14 +2,13 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%@ include file="../include/header.jsp"%>
+<%@ include file="../../include/header.jsp"%>
 <head>
 	<title>EzenTour</title>
 </head>
 <body>
 
-	<%@ include file="../include/menu.jsp"%>
-	
+	<%@ include file="../../include/menu.jsp"%>
 	<!-- Breadcrumb Area Start -->
 	<div class="breadcrumb-area bg-img bg-overlay jarallax"
 		style="background-image: url(${path}/resources/img/bg-img/16.jpg);">
@@ -17,11 +16,11 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h1 class="h1-title">자유게시판</h1>
+						<h1 class="h1-title">장바구니</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">자유게시판</li>
+								<li class="breadcrumb-item active" aria-current="page">My page(user)</li>
 							</ol>
 						</nav>
 					</div>
@@ -54,7 +53,7 @@
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>번호</td>
+								<td>작성 번호</td>
 								<td>제목</td>
 								<td>등록자</td>
 								<td>등록일</td>
@@ -82,6 +81,6 @@
     
     <div><p><br></p></div>
     
-	<%@ include file="../include/footer.jsp"%>
+	<%@ include file="../../include/footer.jsp"%>
 </body>
 </html>

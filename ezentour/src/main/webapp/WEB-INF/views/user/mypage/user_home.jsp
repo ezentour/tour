@@ -17,7 +17,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h1 class="h1-title">My page(사용자)</h1>
+						<h1 class="h1-title">예약 내역</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
@@ -52,12 +52,13 @@
                   	</div>
 
 					<table class="ui celled table">
-						<thead style="background-color: #1CC3B2; color:white;">
+						<!-- <thead style="background-color: #1CC3B2; color:white;"> -->
+						<thead>
 							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>등록자</th>
-								<th>등록일</th>
+								<td>번호</td>
+								<td>제목</td>
+								<td>등록자</td>
+								<td>등록일</td>
 							</tr>
 						</thead>
 						<tbody id="list">
