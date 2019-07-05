@@ -4,4 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="path" value="${pageContext.request.contextPath}" />
+
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<!-- Favicon -->
+<link rel="icon" href="${path}/resources/img/core-img/favicon.png">
+<!-- Stylesheet -->
+<link rel="stylesheet" href="${path}/resources/style.css">
+    
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
