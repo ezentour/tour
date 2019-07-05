@@ -4,28 +4,10 @@
 <html>
 <%@ include file="include/header.jsp"%>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Title -->
     <title>EzenTour</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="${path}/resources/img/core-img/favicon.png">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="${path}/resources/style.css">
-
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
 
 	<%@ include file="include/menu.jsp" %>
 
@@ -563,15 +545,15 @@
                 <div class="col-12">
                     <div class="partner-logo-content d-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay="300ms">
                         <!-- Single Partner Logo -->
-                        <a href="#" class="partner-logo"><img src="img/core-img/p1.png" alt=""></a>
+                        <a href="#" class="partner-logo"><img src="${path}/resources/img/core-img/p1.png" alt=""></a>
                         <!-- Single Partner Logo -->
-                        <a href="#" class="partner-logo"><img src="img/core-img/p2.png" alt=""></a>
+                        <a href="#" class="partner-logo"><img src="${path}/resources/img/core-img/p2.png" alt=""></a>
                         <!-- Single Partner Logo -->
-                        <a href="#" class="partner-logo"><img src="img/core-img/p3.png" alt=""></a>
+                        <a href="#" class="partner-logo"><img src="${path}/resources/img/core-img/p3.png" alt=""></a>
                         <!-- Single Partner Logo -->
-                        <a href="#" class="partner-logo"><img src="img/core-img/p4.png" alt=""></a>
+                        <a href="#" class="partner-logo"><img src="${path}/resources/img/core-img/p4.png" alt=""></a>
                         <!-- Single Partner Logo -->
-                        <a href="#" class="partner-logo"><img src="img/core-img/p5.png" alt=""></a>
+                        <a href="#" class="partner-logo"><img src="${path}/resources/img/core-img/p5.png" alt=""></a>
                     </div>
                 </div>
             </div>

@@ -4,25 +4,10 @@
 <html>
 <%@ include file="../include/header.jsp"%>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Title -->
     <title>EzenTour</title>
-    <!-- Favicon -->
-    <link rel="icon" href="${path}/resources/img/core-img/favicon.png">
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="${path}/resources/style.css">
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
-
     <%@ include file="../include/menu.jsp" %>
 
     <!-- Breadcrumb Area Start -->

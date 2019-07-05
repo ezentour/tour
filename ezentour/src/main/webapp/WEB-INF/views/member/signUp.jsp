@@ -4,18 +4,7 @@
 <html>
 <%@ include file="../include/header.jsp"%>
 <head>
-
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Title -->
-<title>EzenTour</title>
-<!-- Favicon -->
-<link rel="icon" href="${path}/resources/img/core-img/favicon.png">
-<!-- Stylesheet -->
-<link rel="stylesheet" href="${path}/resources/style.css">
+	<title>EzenTour</title>
 <style>
 label.custom-radio-button input[type="radio"] {
     opacity:0;
@@ -51,13 +40,9 @@ label.custom-radio-button input[type="radio"]:checked ~ .helping-el:after {
 </style>
 </head>
 <body>
-	<!-- Preloader -->
-	<div id="preloader">
-		<div class="loader"></div>
-	</div>
-	<!-- /Preloader -->
 
 	<%@ include file="../include/menu.jsp"%>
+	
 	<!-- Breadcrumb Area Start -->
 	<div class="breadcrumb-area bg-img bg-overlay jarallax"
 		style="background-image: url(${path}/resources/img/bg-img/16.jpg);">
