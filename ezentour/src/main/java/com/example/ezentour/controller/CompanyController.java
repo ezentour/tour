@@ -9,14 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CompanyController {
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
-	@RequestMapping(value = "mypage/company/hotel_insert")
+	@RequestMapping(value = "mypage/company/main")
 	public String home() {		
-		return "company/mypage/hotel_insert";
-	}
-	
-	@RequestMapping(value = "mypage/company/reservation")
-	public String reservation() {		
-		return "company/mypage/reservation";
+		return "company/mypage/company_home";
 	}
 	
 }
