@@ -46,28 +46,28 @@
                                     <li><a href="${path}/tour/main">관광</a></li>
                                     <li><a href="${path}/hotel/main">숙소</a></li>
                                     <li><a href="${path}/question/main">자유게시판</a></li>
-                                    <li><a href="${path}/mypage/user/main">마이(사용자)</a>
+                                    <li><a href="#">마이(사용자)</a>
                                         <ul class="dropdown">
-                                            <li><a href="">- 예약 내역</a></li>
-                                            <li><a href="">- 장바구니</a></li>                                       
+                                            <li><a href="${path}/mypage/user/main">- 예약 내역</a></li>
+                                            <li><a href="${path}/mypage/user/mycart">- 장바구니</a></li>                                       
                                         </ul>
                                     </li>
                                     
-                                    <li><a href="${path}/mypage/admin/main">마이(관리자)</a>
+                                    <li><a href="#">마이(관리자)</a>
                                         <ul class="dropdown">
-                                            <li><a href="">- 사용자 목록</a></li>
-                                            <li><a href="">- 숙박업체 목록</a>
-                                            	 <ul class="">
-                                                    <li><a href="">- 승인 대기</a></li>
-                                                    <li><a href="">- 승인 목록</a></li>
+                                            <li><a href="${path}/mypage/admin/user_list">- 사용자 목록</a></li>
+                                            <li><a href="#">- 숙박업체 목록</a>
+                                            	 <ul class="dropdown">
+                                                    <li><a href="${path}/mypage/admin/hotel_list_no">- 승인 대기</a></li>
+                                                    <li><a href="${path}/mypage/admin/hotel_list_yes">- 승인 목록</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>      
-                                    <li><a href="${path}/mypage/company/main">마이(숙박업)</a>
+                                    <li><a href="#">마이(숙박업)</a>
                                         <ul class="dropdown">
-                                            <li><a href="">- 숙박 등록</a></li>
-                                            <li><a href="">- 예약 내역</a></li>
+                                            <li><a href="${path}/mypage/company/hotel_insert">- 숙박 등록</a></li>
+                                            <li><a href="${path}/mypage/company/reservation">- 예약 내역</a></li>
                                         </ul>
                                     </li>   
                                                         
