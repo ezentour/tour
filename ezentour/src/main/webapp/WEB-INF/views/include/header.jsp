@@ -15,5 +15,18 @@
 <link rel="icon" href="${path}/resources/img/core-img/favicon.png">
 <!-- Stylesheet -->
 <link rel="stylesheet" href="${path}/resources/style.css">
-    
+<!-- Font -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<style>
+	body		{ font-family: 'NanumSquare', sans-serif; }
+	.normal		{ font-weight: 400 }
+	.bold		{ font-weight: 700 }
+	.bolder		{ font-weight: 800 }
+	.light		{ font-weight: 300 }
+	.h1-title   { font-family: 'NanumSquare', sans-serif; color: white; }
+	.h1-title-main   { font-family: 'NanumSquare', sans-serif; color: white; font-size: 60px; }
+</style>

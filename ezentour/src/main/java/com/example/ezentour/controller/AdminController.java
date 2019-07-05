@@ -13,12 +13,12 @@ public class AdminController {
 	public String home() {		
 		return "admin/mypage/user_list";
 	}
-	
+
 	@RequestMapping(value = "mypage/admin/hotel_list_yes")
 	public String hotellist_yes() {		
 		return "admin/mypage/hotel_list_yes";
 	}
-	
+
 	@RequestMapping(value = "mypage/admin/hotel_list_no")
 	public String hotellist_no() {		
 		return "admin/mypage/hotel_list_no";

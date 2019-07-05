@@ -24,7 +24,7 @@
                             <div class="col-12">
                                 <div class="welcome-text text-center">
                                     <h6 data-animation="fadeInLeft" data-delay="200ms">Hotel &amp; Trip</h6>
-                                    <h2 data-animation="fadeInLeft" data-delay="500ms">Welcome To EzenTour</h2>
+                                    <h1 data-animation="fadeInLeft" data-delay="500ms" class="h1-title-main">Welcome To EzenTour</h1>
                                     <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="800ms">Discover Now</a>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                             <div class="col-12">
                                 <div class="welcome-text text-center">
                                     <h6 data-animation="fadeInUp" data-delay="200ms">Hotel &amp; Trip</h6>
-                                    <h2 data-animation="fadeInUp" data-delay="500ms">Welcome To EzenTour</h2>
+                                    <h1 data-animation="fadeInUp" data-delay="500ms" class="h1-title-main">Welcome To EzenTour</h1>
                                     <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInUp" data-delay="800ms">Discover Now</a>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="col-12">
                                 <div class="welcome-text text-center">
                                     <h6 data-animation="fadeInDown" data-delay="200ms">Hotel &amp; Trip</h6>
-                                    <h2 data-animation="fadeInDown" data-delay="500ms">Welcome To EzenTour</h2>
+                                    <h1 data-animation="fadeInDown" data-delay="500ms" class="h1-title-main">Welcome To EzenTour</h1>
                                     <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInDown" data-delay="800ms">Discover Now</a>
                                 </div>
                             </div>

@@ -50,7 +50,7 @@ label.custom-radio-button input[type="radio"]:checked ~ .helping-el:after {
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h2 class="page-title">Join</h2>
+						<h1 class="h1-title">Join</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>

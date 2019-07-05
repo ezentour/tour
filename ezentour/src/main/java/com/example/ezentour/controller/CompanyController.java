@@ -10,13 +10,13 @@ public class CompanyController {
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
 	@RequestMapping(value = "mypage/company/hotel_insert")
-	public String home() {		
+	public String home() {
 		return "company/mypage/hotel_insert";
 	}
-	
+
 	@RequestMapping(value = "mypage/company/reservation")
-	public String reservation() {		
+	public String reservation() {
 		return "company/mypage/reservation";
 	}
-	
+
 }

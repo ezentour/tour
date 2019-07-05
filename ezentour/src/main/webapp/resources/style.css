@@ -34,14 +34,16 @@ Last Update: Feb 9, 2019
 - 19.0 Blog Area CSS
 --------------------------------------------- */
 /* Import Fonts & All CSS */
-@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700");
+/*@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700");*/
 @import url(css/bootstrap.min.css);
 @import url(css/animate.css);
 @import url(css/default-assets/classy-nav.css);
 @import url(css/owl.carousel.min.css);
 @import url(css/magnific-popup.css);
 @import url(css/nice-select.css);
-@import url(css/font-awesome.min.css);
+/*@import url(css/font-awesome.min.css);*/
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css");
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
 @import url(css/style.css);
 @import url(css/bootstrap-datepicker.min.css);
 @import url(css/jquery-ui.min.css);
@@ -51,9 +53,9 @@ Last Update: Feb 9, 2019
   padding: 0; }
 
 body {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
+  /*font-family: "Poppins", sans-serif;
+  font-weight: 400;*/
+  font-size: 1em;
   position: relative;
   z-index: auto; }
 
@@ -63,10 +65,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Poppins", sans-serif;
+  font-family: "NanumSquare", sans-serif;
   color: #2a303b;
   line-height: 1.3;
-  font-weight: 500; }
+  /*font-weight: 500;*/
+}
 
 a,
 a:active,
@@ -78,7 +81,7 @@ a:hover {
   -o-transition-duration: 500ms;
   transition-duration: 500ms;
   outline: none;
-  font-weight: 500; }
+  /*font-weight: 500;*/ }
 
 li {
   list-style: none; }
@@ -87,7 +90,7 @@ p {
   line-height: 1.7;
   color: #636a76;
   font-size: 16px;
-  font-weight: 400; }
+  /*font-weight: 400;*/ }
 
 img {
   max-width: 100%;
@@ -124,7 +127,7 @@ ul {
   .jarallax > .jarallax-img {
     position: absolute;
     object-fit: cover;
-    font-family: 'object-fit: cover';
+   /* font-family: 'object-fit: cover';*/
     top: 0;
     left: 0;
     width: 100%;
@@ -417,7 +420,7 @@ input:focus {
   height: 46px;
   line-height: 46px;
   font-size: 16px;
-  font-weight: 500;
+  /*font-weight: 500;*/
   display: inline-block;
   padding: 0 40px;
   text-align: center;
@@ -453,7 +456,7 @@ input:focus {
   font-size: 16px;
   text-transform: capitalize;
   text-decoration: underline;
-  font-weight: 500; }
+  /*font-weight: 500;*/ }
   .continue-btn:focus, .continue-btn:hover {
     text-decoration: underline;
     color: #000000; }
@@ -522,7 +525,7 @@ input:focus {
     .top-header-area .top-header-content > a {
       color: #ffffff;
       font-size: 14px;
-      font-weight: 400;
+     /* font-weight: 400;*/
       line-height: 50px;
       display: inline-block;
       margin-right: 50px; }
@@ -582,7 +585,7 @@ input:focus {
       font-size: 16px;
       text-transform: capitalize;
       color: #2a303b;
-      font-weight: 500;
+    /*  font-weight: 500;*/
       padding: 0 20px; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .classy-nav-container .classy-navbar .classynav ul li a {
@@ -602,7 +605,7 @@ input:focus {
             color: #1cc3b2; } }
       .classy-nav-container .classy-navbar .classynav ul li a:focus, .classy-nav-container .classy-navbar .classynav ul li a:hover {
         color: #afb4bf;
-        font-weight: 500; }
+      /*  font-weight: 500; */}
     .classy-nav-container .classy-navbar .classynav ul li.cn-dropdown-item ul li a, .classy-nav-container .classy-navbar .classynav ul li.megamenu-item ul li a {
       font-size: 14px;
       text-transform: capitalize;
@@ -807,7 +810,7 @@ input:focus {
       display: block;
       margin-bottom: 5px;
       color: #ffffff;
-      font-weight: 400; }
+    /*  font-weight: 400;*/ }
       .single-footer-widget .latest-blog-area .post-title:focus, .single-footer-widget .latest-blog-area .post-title:hover {
         color: #1cc3b2; }
   .single-footer-widget .footer-nav {
@@ -818,7 +821,7 @@ input:focus {
       margin-bottom: 10px;
       color: #636a76;
       font-size: 14px;
-      font-weight: 400;
+     /* font-weight: 400;*/
       text-transform: capitalize; }
       .single-footer-widget .footer-nav li a:focus, .single-footer-widget .footer-nav li a:hover {
         color: #ffffff; }
@@ -994,7 +997,7 @@ input:focus {
       border-radius: 0;
       color: #ffffff;
       text-align: left;
-      font-weight: 500;
+    /*  font-weight: 500;*/
       height: 100px;
       width: 100%;
       line-height: 100px; }
@@ -1034,7 +1037,7 @@ input:focus {
       width: 100% !important; }
   .roberto-testimonials-area .single-testimonial-slide h5 {
     color: #636a76;
-    font-weight: 400;
+  /*  font-weight: 400;*/
     font-size: 18px;
     line-height: 1.8; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1061,7 +1064,7 @@ input:focus {
       .roberto-testimonials-area .single-testimonial-slide .rating-title h6 span {
         color: #1cc3b2;
         font-size: 14px;
-        font-weight: 400; }
+      /*  font-weight: 400;*/ }
 
 .testimonial-slides .owl-dots {
   display: -webkit-box;
@@ -1122,7 +1125,7 @@ input:focus {
       margin-bottom: 0;
       color: #707070;
       line-height: 1.5;
-      font-weight: 400; }
+     /* font-weight: 400; */}
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .single-testimonial-area .testimonial-content h5 {
           font-size: 16px; } }
@@ -1249,7 +1252,7 @@ input:focus {
     line-height: 50px;
     text-align: center;
     font-size: 16px;
-    font-weight: 600;
+  /*  font-weight: 600;*/
     position: absolute;
     bottom: 0;
     z-index: 100;
@@ -1338,7 +1341,7 @@ input:focus {
         flex: 0 0 50%;
         max-width: 50%;
         width: 50%;
-        font-weight: 400;
+     /*   font-weight: 400;*/
         color: #afb4bf;
         margin-bottom: 10px; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1351,7 +1354,7 @@ input:focus {
       padding: 0;
       font-size: 16px;
       color: #1cc3b2;
-      font-weight: 500; }
+      /*font-weight: 500;*/ }
       .single-room-area .room-content .view-detail-btn:hover, .single-room-area .room-content .view-detail-btn:focus {
         color: #000000; }
 
@@ -1383,7 +1386,7 @@ input:focus {
   .datepicker.dropdown-menu {
     font-size: 14px;
     color: #636a76;
-    font-weight: 400; }
+   /* font-weight: 400;*/ }
 
 .hotel-reservation--area .nice-select {
   line-height: 48px; }
@@ -1603,7 +1606,7 @@ html .ui-button.ui-state-disabled:active {
     line-height: 1.8;
     color: #636a76;
     margin-bottom: 30px;
-    font-weight: 400; }
+   /* font-weight: 400; */}
   .about-us-content p {
     margin-bottom: 30px; }
     .about-us-content p span {
@@ -1745,7 +1748,7 @@ html .ui-button.ui-state-disabled:active {
         padding: 30px 30px 0 30px; } }
     .hotel-search-form-area .hotel-search-form label {
       font-size: 16px;
-      font-weight: 500; }
+    /*  font-weight: 500; */}
       @media only screen and (max-width: 767px) {
         .hotel-search-form-area .hotel-search-form label {
           font-size: 13px; } }
@@ -1911,7 +1914,7 @@ html .ui-button.ui-state-disabled:active {
     font-size: 22px;
     display: block;
     border-bottom: 1px solid #ebebeb;
-    font-weight: 500;
+   /* font-weight: 500;*/
     padding-bottom: 10px; }
 
 .newsletter-form {
@@ -1943,7 +1946,7 @@ html .ui-button.ui-state-disabled:active {
       font-size: 16px;
       display: inline-block;
       padding: 0;
-      font-weight: 400;
+    /*  font-weight: 400;*/
       text-transform: capitalize;
       color: #afb4bf; }
       .popular-tags li a:hover, .popular-tags li a:focus {
@@ -2035,16 +2038,20 @@ html .ui-button.ui-state-disabled:active {
     .breadcrumb-area {
       height: 200px; } }
   .breadcrumb-area .page-title {
+  	font-family: "NanumSquare", sans-serif;
     color: #ffffff;
     font-size: 48px; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .breadcrumb-area .page-title {
+      	font-family: "NanumSquare", sans-serif;
         font-size: 36px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .breadcrumb-area .page-title {
+      	font-family: "NanumSquare", sans-serif;
         font-size: 36px; } }
     @media only screen and (max-width: 767px) {
       .breadcrumb-area .page-title {
+      	font-family: "NanumSquare", sans-serif;
         font-size: 24px; } }
   .breadcrumb-area.contact-breadcrumb {
     height: 400px; }
@@ -2093,7 +2100,7 @@ html .ui-button.ui-state-disabled:active {
           color: #1cc3b2; }
     .breadcrumb-content .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
       content: '\f105';
-      font-family: "FontAwesome";
+      /*font-family: "FontAwesome";*/
       color: #ffffff; }
 
 /* :: 19.0 Blog CSS */
@@ -2309,7 +2316,7 @@ html .ui-button.ui-state-disabled:active {
     margin-bottom: 10px;
     color: #707070;
     font-style: italic;
-    font-weight: 400;
+ /*   font-weight: 400;*/
     line-height: 1.5; }
 
 .post-author-area {
@@ -2384,7 +2391,7 @@ html .ui-button.ui-state-disabled:active {
     font-size: 24px !important;
     line-height: 1.5;
     display: block;
-    font-weight: 400;
+    /*font-weight: 400;*/
     margin-bottom: 0; }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .single-related-news .post-title {
@@ -2438,7 +2445,7 @@ html .ui-button.ui-state-disabled:active {
       text-transform: uppercase;
       display: block;
       margin-bottom: 5px;
-      font-weight: 600; }
+      /*font-weight: 600; */}
     .comment_area .comment-content .comment-meta h5 {
       margin-bottom: 5px; }
       @media only screen and (max-width: 767px) {
@@ -2458,7 +2465,7 @@ html .ui-button.ui-state-disabled:active {
       display: inline-block;
       padding: 5px 25px 3px;
       font-size: 12px;
-      font-weight: 600;
+    /*  font-weight: 600;*/
       border: 1px solid #ebebeb;
       text-transform: uppercase;
       border-radius: 30px; }

@@ -16,7 +16,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h2 class="page-title">장바구니</h2>
+						<h1 class="h1-title">장바구니</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
@@ -53,19 +53,19 @@
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<th>작성 번호</th>
-								<th>제목</th>
-								<th>등록자</th>
-								<th>등록일</th>
+								<td>작성 번호</td>
+								<td>제목</td>
+								<td>등록자</td>
+								<td>등록일</td>
 							</tr>
+						</thead>
+						<tbody id="list">
 							<tr>
 								<td>1</td>
 								<td>게시판은 이렇게</td>
 								<td>유상원</td>
 								<td>2019.07.04</td>
 							</tr>
-						</thead>
-						<tbody id="list">
 						</tbody>
 					</table>
 				</div>
