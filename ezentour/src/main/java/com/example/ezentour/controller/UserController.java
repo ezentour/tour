@@ -13,4 +13,9 @@ public class UserController {
 	public String home() {		
 		return "user/mypage/user_home";
 	}
+	
+	@RequestMapping(value = "mypage/user/mycart")
+	public String myCart() {		
+		return "user/mypage/mycart";
+	}
 }
