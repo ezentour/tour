@@ -73,19 +73,6 @@
                                                         
                                 </ul>
 
-                                <!-- Search -->
-                                <!-- 
-                                <div class="search-btn ml-4">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
- 								-->
-                                <!-- Book Now -->
-                                <!-- 
-                                <div class="book-now-btn ml-3 ml-lg-5">
-                                    <a href="#">Book Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                -->
-                                
                                 <div class="" >
                           	     	<a href="${path}/member/login.do">로그인</a>&nbsp;&nbsp;&nbsp;
                                 	<a href="${path}/member/signUp.do">회원 가입</a>
