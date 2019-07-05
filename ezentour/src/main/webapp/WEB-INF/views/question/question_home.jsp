@@ -1,54 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/header.jsp"%>
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Title -->
-    <title>EzenTour</title>
-
-    <!-- Favicon -->
-    <link rel="icon" href="${path}/resources/img/core-img/favicon.png">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="${path}/resources/style.css">
-
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Title -->
+<title>EzenTour</title>
+<!-- Favicon -->
+<link rel="icon" href="${path}/resources/img/core-img/favicon.png">
+<!-- Stylesheet -->
+<link rel="stylesheet" href="${path}/resources/style.css">
+<link rel="stylesheet" type="text/css" href="/coco/resources/semantic.min.css">
+<style type="text/css">
+        body {
+            background-color: #DADADA;
+        }
+        body>.grid {
+            height: 70%;
+        }
+        .image {
+            margin-top: -100px;
+        }
+        .column {
+            max-width: 1000px;
+        }
+        .view_btn {
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="loader"></div>
+	</div>
+	<!-- /Preloader -->
+	<%@ include file="../include/menu.jsp"%>
+	<!-- Breadcrumb Area Start -->
+	<div class="breadcrumb-area bg-img bg-overlay jarallax"
+		style="background-image: url(${path}/resources/img/bg-img/16.jpg);">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-12">
+					<div class="breadcrumb-content text-center">
+						<h2 class="page-title">마이(사용자)</h2>
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb justify-content-center">
+								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">마이(사용자)</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcrumb Area End -->
 
-	<%@ include file="../include/menu.jsp" %>
-	
-	  <!-- Breadcrumb Area Start -->
-    <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(${path}/resources/img/bg-img/17.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2 class="page-title">자유 게시판</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center">
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-    <!-- Breadcrumb Area End -->
-    
-    <!-- Board Area Start -->
-   <div class="ui middle aligned center aligned grid">
+	<!-- Newsletter -->
+	<div class="ui middle aligned center aligned grid">
         <div class="column">
             <h2 class="ui teal image header">
                 게시판 페이지
@@ -75,6 +90,7 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="ui error message"></div>
 				<div class="col-12" >
 				<div class="welcome-text text-center">
@@ -84,22 +100,10 @@
             </div>
         </div>
     </div>
-    		
-    <!-- Board Area End -->
-    
-					
-        <!-- **** All JS Files ***** -->
-    <!-- jQuery 2.2.4 -->
-    <script src="${path }/resources/js/jquery.min.js"></script>
-    <!-- Popper -->
-    <script src="${path }/resources/js/popper.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="${path }/resources/js/bootstrap.min.js"></script>
-    <!-- All Plugins -->
-    <script src="${path }/resources/js/roberto.bundle.js"></script>
-    <!-- Active -->
-    <script src="${path }/resources/js/default-assets/active.js"></script>
+<!-- js 가져오기 -->
     <script src="${path}/resources/js/jquery3.3.1.min.js"></script>
-	<script src="${path}/resources/css/semantic.min.js"></script>
+    <script src="${path}/resources/css/semantic.min.js"></script>
+    
+	<%@ include file="../include/footer.jsp"%>
 </body>
 </html>
