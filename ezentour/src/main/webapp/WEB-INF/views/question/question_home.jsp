@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/header.jsp"%>
+
 <head>
 	<title>EzenTour</title>
 </head>
@@ -20,8 +21,8 @@
 						<h1 class="h1-title">자유게시판</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
-								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">자유게시판</li>
+								<li class="breadcrumb-item"><a href="${path}">Home</a></li>
+								<li class="breadcrumb-item">자유게시판</li>
 							</ol>
 						</nav>
 					</div>
