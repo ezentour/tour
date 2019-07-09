@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
 <!DOCTYPE html>
 <html>
 <%@ include file="../../include/header.jsp"%>
@@ -85,51 +81,7 @@
         </div>
     </div>
     
-    <table>
-    	
-    </table>
     <div><p><br></p></div>
-    
-    <table border="1"  style="text-align: center; ">
-				<thead>
-					<tr>
-						<th>혼잡 수준</th>
-						<th>linkCount</th>
-						<th>linkID</th>
-						<th>linkLength</th>
-						<th>linkSqc</th>
-						<th>speed</th>
-						<th>roadName</th>
-						<th>startNodeId</th>
-						<th>startNodeName</th>
-						<th>endNodeID</th>
-						<th>endNodeName</th>
-						<th>travelT</th>
-						<th>udType</th>
-					</tr>
-				</thead>
-				<tbody>
-				<c:set var="traffic" value="${trafficList}" />
-					<c:forEach var="trafficDto" items="${traffic}">
-						<tr>
-							<td >${trafficDto.getCongestion()}</td>
-							<td>${trafficDto.getLinkCount()}</td>
-							<td>${trafficDto.getLinkID()}</td>
-							<td>${trafficDto.getLinkLength()}</td>
-							<td>${trafficDto.getLinkSqc()}</td>
-							<td>${trafficDto.getSpeed()}</td>
-							<td>${trafficDto.getRoadName()}</td>
-							<td>${trafficDto.getStartNodeId()}</td>
-							<td>${trafficDto.getStartNodeName()}</td>
-							<td>${trafficDto.getEndNodeID()}</td>
-							<td>${trafficDto.getEndNodeName()}</td>
-							<td>${trafficDto.getTravelT()}</td>
-							<td>${trafficDto.getUdType()}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-	</table>
-    
     
 	<%@ include file="../../include/footer.jsp"%>
 </body>
