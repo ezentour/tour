@@ -6,9 +6,9 @@
 <head>
     <title>EzenTour</title>
 </head>
-
+<!-- bootstrap 위치 지정 : https://getbootstrap.com/docs/4.0/utilities/flex/ -->
 <body>
-
+	
 	<%@ include file="include/menu.jsp" %>
 
     <!-- Welcome Area Start -->
@@ -82,6 +82,17 @@
                 <div class="hotel-search-form">
                     <form action="#" method="post">
                         <div class="row justify-content-between align-items-end">
+                        	<div class="col-6 col-md-2">
+                                <label for="">지역</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="a">서울</option>
+                                    <option value="b">경기</option>
+                                    <option value="03">충남/충북</option>
+                                    <option value="04">전남/전북</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                </select>
+                            </div>
                             <div class="col-6 col-md-2 col-lg-3">
                                 <label for="checkIn">Check In</label>
                                 <input type="date" class="form-control" id="checkIn" name="checkin-date">
@@ -91,7 +102,7 @@
                                 <input type="date" class="form-control" id="checkOut" name="checkout-date">
                             </div>
                             <!-- 네모박스 크기 늘리기 : col-md-1의 숫자 늘리기 -->
-                            <div class="col-4 col-md-1">
+                            <div class="col-4 col-md-2">
                                 <label for="room">Room</label>
                                 <select name="room" id="room" class="form-control">
                                     <option value="01">01</option>
@@ -102,7 +113,7 @@
                                     <option value="06">06</option>
                                 </select>
                             </div>
-                            <div class="col-8 col-md-1">
+                            <div class="col-4 col-md-2">
                                 <label for="people">인원</label>
                                 <select name="people" id="people" class="form-control">
                                     <option value="01">01</option>
@@ -126,6 +137,8 @@
                                     <option value="06">06</option>
                                 </select>
                             </div>  -->
+                            </div>
+                            <div class="row d-flex justify-content-center">
                             <div class="col-12 col-md-3">
                                 <button type="submit" class="form-control btn roberto-btn w-100">Check Availability</button>
                             </div>

@@ -66,11 +66,12 @@ label.custom-radio-button input[type="radio"]:checked ~ .helping-el:after {
 
 	<!-- Newsletter -->
 	<br>
-	<center>
+	<div class="row d-flex justify-content-center">
 	<div style="width:400px;">
-		<div class="newsletter-form">			
+		<div class="newsletter-form">
 			<form action="#" method="post">
 				<input type="text" name="m_id" id="nlEmail" class="form-control" placeholder="ID">
+				<button class="btn btn btn-secondary w-30">중복 확인</button><br><br>
 				<input type="password" name="m_password" id="nlEmail" class="form-control" placeholder="Password">
 				<input type="text" name="m_name" id="nlEmail" class="form-control" placeholder="Name">
 				<input type="text" name="m_tel" id="nlEmail" class="form-control" placeholder="Tel">
@@ -84,7 +85,7 @@ label.custom-radio-button input[type="radio"]:checked ~ .helping-el:after {
 			</form>
 		</div>
 	</div>
-	</center>
+	</div>
 	<br>
 
 	<%@ include file="../include/footer.jsp"%>
