@@ -32,7 +32,7 @@
 
 	<!-- Newsletter -->
 	<br>
-	<center>
+	<div class="row d-flex justify-content-center">
 	<div style="width:400px;">
 		<div class="newsletter-form">			
 			<form action="#" method="post">
@@ -42,7 +42,7 @@
 			</form>
 		</div>
 	</div>
-	</center>
+	</div>
 	<br>
 
 	<%@ include file="../include/footer.jsp"%>

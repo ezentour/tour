@@ -12,12 +12,13 @@
 
 
 <!-- Favicon -->
-<link rel="icon" href="${path}/resources/img/core-img/favicon.png">
+<link rel="icon" href="${path}/resources/img/core-img/favicon3.png">
 <!-- Stylesheet -->
 <link rel="stylesheet" href="${path}/resources/style.css">
 <!-- Font -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -29,4 +30,9 @@
 	.light		{ font-weight: 300 }
 	.h1-title   { font-family: 'NanumSquare', sans-serif; color: white; }
 	.h1-title-main   { font-family: 'NanumSquare', sans-serif; color: white; font-size: 60px; }
+	.breadcrumb-content .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+     font-family: "FontAwesome";
+     font-weight: 900;
+     content: '\f105';
+     color: #ffffff; }
 </style>

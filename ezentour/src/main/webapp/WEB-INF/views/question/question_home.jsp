@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/header.jsp"%>
+
 <head>
 	<title>EzenTour</title>
 </head>
@@ -20,8 +21,8 @@
 						<h1 class="h1-title">자유게시판</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
-								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">자유게시판</li>
+								<li class="breadcrumb-item"><a href="${path}">Home</a></li>
+								<li class="breadcrumb-item">자유게시판</li>
 							</ol>
 						</nav>
 					</div>
@@ -30,8 +31,6 @@
 		</div>
 	</div>
 	<!-- Breadcrumb Area End -->
-
-	<!-- Newsletter -->
 	
 	<!-- ui middle aligned center aligned grid -->
 	<div class="roberto-rooms-area section-padding-100-0">
@@ -73,7 +72,7 @@
 
 				<div class="col-12" >
 					<div class="welcome-text text-center">
-						<a href="#" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">글쓰기</a>
+						<a href="${path}/question/write" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">글쓰기</a>
 					</div>
 				</div>
             </div>

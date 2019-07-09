@@ -66,7 +66,7 @@
                                     </li>      
                                     <li><a href="#">마이(숙박업)</a>
                                         <ul class="dropdown">
-                                            <li><a href="${path}/mypage/company/hotel_insert">- 숙박 등록</a></li>
+                                            <li><a href="${path}/mypage/company/hotel_list">- 숙소 목록 및 등록</a></li>
                                             <li><a href="${path}/mypage/company/reservation">- 예약 내역</a></li>
                                         </ul>
                                     </li>   

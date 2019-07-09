@@ -13,4 +13,10 @@ public class QuestionController {
 	public String home() {		
 		return "question/question_home";
 	}
+	
+	@RequestMapping(value = "question/write")
+	public String write() {
+		return "question/question_write";
+		
+	}
 }

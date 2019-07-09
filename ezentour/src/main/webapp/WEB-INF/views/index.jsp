@@ -6,9 +6,9 @@
 <head>
     <title>EzenTour</title>
 </head>
-
+<!-- bootstrap 위치 지정 : https://getbootstrap.com/docs/4.0/utilities/flex/ -->
 <body>
-
+	
 	<%@ include file="include/menu.jsp" %>
 
     <!-- Welcome Area Start -->
@@ -82,6 +82,17 @@
                 <div class="hotel-search-form">
                     <form action="#" method="post">
                         <div class="row justify-content-between align-items-end">
+                        	<div class="col-6 col-md-2">
+                                <label for="">지역</label>
+                                <select name="" id="" class="form-control">
+                                    <option value="a">서울</option>
+                                    <option value="b">경기</option>
+                                    <option value="03">충남/충북</option>
+                                    <option value="04">전남/전북</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                </select>
+                            </div>
                             <div class="col-6 col-md-2 col-lg-3">
                                 <label for="checkIn">Check In</label>
                                 <input type="date" class="form-control" id="checkIn" name="checkin-date">
@@ -90,7 +101,8 @@
                                 <label for="checkOut">Check Out</label>
                                 <input type="date" class="form-control" id="checkOut" name="checkout-date">
                             </div>
-                            <div class="col-4 col-md-1">
+                            <!-- 네모박스 크기 늘리기 : col-md-1의 숫자 늘리기 -->
+                            <div class="col-4 col-md-2">
                                 <label for="room">Room</label>
                                 <select name="room" id="room" class="form-control">
                                     <option value="01">01</option>
@@ -101,18 +113,20 @@
                                     <option value="06">06</option>
                                 </select>
                             </div>
-                            <div class="col-4 col-md-1">
-                                <label for="adults">Adult</label>
-                                <select name="adults" id="adults" class="form-control">
+                            <div class="col-4 col-md-2">
+                                <label for="people">인원</label>
+                                <select name="people" id="people" class="form-control">
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
                                     <option value="04">04</option>
                                     <option value="05">05</option>
                                     <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
                                 </select>
                             </div>
-                            <div class="col-4 col-md-2 col-lg-1">
+                            <!-- <div class="col-4 col-md-2 col-lg-1">
                                 <label for="children">Children</label>
                                 <select name="children" id="children" class="form-control">
                                     <option value="01">01</option>
@@ -122,7 +136,9 @@
                                     <option value="05">05</option>
                                     <option value="06">06</option>
                                 </select>
+                            </div>  -->
                             </div>
+                            <div class="row d-flex justify-content-center">
                             <div class="col-12 col-md-3">
                                 <button type="submit" class="form-control btn roberto-btn w-100">Check Availability</button>
                             </div>
@@ -152,15 +168,15 @@
                         <div class="row no-gutters">
                             <div class="col-6">
                                 <div class="single-thumb">
-                                    <img src="img/bg-img/13.jpg" alt="">
+                                    <img src="${path}/resources/img/bg-img/13.jpg" alt="">
                                 </div>
                                 <div class="single-thumb">
-                                    <img src="img/bg-img/14.jpg" alt="">
+                                    <img src="${path}/resources/img/bg-img/14.jpg" alt="">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="single-thumb">
-                                    <img src="img/bg-img/15.jpg" alt="">
+                                    <img src="${path}/resources/img/bg-img/15.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -179,31 +195,31 @@
                     <div class="service-content d-flex align-items-center justify-content-between">
                         <!-- Single Service Area -->
                         <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="100ms">
-                            <img src="img/core-img/icon-1.png" alt="">
+                            <img src="${path}/resources/img/core-img/icon-1.png" alt="">
                             <h5>Transportion</h5>
                         </div>
 
                         <!-- Single Service Area -->
                         <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="300ms">
-                            <img src="img/core-img/icon-2.png" alt="">
+                            <img src="${path}/resources/img/core-img/icon-2.png" alt="">
                             <h5>Reiseservice</h5>
                         </div>
 
                         <!-- Single Service Area -->
                         <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="500ms">
-                            <img src="img/core-img/icon-3.png" alt="">
+                            <img src="${path}/resources/img/core-img/icon-3.png" alt="">
                             <h5>Spa Relaxtion</h5>
                         </div>
 
                         <!-- Single Service Area -->
                         <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="700ms">
-                            <img src="img/core-img/icon-4.png" alt="">
+                            <img src="${path}/resources/img/core-img/icon-4.png" alt="">
                             <h5>Restaurant</h5>
                         </div>
 
                         <!-- Single Service Area -->
                         <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="900ms">
-                            <img src="img/core-img/icon-1.png" alt="">
+                            <img src="${path}/resources/img/core-img/icon-1.png" alt="">
                             <h5>Bar &amp; Drink</h5>
                         </div>
                     </div>
@@ -263,8 +279,8 @@
             <div class="row align-items-center">
                 <div class="col-12 col-md-6">
                     <div class="testimonial-thumbnail owl-carousel mb-100">
-                        <img src="img/bg-img/10.jpg" alt="">
-                        <img src="img/bg-img/11.jpg" alt="">
+                        <img src="${path}/resources/img/bg-img/10.jpg" alt="">
+                        <img src="${path}/resources/img/bg-img/11.jpg" alt="">
                     </div>
                 </div>
 
@@ -477,7 +493,7 @@
                         <!-- Post Title -->
                         <a href="#" class="post-title">Learn How To Motivate Yourself</a>
                         <p>How many free autoresponders have you tried? And how many emails did you get through using them?</p>
-                        <a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="#" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -493,7 +509,7 @@
                         <!-- Post Title -->
                         <a href="#" class="post-title">What If Let You Run The Hubble</a>
                         <p>My point here is that if you have no clue for the answers above you probably are not operating a followup.</p>
-                        <a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="#" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
@@ -509,7 +525,7 @@
                         <!-- Post Title -->
                         <a href="#" class="post-title">Six Pack Abs The Big Picture</a>
                         <p>Some good steps to take to ensure you are getting what you need out of a autoresponder include…</p>
-                        <a href="index.html" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href="#" class="btn continue-btn"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
