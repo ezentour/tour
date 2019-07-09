@@ -72,7 +72,7 @@
 
 				<div class="col-12" >
 					<div class="welcome-text text-center">
-						<a href="#" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">글쓰기</a>
+						<a href="${path}/question/write" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">글쓰기</a>
 					</div>
 				</div>
             </div>

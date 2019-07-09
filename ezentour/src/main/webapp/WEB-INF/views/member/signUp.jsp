@@ -61,6 +61,24 @@
 	<!-- Newsletter -->
 	<br>
 	<div class="row d-flex justify-content-center">
+
+	<div style="width:400px;">
+		<div class="newsletter-form">
+			<form action="#" method="post">
+				<input type="text" name="m_id" id="nlEmail" class="form-control" placeholder="ID">
+				<button class="btn btn btn-secondary w-30">중복 확인</button><br><br>
+				<input type="password" name="m_password" id="nlEmail" class="form-control" placeholder="Password">
+				<input type="text" name="m_name" id="nlEmail" class="form-control" placeholder="Name">
+				<input type="text" name="m_tel" id="nlEmail" class="form-control" placeholder="Tel">
+				<input type="text" name="m_email" id="nlEmail" class="form-control" placeholder="Email">				
+				<label class="custom-radio-button">
+				 <input type="radio" name="m_field" value="normal" checked/>  <span class="helping-el"></span> <span class="label-text">일반</span> </label>	
+				 <label class="custom-radio-button">	
+				 <input type="radio" name="m_field" value="hostel" />  <span class="helping-el"></span> <span class="label-text">숙박업</span> </label>	
+				 <br><br>
+				<button type="submit" class="btn roberto-btn w-100">Join Us</button>
+			</form>
+
 		<div style="width:400px;">
 			<div class="newsletter-form">
 				<form action="#" method="post" name="signup">
@@ -85,11 +103,15 @@
 				</form>
 				
 			</div>
+
 		</div>
 		
 
 		
 	</div>
+
+	</div>
+
 	<br>
 
 	<%@ include file="../include/footer.jsp"%>
