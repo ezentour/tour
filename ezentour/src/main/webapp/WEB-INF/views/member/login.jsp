@@ -36,8 +36,8 @@
 	<div style="width:400px;">
 		<div class="newsletter-form">			
 			<form action="#" method="post">
-				<input type="text" name="m_id" id="nlEmail" class="form-control" placeholder="Enter your ID...">
-				<input type="password" name="m_password" id="nlEmail" class="form-control" placeholder="Enter your Password...">
+				<input type="text" name="m_id" id="nlEmail" class="form-control" placeholder="Enter your ID" autocomplete="off">
+				<input type="password" name="m_password" id="nlEmail" class="form-control" placeholder="Enter your Password" autocomplete="off">
 				<button type="submit" class="btn roberto-btn w-100">Login</button>
 			</form>
 		</div>
