@@ -14,7 +14,6 @@
 <style>
 	div.postcodify_search_form {
 	    clear: both; margin: 12px; padding: 0; position: relative;
-	    font: 13px/160% "Malgun Gothic", "Gulim", sans-serif;
 	    width:500px;
 	}
 	label { display: block; width: 100px; }
@@ -82,7 +81,6 @@
 						<!-- <div class="graybox" style="line-height:220%"> -->
 						    <label for="ex1_pc5">우편번호</label>
 						    <input type="text" id="ex1_pc5" class="example_pcfull postcodify_postcode5" value="" style="width:100px;" readonly/>
-						    <button id="ex1_button" class="example_button">검색</button>
 						    <br />
 						    <label for="ex1_input1">도로명주소</label>
 						    <input type="text" id="ex1_input1" class="example_input postcodify_address" value="" style="width:250px;" readonly/>
@@ -100,27 +98,6 @@
 						</script>
 					
 					</div>
-					
-					
-					<!-- 검색 도움말 -->
-					
-					<div class="alert alert-secondary" role="alert" style="width:70%">
-					    <p>검색 요령</p>
-					    <ul>
-					        <li>도로명주소 검색 : 도로명과 건물번호를 입력하세요. &nbsp; 예: <span>세종대로 110</span></li>
-					        <li>지번주소 검색 : "동" 또는 "리" 이름과 번지수를 입력하세요. &nbsp; 예: <span>연산동 1000</span></li>
-					        <li>건물명 검색 : 빌딩 또는 아파트 이름을 입력하세요. &nbsp; 예: <span>방배동 래미안</span>, <span>수곡동 주공3차</span></li>
-					        <li>사서함 검색 : 사서함 이름과 번호를 입력하세요. &nbsp; 예: <span>광화문우체국사서함 123-4</span></li>
-					    </ul>
-					    <br><br>
-					    <p>주의사항</p>
-					    <ul>
-					        <li>시·군·구·읍·면 등은 쓰지 않아도 되지만, 만약 쓰실 경우 반드시 띄어쓰기를 해 주세요.</li>
-					        <li>도로명에 "××번길" 등이 포함되어 있는 경우에도 잊지 말고 써 주세요.</li>
-					        <li>건물명보다는 도로명주소 또는 지번 주소로 검색하시는 것이 빠르고 정확합니다.</li>
-					    </ul>
-					</div>    
-					
 										
 					<!-- -------------------------------------------------------------------------- -->
 					
