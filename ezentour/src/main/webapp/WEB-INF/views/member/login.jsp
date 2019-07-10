@@ -35,9 +35,9 @@
 	<div class="row d-flex justify-content-center">
 	<div style="width:400px;">
 		<div class="newsletter-form">			
-			<form action="#" method="post">
-				<input type="text" name="m_id" id="nlEmail" class="form-control" placeholder="Enter your ID" autocomplete="off">
-				<input type="password" name="m_password" id="nlEmail" class="form-control" placeholder="Enter your Password" autocomplete="off">
+			<form action="${path}/member/login_check.do" method="post">
+				<input type="text" name="m_id" id="m_id" class="form-control" placeholder="Enter your ID" autocomplete="off">
+				<input type="password" name="m_password" id="m_password" class="form-control" placeholder="Enter your Password" autocomplete="off">
 				<button type="submit" class="btn roberto-btn w-100">Login</button>
 			</form>
 		</div>
