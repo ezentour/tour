@@ -21,7 +21,7 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">My page(사용자)</li>
+								<li class="breadcrumb-item active" aria-current="page">My page(user)</li>
 							</ol>
 						</nav>
 					</div>
