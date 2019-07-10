@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FestivalController {
@@ -25,17 +26,21 @@ private static final Logger LOG = LoggerFactory.getLogger(FestivalController.cla
 	}
 	
 	@RequestMapping("festival/PublicData.do")
-	public void home(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void home(HttpServletRequest request, HttpServletResponse response, @RequestParam String start,  @RequestParam String end) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?ServiceKey=";
 		String serviceKey = "3A8G5CF0DP0%2BcOm6xmM2GGsCidJezKufwyXK36vCO7TsJr9lOhf%2FUuM4MBZXFy8wcOSKaf8P%2FsX0VS%2BAD%2FWqCw%3D%3D";
 		String parameter = "";
+		start = start.replace("-", "");
+		end = end.replace("-", "");	
+		System.out.println("start : " + start + "end : " + end);
+		
 //	        serviceKey = URLEncoder.encode(serviceKey,"utf-8");
 		PrintWriter out = response.getWriter();		
-		parameter = parameter + "&" + "eventStartDate=20190701";
-		parameter = parameter + "&" + "eventEndDate=20191231";
+		parameter = parameter + "&" + "eventStartDate=" + start;
+		parameter = parameter + "&" + "eventEndDate=" + end;
 		parameter = parameter + "&" + "MobileOS=ETC";
 		parameter = parameter + "&" + "MobileApp=TourAPI3.0_Guide";
 		parameter = parameter + "&" + "arrange=A";

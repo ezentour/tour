@@ -14,4 +14,9 @@ public class HotelController {
 		return "hotel/hotel_home";
 	}
 	
+	@RequestMapping(value = "hotel/detail")
+	public String hotel_detail() {		
+		return "hotel/hotel_detail";
+	}
+	
 }

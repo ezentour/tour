@@ -51,7 +51,7 @@
                                 <h6>Bed: <span>King beds</span></h6>
                                 <h6>Services: <span>Wifi, television ...</span></h6>
                             </div>
-                            <a href="${path}" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                            <a href="${path}/hotel/detail" class="btn view-detail-btn">View Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
