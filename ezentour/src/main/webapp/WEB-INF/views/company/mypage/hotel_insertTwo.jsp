@@ -15,30 +15,23 @@
 <link rel="stylesheet" type="text/css"
 	href="//cdn.poesis.kr/post/search.css" media="all" />
 </head>
+
 <script>
 	$(function() {
 	    $("#cancel").click(function() {
-	        if(confirm("취소하시겠습니까?(저장 안돼요!)")) {
-	            document.back.action="${path}/mypage/company/hotel_list";
+	        if(confirm("뒤로 가시겠습니까?(저장안돼요!)")) {
+	            document.back.action="${path}/mypage/company/hotel_insert";
 	            document.back.submit();
 	        }
 	    });
-	    $("#next").click(function() {
-	    	if($("#name").val()==""){
-	    		alert("업체명(개인)을 입력해주세요!!!!");
-	    	}else if($("#ex1_pc5").val()==""){
-	    		alert("주소를 입력해주세요!!!!");
-	    	}else if($("#ex1_input2").val()==""){
-	    		alert("상세주소를 입력해주세요!!!!")
-	    	}else if($("#tel").val()==""){
-	    		alert("전화번호를 입력해주세요!!!!");
-	    	}else{
-		        if(confirm("NEXT")) {
-		            document.back.action="${path}/mypage/company/hotel_insertTwo";
-		            document.back.submit();
-		        }
+	    
+	     $("#register").click(function() {
+	        if(confirm("정말 등록 하시겠습니까?")) {
+	            document.back.action="${path}/mypage/company/hotel_insertTwo";
+	            document.back.submit();
 	        }
 	    });
+	   
 	})
 	</script>
 <style>
@@ -110,30 +103,55 @@ label {
 				<div class="col-12">
 
 					<!-- -------------------------------------------------------------------------- -->
-					<h2>기본 정보</h2>
-					<form name="back">
+					<h2>숙소 정보</h2>
+					<form name="back" method="get">
 						<div class="postcodify_search_form">
 							<div class="alert alert-info" role="alert">
 								<div class="graybox" style="line-height: 220%">
-									<label><b>업체명(개인)</label> 
-									<input type="text" placeholder="  업체명을 입력하세요" id="name" class="example_input postcodify_details"
-										value="" style="width: 250px;" /> 
-									<label for="ex1_input2">상세주소</label> 
-									<input type="text" id="ex1_input2" class="example_input postcodify_details"
-										value="" style="width: 250px;" /> 
-									<label for="ex1_input2">TEL.</label> 
-									<input type="text" placeholder="  구분자 '-'없이 입력해주세요"  id="tel" class="example_input postcodify_details"
-										value="" style="width: 250px;" /> 
-									<br /> 
 	
+									<label  class="example_pcfull postcodify_postcode5"><b>건물 유형</b></label> 
+										<select class="mdb-select md-form">
+										  <option value="" disabled selected>Choose your accomodation type</option>
+										  <option value="house">주택</option>
+										  <option value="log">통나무집</option>
+										  <option value="plastic">비닐하우스</option>
+										  <option value="guest">게스트하우스</option>
+										  <option value="pent">펜트하우스</option>
+										  <option value="one">원룸</option>
+										  <option value="two">투룸</option>
+										</select>
 									<br />
+									<label  class="example_pcfull postcodify_postcode5"><b>최대 숙박 인원</b></label> 
+									<select class="mdb-select md-form">
+										  <option value="" disabled selected>How many have capacity</option>
+										  <option value="1">1</option>
+										  <option value="2">2</option>
+										  <option value="3">3</option>
+										  <option value="4">4</option>
+										  <option value="5">5</option>
+										  <option value="6">6</option>
+										  <option value="7">7</option>
+										</select>
+									<br />
+									<label  class="example_pcfull postcodify_postcode5"><b>침대 유형</b></label>
+									<select class="mdb-select md-form">
+										  <option value="" disabled selected>Choose your bed type</option>
+										  <option value="onepe">1인</option>
+										  <option value="twope">2인</option>
+										  <option value="duplex">2인 복층형</option>
+										</select>
+									<br />
+									<label  class="example_pcfull postcodify_postcode5"><b>기타 사항</b></label>
+									<input type="text" placeholder="  기타 문의 사항 입력하시오"  class="example_input postcodify_details"
+										value="" style="width: 250px;" /> 
 									<div> </div>
+									<div class="btn-group" role="group">
 								</div>
 							</div>
 							<div class="col-12">
 							<div style="position: relative;left: 10%;float: left; width: 100%;padding: 20px;">
 								<input type="button" class="btn roberto-btn mt-10" value="< 이전" id="cancel" data-animation="fadeInUp" data-delay="700ms"></input>
-								<input type="button" class="btn roberto-btn mt-10" value="다음 >" id="next" data-animation="fadeInUp" data-delay="700ms"></input>
+								<input type="button" class="btn roberto-btn mt-10" value="완료" id="register" data-animation="fadeInUp" data-delay="700ms"></input>
 							</div>
 							</div>
 						</div>

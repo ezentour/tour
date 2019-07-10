@@ -18,6 +18,11 @@ public class CompanyController {
 	public String hotelInsert() {
 		return "company/mypage/hotel_insert";
 	}
+	
+	@RequestMapping(value = "mypage/company/hotel_insertTwo")
+	public String hotelInsertTwo() {
+		return "company/mypage/hotel_insertTwo";
+	}
 
 	@RequestMapping(value = "mypage/company/reservation")
 	public String reservation() {

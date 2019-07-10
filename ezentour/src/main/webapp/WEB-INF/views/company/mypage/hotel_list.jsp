@@ -57,6 +57,7 @@
 								<td>제목</td>
 								<td>등록자</td>
 								<td>등록일</td>
+								<td>승인 여부</td>
 							</tr>
 						</thead>
 						<tbody id="list">
@@ -65,6 +66,7 @@
 								<td>게시판은 이렇게</td>
 								<td>유상원</td>
 								<td>2019.07.04</td>
+								<td>(승인 대기)</td>
 							</tr>
 						</tbody>
 					</table>
