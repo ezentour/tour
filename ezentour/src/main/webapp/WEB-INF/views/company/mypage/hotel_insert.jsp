@@ -81,6 +81,7 @@
 						<!-- <div class="graybox" style="line-height:220%"> -->
 						    <label for="ex1_pc5">우편번호</label>
 						    <input type="text" id="ex1_pc5" class="example_pcfull postcodify_postcode5" value="" style="width:100px;" readonly/>
+						    &nbsp;&nbsp;<button id="ex1_button" class="example_button btn btn-outline-info btn-sm">검색</button>
 						    <br />
 						    <label for="ex1_input1">도로명주소</label>
 						    <input type="text" id="ex1_input1" class="example_input postcodify_address" value="" style="width:250px;" readonly/>
