@@ -3,8 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/header.jsp"%>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="${path}/resources/css/fileupload.css">
 <head>
 <title>EzenTour</title>
 	
@@ -17,33 +16,30 @@ pageEncoding="UTF-8"%>
 	        }
 	    });
 	})
+	
+	$(document).ready(function(){
+		var fileTarget = $('.filebox .upload-hidden'); 
 
-	$('#BSbtndanger').filestyle({
-		buttonName : 'btn-danger',
-		buttonText : ' File selection'
+		fileTarget.on('change', function(){ // 값이 변경되면
+			if(window.FileReader){ // modern browser 
+				var filename = $(this)[0].files[0].name; 
+			} else { // old IE 
+			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
+			} 
+		
+			// 추출한 파일명 삽입 
+			$(this).siblings('.upload-name').val(filename);
+		}); 
+	}); 
+	
+	$(document).ready(function() {
+		$("#btncancel").click(function() {
+			$("form").each(function() {
+				if(this.id == "fileForm") this.reset();
+			});
+		});
 	});
 	</script>
-	
-	<style>
-		.file_input_textbox {float:left;width:300px;}
-		.file_input_div{position:relative;width:100px;height:23px;overflow:hidden;}
-		.file_input_button{width:300px;position:absolute; top:0px; background-color:#aaa; color:#fff; border-style:solid;}
-		.file_input_hidden{font-size:45px; position:absolute; right:0px; top:0px; opacity:0; 
-			filter:alpha(opacity=0); 
-			-ms-filter:"alpha(opacity=0)"; 
-			-khtml-opacity:0; 
-			-moz-opacity:0;
-		}
-		.table table-striped {
-		    text-align:center;
-		    border:1px;
-		    solid: #dddddd;
-		}
-		th {
-		    background-color:#eeeeee;
-		    text-align: center;
-		}
-	</style>
 </head>
 <body>
 	
@@ -94,6 +90,18 @@ pageEncoding="UTF-8"%>
 			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="contents" rows="10"></textarea>
 			                </div>
 			            </form>
+			            
+			            <!-- fileUpload부분, 지우려면 css/fileupload.css도 같이 지우기-->
+			            <form name="fileForm" id="fileForm">
+			                <div class="filebox">
+			                	<input class="upload-name" disabled="disabled">
+			                	<label for="ex_filename">파일첨부</label>
+			                	<label class="upload-cancel" id="btncancel">취소</label>
+			                	<input type="file">
+			                	<input type="file" class="upload-hidden" id="ex_filename" value="파일첨부">
+			                </div>
+			            </form>
+			            
 					</div>
 				</div>
 			</div><br><br>
@@ -113,8 +121,7 @@ pageEncoding="UTF-8"%>
 	
 	<!-- BoardForm End -->
 	
-	<%@ include file="../include/footer.jsp"%>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
-	<script src="js/bootstrap.min.js"></script>
+	<%@ include file="../include/footer.jsp"%>  
+
 </body>
 </html>
