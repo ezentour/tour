@@ -6,6 +6,15 @@
 
 <head>
 	<title>EzenTour</title>
+	
+	<style>
+		table {
+			text-align:center;
+		}
+		a:hover {
+			color:#1AC2B2;
+		}
+	</style>
 </head>
 <body>
 
@@ -53,19 +62,23 @@
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>번호</td>
-								<td>제목</td>
-								<td>등록자</td>
-								<td>등록일</td>
+								<th>글번호</th>
+								<th>글제목</th>
+								<th>글쓴이</th>
+								<th>등록일</th>
 							</tr>
 						</thead>
-						<tbody id="list">
-							<tr>
-								<td>1</td>
-								<td>게시판은 이렇게</td>
-								<td>유상원</td>
-								<td>2019.07.04</td>
-							</tr>
+						<tbody>
+							<c:forEach var="row" items="${list}">
+								<tr>
+									<td>${row.b_no}</td>
+									<td>
+										<a href="">${row.b_title}</a>
+									</td>
+									<td>${row.b_m_id}</td>
+									<td><fmt:formatDate value="${row.b_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

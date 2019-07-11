@@ -5,6 +5,7 @@
 	<typeAliases>
 		<typeAlias alias="memberDto" type="com.example.ezentour.model.member.dto.MemberDTO" />
 		<typeAlias alias="hotelDto" type="com.example.ezentour.model.hotel.dto.HotelDTO" />
+		<typeAlias alias="boardDto" type="com.example.ezentour.model.board.dto.BoardDTO"/>
 	</typeAliases>
 
 </configuration>
