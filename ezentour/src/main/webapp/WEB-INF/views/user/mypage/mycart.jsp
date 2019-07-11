@@ -49,14 +49,14 @@
                   			</form>
                   		</div>
                   	</div>
-                    
+                    <img src="${path}/resources/img/cart.PNG" align="left"><h2 style="height:auto;">장바구니</h2>
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>작성 번호</td>
-								<td>제목</td>
-								<td>등록자</td>
-								<td>등록일</td>
+								<td>번호</td>
+								<td>호텔 이름</td>
+								<td>가격</td>
+								<td>예약</td>
 							</tr>
 						</thead>
 						<tbody id="list">

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="hotel">
+	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
+	<!-- 1. 호텔 정보 추출 후 장바구니에 삽입 -->
+	<select id="hotel_select" resultType="hotelDto" >
+		select * from hotel where h_no=#{h_no}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+

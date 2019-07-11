@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="user">
+	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
+	<!-- 1.장바구니 삽입 -->
+	<select id="cart_insert" >
+		insert into shopping_carts (s_no,s_h_no,s_m_id,s_checkin,c_checkout) 
+		values(#{s_no},#{s_h_no},#{s_m_id},#{s_checkin},#{c_checkout})
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+

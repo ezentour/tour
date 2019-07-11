@@ -9,6 +9,27 @@
 
 <body>
     <%@ include file="../include/menu.jsp" %>
+<script>
+	$(function() {
+	    $("#searchAccomodation").click(function() {
+	        if(confirm("숙소검색")) {
+	            document.detail.action="숙소검색루트";
+	            document.detail.submit();
+	        }
+	    });
+	    
+	     $("#cart").click(function() {
+	        if(confirm("장바구니로 이동하시겠습니까?")) {
+	            document.detail.action="${path}/hotel/detail/cart?num=1";
+	            document.detail.submit();
+	        } else{
+	        	document.detail.action="${path}/hotel/detail/cart?num=2";
+	            document.detail.submit();
+	        }
+	    });
+	   
+	})
+	</script>
 
       <!-- Breadcrumb Area Start -->
     <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(${path}/resources/img/bg-img/16.jpg);">
@@ -187,7 +208,7 @@
                 <div class="col-12 col-lg-4">
                     <!-- Hotel Reservation Area -->
                     <div class="hotel-reservation--area mb-100">
-                        <form action="#" method="post">
+                        <form name="detail" method="post">
                             <div class="form-group mb-30">
                                 <label for="checkInDate">숙박날짜</label>
                                 <div class="input-daterange" id="datepicker">
@@ -229,7 +250,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn roberto-btn w-100">숙소 검색</button>
+                                 <button type="button" class="btn roberto-btn w-100" id="searchAccomodation">숙소 검색</button>
+                            </div>
+                             <div class="form-group">
+                                <button type="button" class="btn roberto-btn w-100" id="cart">장바구니</button>
                             </div>
                         </form>
                     </div>
