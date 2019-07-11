@@ -114,16 +114,13 @@
                                 </select>
                             </div>
                             <div class="col-4 col-md-2">
-                                <label for="people">인원</label>
-                                <select name="people" id="people" class="form-control">
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
+                                <label for="hotel-type">숙소</label>
+                                <select name="hotel-type" id="hotel-type" class="form-control">
+                                    <option value="type-h">호텔</option>
+                                    <option value="type-f">팬션</option>
+                                    <option value="type-g">게스트하우스</option>
+                                    <option value="type-m">모텔</option>
+                                    <option value="type-r">리조트/콘도</option>
                                 </select>
                             </div>
                             <!-- <div class="col-4 col-md-2 col-lg-1">
