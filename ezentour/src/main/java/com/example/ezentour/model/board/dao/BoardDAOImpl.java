@@ -26,8 +26,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardDTO viewBoard(String b_m_id) {
-		return sqlSession.selectOne("board.boardView", b_m_id);
+	public BoardDTO viewBoard(String b_no) {
+		return sqlSession.selectOne("board.boardView", b_no);
 	}
 
 	@Override

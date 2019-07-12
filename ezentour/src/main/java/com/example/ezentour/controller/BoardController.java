@@ -38,9 +38,9 @@ public class BoardController {
 	
 	//게시판 상세화면
 	@RequestMapping(value = "board/view.do")
-	public String bbsView(@RequestParam String b_m_id, Model model) {
+	public String bbsView(@RequestParam String b_no, Model model) {
 		LOG.info("bbsView 시작");
-		model.addAttribute("dto", boardService.viewBoard(b_m_id));
+		model.addAttribute("dto", boardService.viewBoard(b_no));
 		return "board/board_view";
 	}
 	

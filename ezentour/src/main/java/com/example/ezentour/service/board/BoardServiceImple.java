@@ -26,8 +26,8 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public BoardDTO viewBoard(String b_m_id) {
-		return bDao.viewBoard(b_m_id);
+	public BoardDTO viewBoard(String b_no) {
+		return bDao.viewBoard(b_no);
 	}
 
 	@Override
