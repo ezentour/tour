@@ -12,7 +12,7 @@
 	
 	<!-- 2. 게시판 상세화면 -->
 	<select id="boardView" resultType="boardDto">
-		select * from board where b_m_id=#{b_m_id}
+		select * from board where b_no=#{b_no}
 	</select>
 	
 	<!-- 3. 게시판 글쓰기 -->

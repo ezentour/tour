@@ -50,7 +50,7 @@ public class HotelController {
 		String checkOutDate = request.getParameter("checkOutDate");
 		
 		hotelDto = hotelService.viewHotel(2); // 호텔 번호 1로 임의의 값을 줌 ( view에 아직 호텔 정보 없어 정보 못가져옴)
-		cartService.insertCartList(10,hotelDto.getH_no(),hotelDto.getH_m_id(),checkInDate,checkOutDate);
+		cartService.insertCartList(11,hotelDto.getH_no(),hotelDto.getH_m_id(),checkInDate,checkOutDate);
 		
 		LOG.info("cartServiceCheck" +cartService.viewCartList().toString() );
 		List<CartDTO> list = cartService.viewCartList();
