@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/header.jsp"%>
-<link rel="stylesheet" href="${path}/resources/css/fileupload.css">
+<link rel="stylesheet" href="${path}/resources/css/board.css">
 <head>
 <title>EzenTour</title>
 	
@@ -16,29 +16,6 @@ pageEncoding="UTF-8"%>
 	        }
 	    });
 	})
-	
-	$(document).ready(function(){
-		var fileTarget = $('.filebox .upload-hidden'); 
-
-		fileTarget.on('change', function(){ // 값이 변경되면
-			if(window.FileReader){ // modern browser 
-				var filename = $(this)[0].files[0].name; 
-			} else { // old IE 
-			var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출 
-			} 
-		
-			// 추출한 파일명 삽입 
-			$(this).siblings('.upload-name').val(filename);
-		}); 
-	}); 
-	
-	$(document).ready(function() {
-		$("#btncancel").click(function() {
-			$("form").each(function() {
-				if(this.id == "fileForm") this.reset();
-			});
-		});
-	});
 	</script>
 </head>
 <body>
@@ -80,39 +57,39 @@ pageEncoding="UTF-8"%>
 					<div style="width:1200px;">
 					<div class="newsletter-form">    
 	
-			            <form action="" name="writeForm" method="post">
+			            <form action="${path}/board/insert.do" name="writeForm" method="post">
 			                <div class="form-group">
 			                    <label for="exampleFormControlInput1">제목</label>
-			                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="제목을 작성해주세요.">
+			                    <input type="text" class="form-control" id="exampleFormControlInput1" name="b_title" placeholder="제목을 작성해주세요.">
 			                </div>
 			                <div class="form-group">
 			                    <label for="exampleFormControlTextarea1">내용</label>
-			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="contents" rows="10"></textarea>
+			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="b_content" rows="10"></textarea>
 			                </div>
+			                <div class="col-12" >
+					         	<div class="welcome-text text-center">
+					            	<input type="submit" class="btn roberto-btn w-10" value="등록" />&nbsp;
+					                <input type="button" class="btn roberto-btn w-10" value="취소" id="cancel"/>
+					            </div>
+					        </div>
 			            </form>
 			            
-			            <!-- fileUpload부분, 지우려면 css/fileupload.css도 같이 지우기-->
+			            <!-- fileUpload부분, 지우려면 css/fileupload.css도 같이 지우기
 			            <form name="fileForm" id="fileForm">
 			                <div class="filebox">
 			                	<input class="upload-name" disabled="disabled">
 			                	<label for="ex_filename">파일첨부</label>
 			                	<label class="upload-cancel" id="btncancel">취소</label>
-			                	<input type="file">
 			                	<input type="file" class="upload-hidden" id="ex_filename" value="파일첨부">
 			                </div>
-			            </form>
+			            </form>-->
 			            
 					</div>
 				</div>
 			</div><br><br>
 			<!-- BackGround End -->
 	
-	        <div class="col-12" >
-	         	<div class="welcome-text text-center">
-	            	<input type="submit" class="btn roberto-btn w-10" value="등록" />&nbsp;
-	                <input type="button" class="btn roberto-btn w-10" value="취소" id="cancel"/>
-	            </div>
-	        </div>
+	        
 		</div>
 		</div>
 		</div>

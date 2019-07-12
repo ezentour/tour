@@ -22,31 +22,26 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void insertBoard(BoardDTO bDto) {
-		// TODO Auto-generated method stub
-
+		sqlSession.insert("board.insertBoard", bDto);
 	}
 
 	@Override
 	public BoardDTO viewBoard(String b_m_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("board.boardView", b_m_id);
 	}
 
 	@Override
 	public void deleteBoard(String b_m_id) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void updateBoard(BoardDTO bDto) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean checkPw(String b_m_id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

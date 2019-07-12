@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*파일 업로드*/
 .filebox input[type="file"] { 
 			position: absolute; 
 			width: 1px; 
@@ -53,3 +54,21 @@
 			border-bottom-color: #e2e2e2; 
 			border-radius: .25em; 		
 		  }
+		  
+/* 게시판 상세화면 */
+		#title {
+			text-align:center;
+		}
+		#p_title {
+			font-size:30px;
+		}
+		#id {
+			text-align:right;
+			font-size:large;
+		}
+		#date {
+			text-align:right;
+		}
+		#content {
+			padding: 30px 200px 200px 200px;
+		}
