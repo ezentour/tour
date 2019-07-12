@@ -14,15 +14,20 @@
 		var mName = document.getElementById("m_name");
 		var mTel = document.getElementById("m_tel");
 		var mEmail = document.getElementById("m_email");
+		var contentElement = document.getElementById("span-check-id");
 		
 		$("#check-id").click(function() {
-			var contentElement = document.getElementById("span-check-id");
-			if (mId.value == "admin")
+			if (mId.value == "admin") {
 				contentElement.innerHTML = "<span style='color:#FF0000'>사용 불가능한 아이디입니다.</span>";
-			else if (mId.value == "asdf")
+				$("submitBtn").attr("disabled", "disabled");
+			} else if (mId.value == "asdf") {
 				contentElement.innerHTML = "<span style='color:#008000'>사용 가능한 아이디입니다.</span>";
-			else
+				$("submitBtn").removeAttr("disabled");
+			}
+			else {
 				contentElement.innerHTML = "<span style='color:#FF0000'>중복된 아이디입니다.</span>";
+				$("submitBtn").attr("disabled", "disabled");
+			}
 		});
 		
 		$("#check-pwd").click(function() {
@@ -32,6 +37,13 @@
 			} else
 				contentElementPwd.innerHTML = "<span style='color:#008000'>비밀번호가 일치합니다.</span>";
 		});
+		
+		
+		$("m_id").keyup(function() {
+			contentElement.innerHTML = "<span style='color:#FF0000'>사용 불가능한 아이디입니다.</span>";
+			$("submitBtn").attr("disabled", "disabled");
+		});
+		
 		
 		$("#sign-up").submit(function() {
 			//var mid = $("#m_id");
@@ -46,8 +58,8 @@
 				alert("이메일을 입력해주세요.");
 			} else {
 				alert("회원가입이 완료되었습니다.");
-				document.back.submit();
-		    	document.back.action="${path}/mypage/company/hotel_insertTwo";
+				//document.back.submit();
+		    	//document.back.action="${path}/mypage/company/hotel_insertTwo";
 		    	//document.back.submit();
 			}
 		});
@@ -104,7 +116,7 @@
 					 <label class="custom-radio-button">	
 					 <input type="radio" name="m_field" value="hostel" />  <span class="helping-el"></span> <span class="label-text">숙박업</span> </label>	
 					 <br><br>
-					<button type="submit" class="btn roberto-btn w-100" >Join Us</button>
+					<button type="submit" class="btn roberto-btn w-100" id="submitBtn" disabled="disabled">Join Us</button>
 				</form>
 				
 			</div>

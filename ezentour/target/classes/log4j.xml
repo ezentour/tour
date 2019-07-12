@@ -11,31 +11,48 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.example.ezentour.controller">
+	<logger name="com.example.ezentour">
 		<level value="info" />
+		<appender-ref ref="ezentour1" />
+	</logger>
+	
+	<!-- Application Loggers -->
+	<logger name="com.example.ezentour.*">
+		<level value="info" />
+		<appender-ref ref="ezentour2" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
+		<appender-ref ref="springcore" />
 	</logger>
 	
 	<logger name="org.springframework.beans">
 		<level value="info" />
+		<appender-ref ref="springbeans" />
 	</logger>
 	
 	<logger name="org.springframework.context">
 		<level value="info" />
+		<appender-ref ref="springcontext" />
 	</logger>
 
 	<logger name="org.springframework.web">
 		<level value="info" />
+		<appender-ref ref="springweb" />
 	</logger>
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="info" />
 		<appender-ref ref="console" />
+		<appender-ref ref="ezentour1" />
+		<appender-ref ref="ezentour2" />
+		<appender-ref ref="springcore" />
+		<appender-ref ref="springbeans" />
+		<appender-ref ref="springcontext" />
+		<appender-ref ref="springweb" />
 	</root>
 	
 </log4j:configuration>
