@@ -9,6 +9,16 @@
 		select * from board
 		order by b_no desc
 	</select>
-
+	
+	<!-- 2. 게시판 상세화면 -->
+	<select id="boardView" resultType="boardDto">
+		select * from board where b_m_id=#{b_m_id}
+	</select>
+	
+	<!-- 3. 게시판 글쓰기 -->
+	<insert id="insertBoard">
+		insert into board(b_no, b_title, b_content, b_m_id, b_regdate)
+		values ((select nvl(max(b_no)+1,1) from board), #{b_title}, #{b_content}, #{b_m_id}, #{b_regdate})
+	</insert>
 	
 </mapper>
