@@ -61,15 +61,15 @@
 							</tr>
 						</thead>
 						<tbody id="list">
-						<c:forEach var="row" items="${list}">
-							<tr>
-								<td>${row.s_no}</td>
-								<td>${row.s_h_no}</td>
-								<td>${row.s_m_id}</td>
-								<td>${row.s_checkin}</td>
-								<td>${row.c_checkout}</td>
-							</tr>
-						</c:forEach>	
+							<c:forEach var="row" items="${list}">
+								<tr>
+									<td>${row.s_no}</td>
+									<td>${row.s_h_no}</td>
+									<td>${row.s_m_id}</td>
+									<td>${row.s_checkin}</td>
+									<td>${row.c_checkout}</td>
+								</tr>
+							</c:forEach>	
 						</tbody>
 					</table>
 				</div>

@@ -1,7 +1,5 @@
 package com.example.ezentour.model.user.dto;
 
-import java.util.Date;
-
 public class CartDTO {
 	private int s_no;
 	private int s_h_no;

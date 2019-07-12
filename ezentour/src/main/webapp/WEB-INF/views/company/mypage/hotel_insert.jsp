@@ -14,6 +14,8 @@
 <!--[if IE 6]><script type="text/javascript" src="http://cdn.poesis.kr/post/search.min.js"></script><![endif]-->
 <link rel="stylesheet" type="text/css"
 	href="//cdn.poesis.kr/post/search.css" media="all" />
+	
+<link rel="stylesheet" href="${path}/resources/css/signup.css">
 </head>
 <script>
 	function goPopup() {
@@ -31,23 +33,24 @@
 			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
 			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form.roadFullAddr.value = roadFullAddr;
+		document.form1.roadFullAddr.value = roadFullAddr;
 	}
-	
-	$(document).ready(function(){
-		  var fileTarget = $('.filebox .upload-hidden');
 
-		    fileTarget.on('change', function(){
-		        if(window.FileReader){
-		            var filename = $(this)[0].files[0].name;
-		        } else {
-		            var filename = $(this).val().split('/').pop().split('\\').pop();
-		        }
+	$(document).ready(
+			function() {
+				var fileTarget = $('.filebox .upload-hidden');
 
-		        $(this).siblings('.upload-name').val(filename);
-		    });
-		}); 
+				fileTarget.on('change', function() {
+					if (window.FileReader) {
+						var filename = $(this)[0].files[0].name;
+					} else {
+						var filename = $(this).val().split('/').pop().split(
+								'\\').pop();
+					}
 
+					$(this).siblings('.upload-name').val(filename);
+				});
+			});
 </script>
 <script>
 	$(
@@ -80,10 +83,10 @@
 </script>
 <style>
 div.postcodify_search_form {
-	clear: both;	padding: 0;
+	clear: both;
+	padding: 0;
 	position: relative;
 	width: 500px;
-	
 }
 
 label {
@@ -127,17 +130,18 @@ tr {
 	padding: 0;
 	margin: -1px;
 	overflow: hidden;
-	clip:rect(0,0,0,0);
+	clip: rect(0, 0, 0, 0);
 	border: 0;
 }
 
 .filebox label {
 	position: relative;
 	min-width: 60px;
-	height: 30px;
+	height: 40px;
 	/*font-weight: 500;*/
 	display: inline-block;
 	text-align: center;
+	vertical-align: middle;
 	text-transform: capitalize;
 	background-color: #1cc3b2;
 	color: #ffffff;
@@ -146,23 +150,27 @@ tr {
 	-webkit-transition-duration: 500ms;
 	-o-transition-duration: 500ms;
 	transition-duration: 500ms;
+	margin-top:-10px;
+	margin-left : 10px;
+		padding: .5em .75em;
+	
 }
 
 /* named upload */
 .filebox .upload-name {
 	display: inline-block;
+	width : 215px;
 	padding: .5em .75em;
-	font-size: inherit;
-	font-family: inherit;
+	font-size: inherit;	
 	line-height: normal;
 	vertical-align: middle;
-	background-color: #f5f5f5;
-  border: 1px solid #ebebeb;
-  border-bottom-color: #e2e2e2;
-  border-radius: .25em;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+	background-color: white;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 </style>
 
@@ -212,92 +220,44 @@ tr {
 	</div>
 	<!-- Breadcrumb Area End -->
 
-
-	<!-- ui middle aligned center aligned grid -->
-	<div class="roberto-rooms-area section-padding-100-0">
-		<div class="container">
-			<div class="row">
-				<div class="align-items-center">
-					<!-- -------------------------------------------------------------------------- -->
-					<form name="form" method="post" enctype="multipart/form-data"
-						action="${path }/shop/product/insert.do">
-						<div class="postcodify_search_form align-items-center" align=center>
-							<div class="alert alert-info align-items-center" role="alert">
-								<div class="graybox" style="line-height: 220%">
-									<table height="100">
-										<tr>
-											<td><label><b>숙소명(개인)</label> <input type="text"
-												placeholder="  숙소명을 입력하세요" id="name"
-												class="example_input postcodify_details" value=""
-												style="width: 250px;" /> <br> <br></td>
-										</tr>
-
-										<tr>
-											<td><label><b>주소</b></label><input type="text"
-												style="width: 250px;" id="roadFullAddr" name="roadFullAddr" />
-												<input type="button" value="주소검색" class="roberto-btn3"
-												style="width: 30px" onclick="goPopup();"><br> <br>
-											</td>
-										</tr>
-
-										<tr>
-											<td><label><b>전화번호</label> <input type="text"
-												placeholder="  구분자 '-'없이 입력해주세요" id="tel"
-												class="example_input postcodify_details" value=""
-												style="width: 250px;" /> <br /> <br /></td>
-										</tr>
-										<tr>
-											<td><label class="example_pcfull postcodify_postcode5"><b>숙박
-														유형</b></label> <select class="mdb-select md-form" name="h_type">
-													<option value="" disabled selected>Choose your
-														accomodation type</option>
-													<option value="hotel">호텔</option>
-													<option value="pension">펜션</option>
-													<option value="guest">게스트하우스</option>
-													<option value="resort">리조트/콘도</option>
-											</select> <br /> <br /></td>
-										</tr>
-										<tr>
-											<td><label><b>가격(1박)</label> <input type="text"
-												name="price" class="example_input postcodify_details"
-												value="" style="width: 250px;" /> <br /> <br /></td>
-										</tr>
-										<tr>
-											<td><label><b>설명</b></label> <textarea name="content"
-													cols="60" rows="5" placeholder="내용"></textarea> <br /> <br />
-											</td>
-										</tr>
-										<tr>
-											<td><div class="filebox">
-													<input class="upload-name" value="이미지 첨부" disabled="disabled">
-													<label for="ex_filename">업로드</label> <input type="file"
-														id="ex_filename" class="upload-hidden">
-												</div></td>
-										</tr>
-									</table>
-								</div>
-							</div>
-							<div class="col-12">
-								<div style="position: relative; " align=center>
-									<input type="reset" class="btn roberto-btn mt-10" value="취소"
-										id="cancel" data-animation="fadeInUp" data-delay="700ms"></input>
-									<input type="submit" class="btn roberto-btn mt-10" value="등록" 
-										id="next" data-animation="fadeInUp" data-delay="700ms"></input>
-								</div>
-							</div>
-						</div>
-					</form>
-					<script type="text/javascript">
-						$(function() {
-							$("#ex1_button").postcodifyPopUp({
-								forceDisplayPostcode5 : true
-							});
-						});
-					</script>
-				</div>
+	<br><br>
+	<div class="row d-flex justify-content-center">
+		<div style="width: 400px;">
+			<div class="newsletter-form">
+				<form action="${path}/mypage/company/hotel_insert.do" method="post" name="form1" enctype="multipart/form-data">
+					<input type="text" name="h_name" id="h_name" class="form-control"
+						placeholder="숙소이름" autocomplete="off"> 
+						 <button type="button" class="btn btn btn-secondary w-30 btn-sm" style="background-color: #1cc3b2; border : none "onclick="goPopup();">주소검색</button>
+						<input
+						type="text" name="h_address" id="roadFullAddr" class="form-control"
+						placeholder="숙소주소" autocomplete="off" > <input
+						type="text" name="h_tel" id="h_tel" class="form-control"
+						placeholder="전화번호" autocomplete="off"> <input
+						type="text" name="h_price" id="h_price" class="form-control"
+						placeholder="가격(1박기준)" autocomplete="off">
+						<input
+						type="text" name="h_room" id="h_room" class="form-control"
+						placeholder="방개수(숫자만 입력)" autocomplete="off">
+						 <textarea name="h_content" cols="40" rows="8"  style="border:none"placeholder="숙소설명" class="form-control"></textarea>
+ 					<br>
+ 					<select class="mdb-select md-form" name="h_type">
+						<option value="" disabled selected> 숙소유형 </option>
+						<option value="호텔">호텔</option>
+						<option value="펜션">펜션</option>
+						<option value="게스트하우스">게스트하우스</option>
+						<option value="리조트/콘도">리조트/콘도</option>
+					</select>				
+					<br><br>
+					<div class="filebox" style="margin-top : 15px">
+						<input class="upload-name" value="숙소 이미지 첨부" disabled="disabled">
+						<label for="ex_filename">업로드</label> <input type="file"
+							id="ex_filename" name="file" class="upload-hidden">
+					</div>
+					<br>
+					<button type="submit" class="btn roberto-btn w-100">숙소등록</button>
+				</form>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<div>

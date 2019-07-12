@@ -5,13 +5,13 @@
 <mapper namespace="user">
 	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
 	<!-- 1.장바구니 삽입 -->
-	<insert id="cart_insert" >
+		<insert id="cart_insert" >
 		insert into shopping_carts (s_no,s_h_no,s_m_id,s_checkin,c_checkout) 
 		values(#{s_no},#{s_h_no},#{s_m_id},#{s_checkin},#{c_checkout})
 	</insert>
-	<!-- TO_DATE(#{s_checkin},'dd/MM/yy'),TO_DATE(#{c_checkout},'dd/MM/yy') -->
+	
 	<!-- 2.장바구니 뷰 -->
-	<select id="cart_View" resultType="cartDto" >
+		<select id="cart_View" resultType="cartDto" >
 		select * from shopping_carts
 	</select>
 </mapper>

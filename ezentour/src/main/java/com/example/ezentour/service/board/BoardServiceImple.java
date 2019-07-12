@@ -22,14 +22,12 @@ public class BoardServiceImple implements BoardService {
 
 	@Override
 	public void insertBoard(BoardDTO bDto) {
-		// TODO Auto-generated method stub
-
+		bDao.insertBoard(bDto);
 	}
 
 	@Override
 	public BoardDTO viewBoard(String b_m_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bDao.viewBoard(b_m_id);
 	}
 
 	@Override

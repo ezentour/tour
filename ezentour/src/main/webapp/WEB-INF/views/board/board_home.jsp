@@ -64,7 +64,7 @@
 							<tr>
 								<th>글번호</th>
 								<th>글제목</th>
-								<th>글쓴이</th>
+								<th>작성자</th>
 								<th>등록일</th>
 							</tr>
 						</thead>
@@ -73,10 +73,10 @@
 								<tr>
 									<td>${row.b_no}</td>
 									<td>
-										<a href="">${row.b_title}</a>
+										<a href="${path}/board/view.do?b_m_id=${row.b_m_id}">${row.b_title}</a>
 									</td>
 									<td>${row.b_m_id}</td>
-									<td><fmt:formatDate value="${row.b_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+									<td><fmt:formatDate value="${row.b_regdate}" pattern="yyyy-MM-dd"/></td>
 								</tr>
 							</c:forEach>
 						</tbody>
