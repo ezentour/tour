@@ -37,170 +37,30 @@
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<!-- Single Room Area -->
-					<div
-						class="single-room-area d-flex align-items-center mb-50 wow fadeInUp"
-						data-wow-delay="100ms">
+					<c:forEach var="row" items="${list}">
+					<div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
 						<!-- Room Thumbnail -->
 						<div class="room-thumbnail">
-							<img src="${path}/resources/img/bg-img/43.jpg" alt="">
+							<img src="${path}/resources/img/hotel-img/${row.h_img}" alt="">
 						</div>
 						<!-- Room Content -->
 						<div class="room-content">
-							<h2>Room View Sea</h2>
+							<h2>${row.h_name }</h2>
 							<h4>
-								400$ <span>/ Day</span>
+								&#8361;${row.h_price } <span>/ Day</span>
 							</h4>
 							<div class="room-feature">
 								<h6>
-									Size: <span>30 ft</span>
-								</h6>
-								<h6>
-									Capacity: <span>Max persion 5</span>
-								</h6>
-								<h6>
-									Bed: <span>King beds</span>
-								</h6>
-								<h6>
-									Services: <span>Wifi, television ...</span>
-								</h6>
+									숙소종류 <span>${row.h_type }</span>
+								</h6>													
+														
 							</div>
-							<a href="${path}/hotel/detail" class="btn view-detail-btn">View
-								Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-							</a>
+							<a href="${path}/hotel/detail.do?h_no=${row.h_no}" class="btn view-detail-btn">View	Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 						</div>
 					</div>
+					</c:forEach>
 
-					<!-- Single Room Area -->
-					<div
-						class="single-room-area d-flex align-items-center mb-50 wow fadeInUp"
-						data-wow-delay="300ms">
-						<!-- Room Thumbnail -->
-						<div class="room-thumbnail">
-							<img src="${path}/resources/img/bg-img/44.jpg" alt="">
-						</div>
-						<!-- Room Content -->
-						<div class="room-content">
-							<h2>Small Room</h2>
-							<h4>
-								400$ <span>/ Day</span>
-							</h4>
-							<div class="room-feature">
-								<h6>
-									Size: <span>30 ft</span>
-								</h6>
-								<h6>
-									Capacity: <span>Max persion 5</span>
-								</h6>
-								<h6>
-									Bed: <span>King beds</span>
-								</h6>
-								<h6>
-									Services: <span>Wifi, television ...</span>
-								</h6>
-							</div>
-							<a href="#" class="btn view-detail-btn">View Details <i
-								class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-						</div>
-					</div>
-
-					<!-- Single Room Area -->
-					<div
-						class="single-room-area d-flex align-items-center mb-50 wow fadeInUp"
-						data-wow-delay="500ms">
-						<!-- Room Thumbnail -->
-						<div class="room-thumbnail">
-							<img src="${path}/resources/img/bg-img/45.jpg" alt="">
-						</div>
-						<!-- Room Content -->
-						<div class="room-content">
-							<h2>Premium King Room</h2>
-							<h4>
-								400$ <span>/ Day</span>
-							</h4>
-							<div class="room-feature">
-								<h6>
-									Size: <span>30 ft</span>
-								</h6>
-								<h6>
-									Capacity: <span>Max persion 5</span>
-								</h6>
-								<h6>
-									Bed: <span>King beds</span>
-								</h6>
-								<h6>
-									Services: <span>Wifi, television ...</span>
-								</h6>
-							</div>
-							<a href="#" class="btn view-detail-btn">View Details <i
-								class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-						</div>
-					</div>
-
-					<!-- Single Room Area -->
-					<div
-						class="single-room-area d-flex align-items-center mb-50 wow fadeInUp"
-						data-wow-delay="700ms">
-						<!-- Room Thumbnail -->
-						<div class="room-thumbnail">
-							<img src="${path}/resources/img/bg-img/46.jpg" alt="">
-						</div>
-						<!-- Room Content -->
-						<div class="room-content">
-							<h2>Room Vip King</h2>
-							<h4>
-								400$ <span>/ Day</span>
-							</h4>
-							<div class="room-feature">
-								<h6>
-									Size: <span>30 ft</span>
-								</h6>
-								<h6>
-									Capacity: <span>Max persion 5</span>
-								</h6>
-								<h6>
-									Bed: <span>King beds</span>
-								</h6>
-								<h6>
-									Services: <span>Wifi, television ...</span>
-								</h6>
-							</div>
-							<a href="#" class="btn view-detail-btn">View Details <i
-								class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-						</div>
-					</div>
-
-					<!-- Single Room Area -->
-					<div
-						class="single-room-area d-flex align-items-center mb-50 wow fadeInUp"
-						data-wow-delay="900ms">
-						<!-- Room Thumbnail -->
-						<div class="room-thumbnail">
-							<img src="${path}/resources/img/bg-img/47.jpg" alt="">
-						</div>
-						<!-- Room Content -->
-						<div class="room-content">
-							<h2>Royal Room</h2>
-							<h4>
-								400$ <span>/ Day</span>
-							</h4>
-							<div class="room-feature">
-								<h6>
-									Size: <span>30 ft</span>
-								</h6>
-								<h6>
-									Capacity: <span>Max persion 5</span>
-								</h6>
-								<h6>
-									Bed: <span>King beds</span>
-								</h6>
-								<h6>
-									Services: <span>Wifi, television ...</span>
-								</h6>
-							</div>
-							<a href="#" class="btn view-detail-btn">View Details <i
-								class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-						</div>
-					</div>
+					
 
 					<!-- Pagination -->
 					<nav class="roberto-pagination wow fadeInUp mb-100"

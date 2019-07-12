@@ -11,11 +11,12 @@ public class HotelDTO {
 	private String h_img;
 	private String h_type;
 	private String h_content;
+	private int h_room;
 	
 	public HotelDTO() {}
 	
 	public HotelDTO(int h_no, String h_name, String h_address, String h_tel, int h_price, String h_approve,
-			String h_m_id, String h_img, String h_type, String h_content) {
+			String h_m_id, String h_img, String h_type, String h_content, int h_room) {
 		super();
 		this.h_no = h_no;
 		this.h_name = h_name;
@@ -27,6 +28,15 @@ public class HotelDTO {
 		this.h_img = h_img;
 		this.h_type = h_type;
 		this.h_content = h_content;
+		this.h_room = h_room;
+	}
+
+	public int getH_room() {
+		return h_room;
+	}
+
+	public void setH_room(int h_room) {
+		this.h_room = h_room;
 	}
 
 	public int getH_no() {
@@ -113,7 +123,9 @@ public class HotelDTO {
 	public String toString() {
 		return "HotelDTO [h_no=" + h_no + ", h_name=" + h_name + ", h_address=" + h_address + ", h_tel=" + h_tel
 				+ ", h_price=" + h_price + ", h_approve=" + h_approve + ", h_m_id=" + h_m_id + ", h_img=" + h_img
-				+ ", h_type=" + h_type + ", h_content=" + h_content + "]";
+				+ ", h_type=" + h_type + ", h_content=" + h_content + ", h_room=" + h_room + "]";
 	}
+
+	
 	
 }
