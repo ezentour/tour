@@ -17,7 +17,7 @@ public class CartServiceImpl implements CartService {
 	CartDAO cartDao;
 	
 	@Override
-	public void insertCartList(int s_no,int h_no,String h_m_id,Date checkInDate,Date checkOutDate) {
+	public void insertCartList(int s_no,int h_no,String h_m_id,String checkInDate,String checkOutDate) {
 		cartDao.insertCartList(s_no, h_no, h_m_id,checkInDate, checkOutDate);
 	}
 	

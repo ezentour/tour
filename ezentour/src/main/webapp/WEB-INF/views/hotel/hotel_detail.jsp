@@ -10,23 +10,22 @@
 <body>
     <%@ include file="../include/menu.jsp" %>
 <script>
+$(function() {
+	var checkInDate = document.getElementById("checkInDate");
+	var checkOutDate = document.getElementById("checkOutDate");
 	
-	$(function() {
-		var checkInDate = document.getElementById("checkInDate");
-		var checkOutDate = document.getElementById("checkOutDate");
-		
-	    $("#cart").click(function() {
-	        if(checkInDate.value== "" || checkOutDate.value == "") {
- 				alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
- 			} else if(confirm("장바구니로 이동하시겠습니까?")) {
- 				document.detail.action="${path}/hotel/detail/cart?num=1";
-	            document.detail.submit();
- 			} else{
- 				document.detail.action="${path}/hotel/detail/cart?num=2";
-	            document.detail.submit();
- 			}
-	    });
-	    });
+    $("#cart").click(function() {
+        if(checkInDate.value== "" || checkOutDate.value == "") {
+				alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
+			} else if(confirm("장바구니로 이동하시겠습니까?")) {
+				document.detail.action="${path}/hotel/detail/cart?num=1";
+            document.detail.submit();
+			} else{
+				document.detail.action="${path}/hotel/detail/cart?num=2";
+            document.detail.submit();
+			}
+    });
+    });
 	</script>
 
       <!-- Breadcrumb Area Start -->
