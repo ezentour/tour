@@ -33,7 +33,7 @@
 			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
 			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form1.roadFullAddr.value = roadFullAddr;
+		document.form.roadFullAddr.value = roadFullAddr;
 	}
 
 	$(document).ready(
@@ -55,27 +55,31 @@
 <script>
 	$(
 			function() {
-				$("#cancel")
+				$("#delete")
 						.click(
 								function() {
-									if (confirm("취소하시겠습니까?(저장 안돼요!)")) {
-										document.form1.action = "${path}/mypage/company/hotel_list";
-										document.back.submit();
+									if (confirm("삭제하시겠습니까?")) {
+										document.form1.action = "${path}/mypage/company/hotel_delete.do?h_no=${hotel.h_no}";
+										document.form1.submit();
 									}
 								});
-				$("#next")
+				$("#update")
 						.click(
 								function() {
-									if ($("#name").val() == "") {
-										alert("업체명(개인)을 입력해주세요!!!!");
+									if ($("#h_name").val() == "") {
+										alert("숙소명을 입력해주세요!!!!");
 									} else if ($("#roadFullAddr").val() == "") {
 										alert("주소를 입력해주세요!!!!");
-									} else if ($("#tel").val() == "") {
+									} else if ($("#h_tel").val() == "") {
 										alert("전화번호를 입력해주세요!!!!");
+									} else if ($("#h_price").val() == "") {
+										alert("가격(1박당) 입력해주세요!!!!");
+									} else if ($("#h_room").val() == "") {
+										alert("방개수를 입력해주세요!!!!");
 									} else {
-										if (confirm("NEXT")) {
-											document.back.action = "${path}/mypage/company/hotel_insertTwo";
-											document.back.submit();
+										if (confirm("수정하시겠습니까?")) {
+											document.form1.action = "${path}/mypage/company/hotel_update.do?h_no=${hotel.h_no}";
+											document.form1.submit();
 										}
 									}
 								});
@@ -205,12 +209,12 @@ tr {
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h1 class="h1-title">숙소 등록</h1>
+						<h1 class="h1-title">숙소 상세화면</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}">Home</a></li>
 								<li class="breadcrumb-item">My page</li>
-								<li class="breadcrumb-item">숙소 등록</li>
+								<li class="breadcrumb-item">숙소 목록</li>
 							</ol>
 						</nav>
 					</div>
@@ -224,37 +228,39 @@ tr {
 	<div class="row d-flex justify-content-center">
 		<div style="width: 400px;">
 			<div class="newsletter-form">
-				<form action="${path}/mypage/company/hotel_insert.do" method="post" name="form1" enctype="multipart/form-data">
+				<form name ="form1" enctype="multipart/form-data" method="post">
 					<input type="text" name="h_name" id="h_name" class="form-control"
-						placeholder="숙소이름" autocomplete="off"> 
+						placeholder="숙소이름" autocomplete="off" value="${hotel.h_name }"> 
 						 <button type="button" class="btn btn btn-secondary w-30 btn-sm" style="background-color: #1cc3b2; border : none "onclick="goPopup();">주소검색</button>
 						<input
 						type="text" name="h_address" id="roadFullAddr" class="form-control"
-						placeholder="숙소주소" autocomplete="off" > <input
+						placeholder="숙소주소" autocomplete="off" value="${hotel.h_address }"> <input
 						type="text" name="h_tel" id="h_tel" class="form-control"
-						placeholder="전화번호" autocomplete="off"> <input
+						placeholder="전화번호" autocomplete="off"  value="${hotel.h_tel }"> <input
 						type="text" name="h_price" id="h_price" class="form-control"
-						placeholder="가격(1박기준)" autocomplete="off">
+						placeholder="가격(1박기준)" autocomplete="off"  value="${hotel.h_price }">
 						<input
 						type="text" name="h_room" id="h_room" class="form-control"
-						placeholder="방개수(숫자만 입력)" autocomplete="off">
-						 <textarea name="h_content" cols="40" rows="8"  style="border:none"placeholder="숙소설명" class="form-control"></textarea>
+						placeholder="방개수(숫자만 입력)" autocomplete="off" value="${hotel.h_room }">
+						 <textarea name="h_content" cols="40" rows="8"  style="border:none"placeholder="숙소설명" class="form-control">${hotel.h_content }</textarea>
  					<br>
- 					<select class="mdb-select md-form" name="h_type">
-						<option value="" disabled selected> 숙소유형 </option>
-						<option value="호텔">호텔</option>
-						<option value="펜션">펜션</option>
-						<option value="게스트하우스">게스트하우스</option>
-						<option value="리조트/콘도">리조트/콘도</option>
+ 					<select class="mdb-select md-form" name="h_type" id="h_type">
+ 						<option value="호텔" <c:if test="${hotel.h_type == '호텔' }">selected</c:if>	>호텔</option>
+						<option value="펜션" <c:if test="${hotel.h_type == '펜션' }">selected</c:if>	>펜션</option>
+						<option value="게스트하우스" <c:if test="${hotel.h_type == '게스트하우스' }">selected</c:if>	>게스트하우스</option>
+						<option value="리조트/콘도" <c:if test="${hotel.h_type == '리조트/콘도' }">selected</c:if>	>리조트/콘도</option>
 					</select>				
 					<br><br>
 					<div class="filebox" style="margin-top : 15px">
-						<input class="upload-name" value="숙소 이미지 첨부" disabled="disabled">
+						<input class="upload-name" value="${hotel.h_img }" disabled="disabled">
 						<label for="ex_filename">업로드</label> <input type="file"
 							id="ex_filename" name="file" class="upload-hidden">
 					</div>
 					<br>
-					<button type="submit" class="btn roberto-btn w-100">숙소등록</button>
+					<div align=center>
+					<button type="button" class="btn roberto-btn w-40" id="update">수정</button>
+					<button type="button" class="btn roberto-btn w-40" id="delete">삭제</button>
+					</div>
 				</form>
 			</div>
 		</div>

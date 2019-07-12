@@ -3,12 +3,41 @@
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="hotel">
-	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
+	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 
+		설정하기 -->
 	<!-- 1. 호텔 정보 추출 후 장바구니에 삽입 -->
-	<select id="hotel_select" resultType="hotelDto" >
-		select * from hotel where h_no=#{h_no}
+	<select id="hotel_select" resultType="hotelDto">
+		select * from
+		hotel where
+		h_no=#{h_no}
 	</select>
+
+	<insert id="hotel_insert">
+		insert into hotel values((select NVL(MAX(h_no)+1, 1)
+		from hotel), #{h_name}, #{h_address}, #{h_tel}, #{h_price}, 'N',
+		#{h_m_id}, #{h_img}, #{h_type}, #{h_content}, #{h_room})
+	</insert>
+
+	<select id="hotel_select_mid" resultType="hotelDto">
+		select * from hotel
+		where h_m_id = #{h_m_id} order by h_no
+	</select>
+
+	<update id="hotel_update">
+		update hotel set h_name=#{h_name},
+		h_address=#{h_address}, h_tel = #{h_tel}, h_price=#{h_price},
+		h_room=#{h_room}, h_content=#{h_content}, h_type=#{h_type},
+		h_img=#{h_img} where h_no=#{h_no}
+	</update>
 	
+	<delete id="hotel_delete">
+		delete from hotel where h_no=#{h_no}
+	</delete>
+	
+	<select id="hotel_list" resultType="hotelDto">
+		select * from hotel order by h_no
+	</select>
+
 </mapper>
 
 

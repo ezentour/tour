@@ -4,6 +4,7 @@ package com.example.ezentour.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ezentour.model.hotel.dto.HotelDTO;
 import com.example.ezentour.service.hotel.HotelService;
@@ -29,8 +32,13 @@ public class HotelController {
 	HotelDTO hotelDto;
 	
 	@RequestMapping(value = "hotel/main")
-	public String home() {		
-		return "hotel/hotel_home";
+	public ModelAndView hotel_home(ModelAndView mav) {		
+		
+		List<HotelDTO> list = hotelService.listHotel();
+		mav.setViewName("hotel/hotel_home");
+		mav.addObject("list", list);
+		
+		return mav;
 	}
 	
 	@RequestMapping(value = "hotel/detail/cart")
@@ -60,8 +68,9 @@ public class HotelController {
 		}
 	}
 	
-	@RequestMapping(value="hotel/detail")
-	public String hotel_detail() {
+	@RequestMapping(value="hotel/detail.do")
+	public String hotel_list_detail(@RequestParam int h_no, Model model) {
+		model.addAttribute("hotel", hotelService.viewHotel(h_no));
 		return "hotel/hotel_detail";
 	}
 }
