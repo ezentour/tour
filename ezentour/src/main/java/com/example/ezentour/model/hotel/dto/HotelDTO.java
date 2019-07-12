@@ -5,28 +5,28 @@ public class HotelDTO {
 	private String h_name;
 	private String h_address;
 	private String h_tel;
-	private String h_content;
 	private int h_price;
 	private String h_approve;
 	private String h_m_id;
 	private String h_img;
 	private String h_type;
+	private String h_content;
 	
 	public HotelDTO() {}
 	
-	public HotelDTO(int h_no, String h_name, String h_address, String h_tel, String h_content, int h_price,
-			String h_approve, String h_m_id, String h_img, String h_type) {
+	public HotelDTO(int h_no, String h_name, String h_address, String h_tel, int h_price, String h_approve,
+			String h_m_id, String h_img, String h_type, String h_content) {
 		super();
 		this.h_no = h_no;
 		this.h_name = h_name;
 		this.h_address = h_address;
 		this.h_tel = h_tel;
-		this.h_content = h_content;
 		this.h_price = h_price;
 		this.h_approve = h_approve;
 		this.h_m_id = h_m_id;
 		this.h_img = h_img;
 		this.h_type = h_type;
+		this.h_content = h_content;
 	}
 
 	public int getH_no() {
@@ -59,14 +59,6 @@ public class HotelDTO {
 
 	public void setH_tel(String h_tel) {
 		this.h_tel = h_tel;
-	}
-
-	public String getH_content() {
-		return h_content;
-	}
-
-	public void setH_content(String h_content) {
-		this.h_content = h_content;
 	}
 
 	public int getH_price() {
@@ -109,10 +101,19 @@ public class HotelDTO {
 		this.h_type = h_type;
 	}
 
+	public String getH_content() {
+		return h_content;
+	}
+
+	public void setH_content(String h_content) {
+		this.h_content = h_content;
+	}
+
 	@Override
 	public String toString() {
-		return "CartDTO [h_no=" + h_no + ", h_name=" + h_name + ", h_address=" + h_address + ", h_tel=" + h_tel
-				+ ", h_content=" + h_content + ", h_price=" + h_price + ", h_approve=" + h_approve + ", h_m_id="
-				+ h_m_id + ", h_img=" + h_img + ", h_type=" + h_type + "]";
+		return "HotelDTO [h_no=" + h_no + ", h_name=" + h_name + ", h_address=" + h_address + ", h_tel=" + h_tel
+				+ ", h_price=" + h_price + ", h_approve=" + h_approve + ", h_m_id=" + h_m_id + ", h_img=" + h_img
+				+ ", h_type=" + h_type + ", h_content=" + h_content + "]";
 	}
+	
 }

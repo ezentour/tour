@@ -54,18 +54,23 @@
 						<thead>
 							<tr>
 								<td>번호</td>
-								<td>호텔 이름</td>
-								<td>가격</td>
-								<td>예약</td>
+								<td>호텔 번호</td>
+								<td>아이디</td>
+								<td>체크인</td>
+								<td>체크아웃</td>
 							</tr>
 						</thead>
 						<tbody id="list">
+						<c:set var="cartList" value="${cartList}"/>
+						<c:forEach var="list" items="cartList">
 							<tr>
-								<td>1</td>
-								<td>게시판은 이렇게</td>
-								<td>유상원</td>
-								<td>2019.07.04</td>
+								<td>${list.s_no}</td>
+								<td>${list.s_h_no}</td>
+								<td>${list.s_m_id}</td>
+								<td>${list.s_checkin}</td>
+								<td>${c_checkout}</td>
 							</tr>
+						</c:forEach>	
 						</tbody>
 					</table>
 				</div>

@@ -1,5 +1,8 @@
 package com.example.ezentour.service.user;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -14,8 +17,13 @@ public class CartServiceImpl implements CartService {
 	CartDAO cartDao;
 	
 	@Override
-	public void insertCartList(int s_no,int h_no,String h_m_id,String checkInDate,String checkOutDate) {
+	public void insertCartList(int s_no,int h_no,String h_m_id,Date checkInDate,Date checkOutDate) {
 		cartDao.insertCartList(s_no, h_no, h_m_id,checkInDate, checkOutDate);
+	}
+	
+	@Override
+	public List<CartDTO> viewCartList(){
+		return cartDao.viewCartList();
 	}
 
 }

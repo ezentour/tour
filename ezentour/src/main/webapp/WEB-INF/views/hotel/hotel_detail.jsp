@@ -10,25 +10,23 @@
 <body>
     <%@ include file="../include/menu.jsp" %>
 <script>
+	
 	$(function() {
-	    $("#searchAccomodation").click(function() {
-	        if(confirm("숙소검색")) {
-	            document.detail.action="숙소검색루트";
+		var checkInDate = document.getElementById("checkInDate");
+		var checkOutDate = document.getElementById("checkOutDate");
+		
+	    $("#cart").click(function() {
+	        if(checkInDate.value== "" || checkOutDate.value == "") {
+ 				alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
+ 			} else if(confirm("장바구니로 이동하시겠습니까?")) {
+ 				document.detail.action="${path}/hotel/detail/cart?num=1";
 	            document.detail.submit();
-	        }
+ 			} else{
+ 				document.detail.action="${path}/hotel/detail/cart?num=2";
+	            document.detail.submit();
+ 			}
 	    });
-	    
-	     $("#cart").click(function() {
-	        if(confirm("장바구니로 이동하시겠습니까?")) {
-	            document.detail.action="${path}/hotel/detail/cart?num=1";
-	            document.detail.submit();
-	        } else{
-	        	document.detail.action="${path}/hotel/detail/cart?num=2";
-	            document.detail.submit();
-	        }
 	    });
-	   
-	})
 	</script>
 
       <!-- Breadcrumb Area Start -->
@@ -217,7 +215,7 @@
                                             <input type="text" class="input-small form-control" id="checkInDate" name="checkInDate" placeholder="체크인">
                                         </div>
                                         <div class="col-6">
-                                            <input type="text" class="input-small form-control" name="checkOutDate" placeholder="체크아웃">
+                                            <input type="text" class="input-small form-control" id="checkOutDate" name="checkOutDate" placeholder="체크아웃">
                                         </div>
                                     </div>
                                 </div>
