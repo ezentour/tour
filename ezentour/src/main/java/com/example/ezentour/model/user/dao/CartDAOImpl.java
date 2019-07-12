@@ -1,5 +1,8 @@
 package com.example.ezentour.model.user.dao;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,10 +15,11 @@ public class CartDAOImpl implements CartDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	CartDTO cartDto = new CartDTO(0,0,"","","");
+	Date date;
+	CartDTO cartDto = new CartDTO(0,0,"",date ,date);
 	
 	@Override
-	public void insertCartList(int s_no,int h_no,String h_m_id,String checkInDate,String checkOutDate) {
+	public void insertCartList(int s_no,int h_no,String h_m_id,Date checkInDate,Date checkOutDate) {
 		System.out.println("여기: "+ checkOutDate);
 		cartDto.setS_h_no(h_no);
 		cartDto.setS_m_id(h_m_id);
@@ -23,6 +27,10 @@ public class CartDAOImpl implements CartDAO {
 		cartDto.setC_checkout(checkOutDate);
 		System.out.println("cartDtO :" + cartDto.toString());
 		sqlSession.insert("user.cart_insert",cartDto);
+	}
+	@Override
+	public List<CartDTO> viewCartList(){
+		return sqlSession.selectList("user.cart_View");
 	}
 
 }
