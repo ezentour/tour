@@ -73,7 +73,7 @@
 								<tr>
 									<td>${row.b_no}</td>
 									<td>
-										<a href="${path}/board/view.do?b_m_id=${row.b_m_id}">${row.b_title}</a>
+										<a href="${path}/board/view.do?b_no=${row.b_no}">${row.b_title}</a>
 									</td>
 									<td>${row.b_m_id}</td>
 									<td><fmt:formatDate value="${row.b_regdate}" pattern="yyyy-MM-dd"/></td>
