@@ -7,7 +7,7 @@
 	<!-- 1.장바구니 삽입 -->
 		<insert id="cart_insert" >
 		insert into shopping_carts  
-		values((select NVL(MAX(s_no)+1, 1) from shopping_carts),#{s_h_no},#{s_m_id},#{s_checkin},#{c_checkout})
+		values((select NVL(MAX(s_no)+1, 1) from shopping_carts),#{s_h_no},#{s_m_id},TO_DATE(#{s_checkin},'dd/MM/yy'),TO_DATE(#{c_checkout},'dd/MM/yy'))
 	</insert>
 	
 	<!-- 2.장바구니 뷰 -->
