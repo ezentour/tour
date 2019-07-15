@@ -25,5 +25,38 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO viewMember(String m_id) {
 		return sqlSession.selectOne("member.viewMember", m_id);
 	}
+	
+	
 
+	// 회원 가입
+	@Override
+	public void register(MemberDTO dto) throws Exception {
+		sqlSession.insert("member.register", dto);
+	}
+		
+	// 로그인
+	@Override
+	public MemberDTO login(MemberDTO dto) throws Exception {
+		return null;
+	}
+		
+	// 회원정보 수정
+	@Override
+	public void modify(MemberDTO dto) throws Exception {
+		sqlSession.update("member.modify", dto);
+	}
+		
+	// 회원 탈퇴
+	@Override
+	public void withdrawal(MemberDTO dto) throws Exception {
+		sqlSession.delete("member.withdrawal", dto);
+	}
+		
+	// 아이디 확인
+	@Override
+	public MemberDTO idCheck(String m_id) throws Exception {
+		return sqlSession.selectOne("member.idCheck", m_id);
+	}
+	
+	
 }
