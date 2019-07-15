@@ -4,7 +4,16 @@
 <html>
 <%@ include file="../../include/header.jsp"%>
 <head>
-	<title>EzenTour</title>
+<title>EzenTour</title>
+<style>
+tr td {
+	text-align: center
+}
+
+th {
+	text-align: center
+}
+</style>
 </head>
 <body>
 
@@ -20,7 +29,8 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">My page (admin)</li>
+								<li class="breadcrumb-item active" aria-current="page">My
+									page (admin)</li>
 							</ol>
 						</nav>
 					</div>
@@ -31,50 +41,45 @@
 	<!-- Breadcrumb Area End -->
 
 	<!-- Newsletter -->
-	
+
 	<!-- ui middle aligned center aligned grid -->
 	<div class="roberto-rooms-area section-padding-100-0">
-        <div class="container">
-          <div class="row">
-				<div class="col-12">
-				  <!-- Single Footer Widget Area -->
-                     <div class="col-12 col-sm-8 col-lg-4 float-right">
-                        <div class="single-footer-widget mb-80">
-							<!-- Newsletter Form -->
-                   	 		<form action="#" class="nl-form">
-                    			<input type="text" class="form-control" placeholder="Search">
-                    			<button type="submit">
-                    				<i class="fa fa-search" aria-hidden="true"></i>
-                    			</button>
-                  			</form>
-                  		</div>
-                  	</div>
-                    
+		<div class="container">
+			<div class="row">
+				<div class="col-12">			
+
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>작성 번호</td>
-								<td>제목</td>
-								<td>등록자</td>
-								<td>등록일</td>
+								<td>번호</td>
+								<td>숙박이름</td>
+								<td>숙박유형</td>
+								<td>승인여부</td>
 							</tr>
 						</thead>
 						<tbody id="list">
-							<tr>
-								<td>1</td>
-								<td>게시판은 이렇게</td>
-								<td>유상원</td>
-								<td>2019.07.04</td>
-							</tr>
+							<c:forEach var="row" items="${list}">
+								<tr>
+									<td>${row.h_no}</td>
+									<td><a
+										href="${path}/mypage/admin/hotel_detail.do?h_no=${row.h_no }" style="font-weight: bold">${row.h_name }</a></td>
+									<td>${row.h_type }</td>
+									<td>${row.h_approve }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
-				</div>				
-            </div>
-        </div>
-    </div>
-    
-    <div><p><br></p></div>
-    
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<p>
+			<br>
+		</p>
+	</div>
+
 	<%@ include file="../../include/footer.jsp"%>
 </body>
 </html>

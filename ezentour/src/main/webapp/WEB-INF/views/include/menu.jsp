@@ -55,7 +55,7 @@
     
                                     <!-- 접속 계정에 따라 메뉴바 다르게 보이기 -->
 
-                                    
+                                    <c:if test="${m_field eq 'U'}">   
                                     <!-- 일반 사용자 메뉴바 -->
                                     <li><a href="#">마이(U)</a>
                                         <ul class="dropdown">
@@ -63,23 +63,23 @@
                                             <li><a href="${path}/mypage/user/mycart">- 장바구니</a></li>                                       
                                         </ul>
                                     </li>
-                                    
+                                    </c:if>
                                     <!-- 관리자 메뉴바 -->
-                                    <!--<c:if test="${usertype eq 'A'}">-->
-                                    <!-- </c:if>-->
+                            	<c:if test="${m_field eq 'A'}">                     
                                     <li><a href="#">마이(A)</a>
                                         <ul class="dropdown">
                                             <li><a href="${path}/mypage/admin/user_list">- 사용자 목록</a></li>
                                             <li><a href="#">- 숙박업체 목록</a>
                                             	 <ul class="dropdown">
-                                                    <li><a href="${path}/mypage/admin/hotel_list_no">- 승인 대기</a></li>
-                                                    <li><a href="${path}/mypage/admin/hotel_list_yes">- 승인 목록</a></li>
+                                                    <li><a href="${path}/mypage/admin/hotel_list_N">- 승인 대기</a></li>
+                                                    <li><a href="${path}/mypage/admin/hotel_list_Y">- 승인 목록</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
+                               </c:if>
                                     
-                                    
+                                    <c:if test="${m_field eq 'H'}">   
                                     <!-- 숙박업체 메뉴바 -->
                                     <li><a href="#">마이(C)</a>
                                         <ul class="dropdown">
@@ -87,6 +87,7 @@
                                             <li><a href="${path}/mypage/company/reservation">- 예약 내역</a></li>
                                         </ul>
                                     </li>   
+                                    </c:if>
                                 </ul>
 
                                 <div class="" >
