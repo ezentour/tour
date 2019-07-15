@@ -39,6 +39,22 @@
 		select * from hotel
 		where h_m_id = #{h_m_id} order by h_no
 	</select>
+	
+	<select id="hotel_approve_y" resultType="hotelDto">
+		select * from hotel 	
+		where h_approve = 'Y'	
+		order by h_no
+	</select>	
+	
+	<select id="hotel_approve_n" resultType="hotelDto">
+		select * from hotel 
+		where h_approve = 'N'	
+		order by h_no
+	</select>	
+
+	<update id="hotel_approve_update">
+		update hotel set h_approve = 'Y' where h_no = #{h_no}
+	</update>
 </mapper>
 
 
