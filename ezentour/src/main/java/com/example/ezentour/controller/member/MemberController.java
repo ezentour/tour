@@ -40,7 +40,6 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 		
 		if(result) { //로그인 성공
 			session.setAttribute("m_id", dto.getM_id());
-			session.setAttribute("m_field", dto.getM_field());
 			mav.setViewName("redirect:/"); //뷰의 이름
 		}else { //로그인 실패
 			mav.setViewName("redirect:/member/login.do");
