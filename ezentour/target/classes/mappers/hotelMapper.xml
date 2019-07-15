@@ -18,10 +18,6 @@
 		#{h_m_id}, #{h_img}, #{h_type}, #{h_content}, #{h_room})
 	</insert>
 
-	<select id="hotel_select_mid" resultType="hotelDto">
-		select * from hotel
-		where h_m_id = #{h_m_id} order by h_no
-	</select>
 
 	<update id="hotel_update">
 		update hotel set h_name=#{h_name},
@@ -34,10 +30,15 @@
 		delete from hotel where h_no=#{h_no}
 	</delete>
 	
+	
 	<select id="hotel_list" resultType="hotelDto">
 		select * from hotel order by h_no
 	</select>
-
+	
+	<select id="hotel_select_mid" resultType="hotelDto">
+		select * from hotel
+		where h_m_id = #{h_m_id} order by h_no
+	</select>
 </mapper>
 
 

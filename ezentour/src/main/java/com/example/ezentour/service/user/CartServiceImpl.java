@@ -17,13 +17,13 @@ public class CartServiceImpl implements CartService {
 	CartDAO cartDao;
 	
 	@Override
-	public void insertCartList(int s_no,int h_no,String h_m_id,String checkInDate,String checkOutDate) {
-		cartDao.insertCartList(s_no, h_no, h_m_id,checkInDate, checkOutDate);
+	public void insertCartList(int h_no,String h_m_id,String checkInDate,String checkOutDate) {
+		cartDao.insertCartList(h_no, h_m_id,checkInDate, checkOutDate);
 	}
 	
 	@Override
-	public List<CartDTO> viewCartList(){
-		return cartDao.viewCartList();
+	public List<CartDTO> viewCartList(String m_id){
+		return cartDao.viewCartList(m_id);
 	}
 
 }

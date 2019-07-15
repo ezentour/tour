@@ -30,7 +30,7 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 
 	@RequestMapping("member/login_check.do")
 	public ModelAndView login_check(MemberDTO dto, HttpSession session) {
-		LOG.info("****** login_check.do ******");
+		LOG.info("****** login_check.do ******" + dto.toString());
 		//로그인 성공 true, 실패 false
 		boolean result = memberService.loginCheck(dto, session);
 		ModelAndView mav = new ModelAndView();

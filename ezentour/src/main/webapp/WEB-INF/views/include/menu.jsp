@@ -97,7 +97,7 @@
 	                          	     		<a href="${path}/member/signUp.do">회원 가입</a>
 	                          	     	</c:when>
 	                                	<c:otherwise>
-	                                		<span style="font-size: 0.9em;">${username}님 환영합니다.</span>&nbsp;&nbsp;
+	                                		<span style="font-size: 0.9em;" id="m_id">${username}님 환영합니다.</span>&nbsp;&nbsp;
 	                                		<a href="${path}/member/logout.do">로그아웃</a>
 	                                	</c:otherwise>
                                 	</c:choose>

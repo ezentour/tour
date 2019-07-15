@@ -6,13 +6,26 @@
 	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
 	<!-- 1.장바구니 삽입 -->
 		<insert id="cart_insert" >
-		insert into shopping_carts (s_no,s_h_no,s_m_id,s_checkin,c_checkout) 
-		values(#{s_no},#{s_h_no},#{s_m_id},#{s_checkin},#{c_checkout})
+		insert into shopping_carts  
+		values(s_no.nextval,#{s_h_no},#{s_m_id},#{s_checkin},#{c_checkout})
 	</insert>
 	
 	<!-- 2.장바구니 뷰 -->
-		<select id="cart_View" resultType="cartDto" >
+		<!-- <select id="cart_View" resultType="cartDto" >
 		select * from shopping_carts
+	</select> -->
+	
+	<!-- 3.장바구니 뷰 -->
+	<select id="cart_innerJoinView" resultType="cartDto">
+		select 
+		shopping_carts.s_no,hotel.h_name,shopping_carts.s_checkin,
+		shopping_carts.c_checkout,hotel.h_img,member.m_id,hotel.h_no  
+		from shopping_carts
+		inner join hotel
+		on shopping_carts.s_h_no=hotel.h_no
+		inner join member
+		on shopping_carts.s_m_id=member.m_id and member.m_id=#{m.id} 
+		order by shopping_carts.s_no 
 	</select>
 </mapper>
 

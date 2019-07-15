@@ -6,6 +6,6 @@ import java.util.List;
 import com.example.ezentour.model.user.dto.CartDTO;
 
 public interface CartService {
-	public void insertCartList(int s_no,int h_no,String h_m_id,String checkInDate, String checkOutDate);
-	public List<CartDTO> viewCartList();
+	public void insertCartList(int h_no,String h_m_id,String checkInDate, String checkOutDate);
+	public List<CartDTO> viewCartList(String m_id);
 }

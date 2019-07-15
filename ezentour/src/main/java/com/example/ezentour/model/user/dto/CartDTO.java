@@ -6,16 +6,28 @@ public class CartDTO {
 	private String s_m_id;
 	private String s_checkin;
 	private String c_checkout;
+	private String h_name;
+	private String h_img;
+	private String m_id;
 	
 	public CartDTO() {}
 	
-	public CartDTO(int s_no, int s_h_no, String s_m_id, String s_checkin,String c_checkout) {
+	public CartDTO(int s_h_no, String s_m_id, String s_checkin,String c_checkout) {
 		super();
-		this.s_no = s_no;
 		this.s_h_no = s_h_no;
 		this.s_m_id = s_m_id;
 		this.s_checkin = s_checkin;
 		this.c_checkout = c_checkout;
+	}
+	
+	public CartDTO(int s_no,String h_name,String s_checkin,String c_checkout,String h_img,String m_id) {
+		super();
+		this.s_no = s_no;
+		this.h_name = h_name;
+		this.s_checkin = s_checkin;
+		this.c_checkout = c_checkout;
+		this.h_img = h_img;
+		this.m_id = m_id;
 	}
 
 	public int getS_no() {
@@ -58,10 +70,34 @@ public class CartDTO {
 		this.c_checkout = c_checkout;
 	}
 
+	public String getH_name() {
+		return h_name;
+	}
+
+	public void setH_name(String h_name) {
+		this.h_name = h_name;
+	}
+
+	public String getH_img() {
+		return h_img;
+	}
+
+	public void setH_img(String h_img) {
+		this.h_img = h_img;
+	}
+
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
 	@Override
 	public String toString() {
 		return "CartDTO [s_no=" + s_no + ", s_h_no=" + s_h_no + ", s_m_id=" + s_m_id + ", s_checkin=" + s_checkin
-				+ ", c_checkout=" + c_checkout + "]";
+				+ ", c_checkout=" + c_checkout + ", h_name=" + h_name + ", h_img=" + h_img + ", m_id=" + m_id + "]";
 	}
-	
+
 }

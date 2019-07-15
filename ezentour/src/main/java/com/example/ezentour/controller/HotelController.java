@@ -8,11 +8,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +32,6 @@ public class HotelController {
 	@Inject
 	CartService cartService;
 	
-	HotelDTO hotelDto;
-	
 	@RequestMapping(value = "hotel/main")
 	public ModelAndView hotel_home(ModelAndView mav) {		
 		
@@ -43,19 +43,21 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value = "hotel/detail/cart")
-	public String hotel_detail_cart(HttpServletRequest request,Model model) throws ParseException {	
+	public String hotel_detail_cart(HttpServletRequest request,Model model,HttpSession session) throws ParseException {	
 		
 		String num = request.getParameter("num"); // 받아온 파라미터에 따라 페이지 변동
 		String checkInDate = request.getParameter("checkInDate"); // name으로 받아옴
 		String checkOutDate = request.getParameter("checkOutDate");
+		String m_id = (String) session.getAttribute("m_id");
+		String str = request.getParameter("h_no");
+		int h_no = Integer.parseInt(str);
 		
-		hotelDto = hotelService.viewHotel(2); // 호텔 번호 1로 임의의 값을 줌 ( view에 아직 호텔 정보 없어 정보 못가져옴)
-		cartService.insertCartList(11,hotelDto.getH_no(),hotelDto.getH_m_id(),checkInDate,checkOutDate);
+		HotelDTO hotelDto = hotelService.viewHotel(h_no);
+		LOG.info(hotelDto.toString());
 		
-		LOG.info("cartServiceCheck" +cartService.viewCartList().toString() );
-		List<CartDTO> list = cartService.viewCartList();
+		cartService.insertCartList(hotelDto.getH_no(),m_id,checkInDate,checkOutDate);
+		List<CartDTO> list = cartService.viewCartList(m_id);
 		model.addAttribute("list", list);
-		
 		
 		if(num.equals("1")) {
 			return "user/mypage/mycart";
