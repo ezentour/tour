@@ -27,6 +27,7 @@ public class MemberServiceImpl implements MemberService {
 			//setAttribute(변수명,값)
 			session.setAttribute("m_id", dto.getM_id());
 			session.setAttribute("m_name", dto2.getM_name());
+			session.setAttribute("m_field", dto2.getM_field());			
 			LOG.trace("접속id: " + session.getAttribute("m_id") + ", 접속자: " + session.getAttribute("m_name"));
 			//System.out.println(session.getAttribute("m_id"));
 			//System.out.println(session.getAttribute("m_name"));
