@@ -64,11 +64,11 @@
 								<tr>
 									<td>${row.s_no}</td>
 									<td>${row.h_name}</td>
-									<td>${row.s_checkin}</td>
-									<td>${row.c_checkout}</td>
-									<td><img src="${path}/resources/img/hotel-img/${row.h_img}" width="70px" heigh="70px"/></td>
+									<td>${row.s_checkin.substring(0,10)}</td>
+									<td>${row.c_checkout.substring(0,10)}</td>
+									<td><img src="${path}/resources/img/hotel-img/${row.h_img}" width="70px" height="70px"/></td>
 								</tr>
-							</c:forEach>	
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

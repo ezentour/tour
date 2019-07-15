@@ -48,6 +48,7 @@ public class HotelController {
 		String num = request.getParameter("num"); // 받아온 파라미터에 따라 페이지 변동
 		String checkInDate = request.getParameter("checkInDate"); // name으로 받아옴
 		String checkOutDate = request.getParameter("checkOutDate");
+		LOG.info("checkInDate : " + checkInDate);
 		String m_id = (String) session.getAttribute("m_id");
 		String str = request.getParameter("h_no");
 		int h_no = Integer.parseInt(str);
