@@ -44,5 +44,35 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO viewMember(String m_id) {
 		return memberDao.viewMember(m_id);
 	}
-
+	
+	// 회원 가입
+	@Override
+	public void register(MemberDTO dto) throws Exception {
+		memberDao.register(dto);
+	}
+		
+	// 로그인
+	@Override
+	public MemberDTO login(MemberDTO dto) throws Exception {
+		return null;
+	}
+		
+	// 회원정보 수정
+	@Override
+	public void modify(MemberDTO dto) throws Exception {
+		
+	}
+		
+	// 회원 탈퇴
+	@Override
+	public void withdrawal(MemberDTO dto) throws Exception {
+		memberDao.withdrawal(dto);
+	}
+		
+	// 아이디 확인
+	@Override
+	public MemberDTO idCheck(String m_id) throws Exception {
+		return memberDao.idCheck(m_id);
+	}
+		
 }

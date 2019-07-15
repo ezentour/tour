@@ -1,12 +1,15 @@
 package com.example.ezentour.controller.member;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ezentour.model.member.dto.MemberDTO;
@@ -36,6 +39,8 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 		ModelAndView mav = new ModelAndView();
 		
 		if(result) { //로그인 성공
+			session.setAttribute("m_id", dto.getM_id());
+			session.setAttribute("m_field", dto.getM_field());
 			mav.setViewName("redirect:/"); //뷰의 이름
 		}else { //로그인 실패
 			mav.setViewName("redirect:/member/login.do");
@@ -53,5 +58,35 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 		return "redirect:/";
 	}
 	
+	
+	
+	 // 글 작성 get
+	 @RequestMapping(value = "member/register", method = RequestMethod.GET)
+	 public void getRegister() throws Exception {
+		 LOG.info("get register");
+	 }
+
+	 // 글 작성 post
+	 @RequestMapping(value = "member/register", method = RequestMethod.POST)
+	 public String postRegister(MemberDTO dto) throws Exception {
+		 LOG.info("post resister");
+		 LOG.info("*************************************** " + dto.getM_email());
+		 memberService.register(dto);
+		 return "redirect:/";
+	 }
+	 
+	 // 회원 확인
+	@ResponseBody
+	@RequestMapping(value = "member/idCheck", method = RequestMethod.POST)
+	public int postIdCheck(HttpServletRequest request) throws Exception {
+		LOG.info("post idCheck");
+		String m_id = request.getParameter("m_id");
+		MemberDTO idCheck = memberService.idCheck(m_id);
+		int result = 0;
+		if (idCheck != null)
+			result = 1;
+		return result;
+	}
+	 
 	
 }
