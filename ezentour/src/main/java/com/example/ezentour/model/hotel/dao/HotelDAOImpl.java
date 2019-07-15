@@ -45,4 +45,17 @@ public class HotelDAOImpl implements HotelDAO {
 	public List<HotelDTO> listHotel(String h_m_id) {
 		return sqlSession.selectList("hotel.hotel_select_mid", h_m_id);
 	}
+
+	@Override
+	public List<HotelDTO> Hotel_approve(String approve) {
+		if(approve.equals("N"))
+			return sqlSession.selectList("hotel.hotel_approve_n", approve);
+		else
+			return sqlSession.selectList("hotel.hotel_approve_y", approve);
+	}
+
+	@Override
+	public void updateHotel_approve(int h_no) {
+		sqlSession.update("hotel.hotel_approve_update", h_no);
+	}
 }

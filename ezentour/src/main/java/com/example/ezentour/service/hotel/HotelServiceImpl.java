@@ -45,4 +45,16 @@ public class HotelServiceImpl implements HotelService {
 		return hotelDao.listHotel();
 	}
 
+	@Override
+	public List<HotelDTO> Hotel_approve(String approve) {
+		// TODO Auto-generated method stub
+		return hotelDao.Hotel_approve(approve);
+	}
+
+	@Override
+	public void updateHotel_approve(int h_no) {
+		hotelDao.updateHotel_approve(h_no);
+		
+	}
+
 }
