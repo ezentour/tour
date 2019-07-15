@@ -16,7 +16,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h1 class="h1-title">장바구니</h1>
+						<img src="${path}/resources/img/cart.PNG" align="left"><h1 class="h1-title" style="height:auto;">장바구니</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}">Home</a></li>
@@ -49,25 +49,24 @@
                   			</form>
                   		</div>
                   	</div>
-                    <img src="${path}/resources/img/cart.PNG" align="left"><h2 style="height:auto;">장바구니</h2>
 					<table class="ui celled table">
 						<thead>
 							<tr>
 								<td>번호</td>
-								<td>호텔 번호</td>
-								<td>아이디</td>
+								<td>호텔</td>
 								<td>체크인</td>
 								<td>체크아웃</td>
+								<td> </td>
 							</tr>
 						</thead>
-						<tbody id="list">
+						<tbody>
 							<c:forEach var="row" items="${list}">
 								<tr>
 									<td>${row.s_no}</td>
-									<td>${row.s_h_no}</td>
-									<td>${row.s_m_id}</td>
+									<td>${row.h_name}</td>
 									<td>${row.s_checkin}</td>
 									<td>${row.c_checkout}</td>
+									<td><img src="${path}/resources/img/hotel-img/${row.h_img}" width="70px" heigh="70px"/></td>
 								</tr>
 							</c:forEach>	
 						</tbody>

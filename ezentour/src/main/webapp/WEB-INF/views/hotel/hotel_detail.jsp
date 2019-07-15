@@ -15,19 +15,24 @@
 $(function() {
 	var checkInDate = document.getElementById("checkInDate");
 	var checkOutDate = document.getElementById("checkOutDate");
+	var m_id = document.getElementById("m_id"); //menu get
 	
     $("#cart").click(function() {
-        if(checkInDate.value== "" || checkOutDate.value == "") {
-				alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
-			} else if(confirm("장바구니로 이동하시겠습니까?")) {
-				document.detail.action="${path}/hotel/detail/cart?num=1";
-            document.detail.submit();
-			} else{
-				document.detail.action="${path}/hotel/detail/cart?num=2";
-            document.detail.submit();
-			}
-    });
-    });
+    	if(m_id!=null){
+	        if(checkInDate.value== "" || checkOutDate.value == "") {
+					alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
+				} else if(confirm("장바구니로 이동하시겠습니까?")) {
+					document.detail.action="${path}/hotel/detail/cart?num=1&h_no="+${hotel.h_no};
+	            document.detail.submit();
+				} else{
+					document.detail.action="${path}/hotel/detail/cart?num=2&h_no="+${hotel.h_no};
+	            document.detail.submit();
+				}
+    	}else {
+    		alert("로그인을 하세요");
+    	}
+   	 });
+   });
 	</script>
 
       <!-- Breadcrumb Area Start -->
@@ -236,16 +241,7 @@ geocoder.addressSearch('${hotel.h_address}', function(result, status) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mb-50">
-                                <div class="slider-range">
-                                    <div class="range-price">가격 설정: ₩0 ~ ₩500000</div>
-                                    <div data-min="0" data-max="500000" data-unit="₩" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="500000" data-label-result="가격 설정: ">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div> </div>
                             <div class="form-group">
                                  <button type="button" class="btn roberto-btn w-100" id="searchAccomodation">숙소 예약</button>
                             </div>

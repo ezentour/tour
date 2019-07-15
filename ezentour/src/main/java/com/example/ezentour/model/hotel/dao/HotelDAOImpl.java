@@ -24,14 +24,11 @@ public class HotelDAOImpl implements HotelDAO {
 		sqlSession.insert("hotel.hotel_insert", hDto);		
 	}
 
-	@Override
-	public List<HotelDTO> listHotel(String h_m_id) {
-		return sqlSession.selectList("hotel.hotel_select_mid", h_m_id);
-	}
 
 	@Override
 	public void updateHotel(HotelDTO hDto) {
 		sqlSession.update("hotel.hotel_update", hDto);
+		
 		
 	}
 
@@ -44,5 +41,8 @@ public class HotelDAOImpl implements HotelDAO {
 	public List<HotelDTO> listHotel() {
 		return sqlSession.selectList("hotel.hotel_list");
 	}
-
+	@Override
+	public List<HotelDTO> listHotel(String h_m_id) {
+		return sqlSession.selectList("hotel.hotel_select_mid", h_m_id);
+	}
 }
