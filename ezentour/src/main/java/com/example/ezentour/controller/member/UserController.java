@@ -3,10 +3,12 @@ package com.example.ezentour.controller.member;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,12 +41,30 @@ public class UserController {
 		} else if (m_id != null && m_id.length() != 0) {
 			MemberDTO memberDto = memberService.viewMember(m_id);
 			LOG.info("memberDto(usercontroller)" + memberDto);
+
 			if ((memberDto.getM_field()).equals("U")) {
 				LOG.info("check(userController)");
 				List<CartDTO> list = cartService.viewCartList(m_id);
 				model.addAttribute("list", list);
+				
 				return "user/mypage/mycart";
 			}
-		} return "user/mypage/mycart";
+		}
+		return "user/mypage/mycart";
+	}
+	
+	@RequestMapping(value = "mypage/user/delete")
+	public String delete(HttpServletRequest request,HttpSession session,Model model) {
+		String[] checkBox = request.getParameterValues("check");
+		LOG.info("checkBox.length"+checkBox.length);
+		for(int i = 0;i<=checkBox.length-1;i++) {
+			int intCheckBox = Integer.parseInt(checkBox[i]);
+			LOG.info("IntCheckBox(userController) : " +intCheckBox);
+			cartService.cartDelete(intCheckBox);
+		}
+		String m_id = (String) session.getAttribute("m_id");
+		List<CartDTO> list = cartService.viewCartList(m_id);
+		model.addAttribute("list", list);
+		return "user/mypage/mycart";
 	}
 }

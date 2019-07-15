@@ -18,6 +18,7 @@ $(function() {
 	var m_id = document.getElementById("m_id"); //menu get
 	
     $("#cart").click(function() {
+    	if("${field}"=="U"){
     	if(m_id!=null){
 	        if(checkInDate.value== "" || checkOutDate.value == "") {
 					alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
@@ -29,7 +30,10 @@ $(function() {
 	            document.detail.submit();
 				}
     	}else {
-    		alert("로그인을 하세요");
+    		alert("로그인하세요");
+    	}
+    	} else {
+    		alert("사용자만 이용할 수 있습니다.");
     	}
    	 });
    });
