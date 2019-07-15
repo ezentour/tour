@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ezentour.model.hotel.dto.HotelDTO;
 import com.example.ezentour.model.user.dto.CartDTO;
 import com.example.ezentour.service.hotel.HotelService;
+import com.example.ezentour.service.member.MemberService;
 import com.example.ezentour.service.user.CartService;
 
 @Controller
@@ -31,6 +32,8 @@ public class HotelController {
 	HotelService hotelService;
 	@Inject
 	CartService cartService;
+	@Inject
+	MemberService memberService;
 	
 	@RequestMapping(value = "hotel/main")
 	public ModelAndView hotel_home(ModelAndView mav) {		
@@ -68,8 +71,12 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value="hotel/detail.do")
-	public String hotel_list_detail(@RequestParam int h_no, Model model) {
+	public String hotel_list_detail(@RequestParam int h_no, Model model,HttpSession sesstion) {
 		model.addAttribute("hotel", hotelService.viewHotel(h_no));
+		String m_id = (String) sesstion.getAttribute("m_id");
+		if(m_id!=null) {
+		model.addAttribute("field", memberService.viewMember(m_id).getM_field());
 		return "hotel/hotel_detail";
+		} return "hotel/hotel_detail";
 	}
 }
