@@ -43,7 +43,7 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public boolean checkPw(String b_m_id) {
+	public boolean checkId(String b_m_id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

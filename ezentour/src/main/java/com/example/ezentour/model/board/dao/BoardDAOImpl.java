@@ -41,7 +41,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public boolean checkPw(String b_m_id) {
+	public boolean checkId(String b_m_id) {
 		return false;
 	}
 

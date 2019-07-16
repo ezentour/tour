@@ -3,6 +3,7 @@ package com.example.ezentour.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,4 +51,20 @@ public class BoardController {
 		boardService.insertBoard(bDto);
 		return "redirect:board/main";
 	}
+	
+	@RequestMapping(value = "board/update.to")
+	public String bbsUpdate(@ModelAttribute BoardDTO bDto, Model model, HttpSession session) {
+		String m_id = (String) session.getAttribute("m_id");
+		
+		if(m_id.equals(bDto.getB_m_id())) {
+			boardService.updateBoard(bDto);
+			return "redirect:../board/main";
+		} else {
+			model.addAttribute("message", "수정 권한이 없습니다.");
+		}
+		return null;
+		
+	}
+
+	
 }
