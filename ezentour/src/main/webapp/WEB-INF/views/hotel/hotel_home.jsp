@@ -47,7 +47,7 @@
 						<div class="room-content">
 							<h2>${row.h_name }</h2>
 							<h4>
-								&#8361;${row.h_price } <span>/ Day</span>
+								&#8361;<fmt:formatNumber value="${row.h_price }" pattern="#,###" /> <span>/ Day</span>
 							</h4>
 							<div class="room-feature">
 								<h6>

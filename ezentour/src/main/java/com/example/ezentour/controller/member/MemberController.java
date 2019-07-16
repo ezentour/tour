@@ -1,5 +1,8 @@
 package com.example.ezentour.controller.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,6 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,7 +44,6 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 		ModelAndView mav = new ModelAndView();
 		
 		if(result) { //로그인 성공
-			session.setAttribute("m_id", dto.getM_id());
 			mav.setViewName("redirect:/"); //뷰의 이름
 		}else { //로그인 실패
 			mav.setViewName("redirect:/member/login.do");
@@ -73,19 +77,15 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 		 memberService.register(dto);
 		 return "redirect:/";
 	 }
-	 
-	 // 회원 확인
+		
+	@RequestMapping(value = "member/signUp.do/idcheck.do", method = RequestMethod.POST)
 	@ResponseBody
-	@RequestMapping(value = "member/idCheck", method = RequestMethod.POST)
-	public int postIdCheck(HttpServletRequest request) throws Exception {
-		LOG.info("post idCheck");
-		String m_id = request.getParameter("m_id");
-		MemberDTO idCheck = memberService.idCheck(m_id);
-		int result = 0;
-		if (idCheck != null)
-			result = 1;
-		return result;
+	public Map<Object, Object> idcheck(@RequestBody String m_id) {
+		int count = 0;
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		count = memberService.idcheck(m_id);
+		map.put("cnt", count);
+		return map;
 	}
-	 
 	
 }

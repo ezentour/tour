@@ -1,5 +1,7 @@
 package com.example.ezentour.service.member;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +15,7 @@ import com.example.ezentour.service.member.MemberService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-	private static final Logger LOG = LoggerFactory.getLogger(MemberService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MemberServiceImpl.class);
 
 	@Inject
 	MemberDAO memberDao;
@@ -28,9 +30,7 @@ public class MemberServiceImpl implements MemberService {
 			session.setAttribute("m_id", dto.getM_id());
 			session.setAttribute("m_name", dto2.getM_name());
 			session.setAttribute("m_field", dto2.getM_field());			
-			LOG.trace("접속id: " + session.getAttribute("m_id") + ", 접속자: " + session.getAttribute("m_name"));
-			//System.out.println(session.getAttribute("m_id"));
-			//System.out.println(session.getAttribute("m_name"));
+			LOG.info("접속id: " + session.getAttribute("m_id") + ", 접속자: " + session.getAttribute("m_name"));
 		} 
 		return result;
 	}
@@ -69,11 +69,10 @@ public class MemberServiceImpl implements MemberService {
 	public void withdrawal(MemberDTO dto) throws Exception {
 		memberDao.withdrawal(dto);
 	}
-		
-	// 아이디 확인
+	
 	@Override
-	public MemberDTO idCheck(String m_id) throws Exception {
-		return memberDao.idCheck(m_id);
+	public int idcheck(String m_id) {
+		return memberDao.idcheck(m_id);
 	}
 		
 }
