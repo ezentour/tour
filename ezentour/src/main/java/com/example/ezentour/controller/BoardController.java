@@ -46,10 +46,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "board/insert.do")
-	public String bbsInsert(@ModelAttribute BoardDTO bDto) {
+	public String bbsInsert(@ModelAttribute BoardDTO bDto, HttpSession session, Model model) {
 		LOG.info("bbsInsert 시작");
+		String m_id = (String) session.getAttribute("m_id");
+		LOG.info("m_id Check : " + m_id);
+		bDto.setB_m_id(m_id);
+		LOG.info("-----------------:" + bDto.toString());
+		
 		boardService.insertBoard(bDto);
-		return "redirect:board/main";
+		
+		return "redirect:../board/main";
 	}
 	
 	@RequestMapping(value = "board/update.to")
