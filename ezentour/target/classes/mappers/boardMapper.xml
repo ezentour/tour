@@ -16,9 +16,9 @@
 	</select>
 	
 	<!-- 3. 게시판 글쓰기 -->
-	<insert id="insertBoard" parameterType="boardDto">
-		insert into board
-		values ((select nvl(max(b_no)+1,1) from board), #{b_title}, #{b_content}, #{b_m_id}, sysdate)
+	<insert id="insertBoard">
+		insert into board(b_no, b_title, b_content, b_m_id, b_regdate)
+		values ((select nvl(max(b_no)+1,1) from board), #{b_title}, #{b_content}, #{b_m_id}, #{b_regdate})
 	</insert>
 	
 </mapper>
