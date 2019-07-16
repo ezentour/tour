@@ -62,7 +62,7 @@
 
 								<c:if test="${m_field == 'U'}">
 									<!-- 일반 사용자 메뉴바 -->
-									<li><a href="#">마이(U)</a>
+									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
 											<li><a href="${path}/mypage/user/main">- 예약 내역</a></li>
 											<li><a href="${path}/mypage/user/mycart">- 장바구니</a></li>
@@ -70,7 +70,7 @@
 								</c:if>
 								<!-- 관리자 메뉴바 -->
 								<c:if test="${m_field == 'A'}">
-									<li><a href="#">마이(A)</a>
+									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
 											<li><a href="${path}/mypage/admin/user_list">- 사용자
 													목록</a></li>
@@ -84,9 +84,9 @@
 										</ul></li>
 								</c:if>
 
-								<c:if test="${usertype == 'H'}">
+								<c:if test="${m_field == 'H'}">
 									<!-- 숙박업체 메뉴바 -->
-									<li><a href="#">마이(C)</a>
+									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
 											<li><a href="${path}/mypage/company/hotel_list.do">-
 													숙소 목록 및 등록</a></li>
