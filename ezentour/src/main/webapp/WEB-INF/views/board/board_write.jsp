@@ -62,10 +62,6 @@ pageEncoding="UTF-8"%>
 			                    <label for="exampleFormControlInput1">제목</label>
 			                    <input type="text" class="form-control" id="exampleFormControlInput1" name="b_title" placeholder="제목을 작성해주세요.">
 			                </div>
-			                <!--  <div>
-			                	<p>id : ${session.getAttribute('b_m_id')}</p>
-			                	<input name="b_m_id" type="hidden" value="${session.getAttribute('b_m_id')}">
-			                </div>-->
 			                <div class="form-group">
 			                    <label for="exampleFormControlTextarea1">내용</label>
 			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="b_content" rows="10"></textarea>
