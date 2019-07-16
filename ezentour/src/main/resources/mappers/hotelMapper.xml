@@ -55,6 +55,10 @@
 	<update id="hotel_approve_update">
 		update hotel set h_approve = 'Y' where h_no = #{h_no}
 	</update>
+	
+	<select id="hotel_room_select">
+		select h_room from hotel where h_no = #{h_no}
+	</select>
 </mapper>
 
 

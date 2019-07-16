@@ -57,4 +57,11 @@ public class HotelServiceImpl implements HotelService {
 		
 	}
 
+	@Override
+	public int selectHotel_room(int h_no) {
+		HotelDTO hDto = hotelDao.selectHotel_room(h_no);
+		int room = hDto.getH_room();		
+		return room;
+	}
+
 }

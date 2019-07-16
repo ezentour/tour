@@ -8,6 +8,8 @@
 		<typeAlias alias="hotelDto" type="com.example.ezentour.model.hotel.dto.HotelDTO" />
 		<typeAlias alias="boardDto" type="com.example.ezentour.model.board.dto.BoardDTO"/>
 		<typeAlias alias="cartDto" type="com.example.ezentour.model.user.dto.CartDTO"/>
+		<typeAlias alias="hotelroomDto" type="com.example.ezentour.model.hotel.dto.HotelRoomDTO" />
+		<typeAlias alias="reservationDto" type="com.example.ezentour.model.user.dto.ReservationDTO"/>
 	</typeAliases>
 	
 </configuration>
