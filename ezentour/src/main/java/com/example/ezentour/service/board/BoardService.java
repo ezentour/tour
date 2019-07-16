@@ -10,5 +10,5 @@ public interface BoardService {
 	public BoardDTO viewBoard(String b_m_id);
 	public void deleteBoard(String b_m_id);
 	public void updateBoard(BoardDTO bDto);
-	public boolean checkPw(String b_m_id);
+	public boolean checkId(String b_m_id);
 }

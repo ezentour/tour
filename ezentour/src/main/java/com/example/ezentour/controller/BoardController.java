@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ezentour.model.board.dto.BoardDTO;
-import com.example.ezentour.model.member.dto.MemberDTO;
 import com.example.ezentour.service.board.BoardService;
 
 @Controller
@@ -58,4 +57,20 @@ public class BoardController {
 		
 		return "redirect:../board/main";
 	}
+	
+	@RequestMapping(value = "board/update.to")
+	public String bbsUpdate(@ModelAttribute BoardDTO bDto, Model model, HttpSession session) {
+		String m_id = (String) session.getAttribute("m_id");
+		
+		if(m_id.equals(bDto.getB_m_id())) {
+			boardService.updateBoard(bDto);
+			return "redirect:../board/main";
+		} else {
+			model.addAttribute("message", "수정 권한이 없습니다.");
+		}
+		return null;
+		
+	}
+
+	
 }
