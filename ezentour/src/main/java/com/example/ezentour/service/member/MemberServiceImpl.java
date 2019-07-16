@@ -1,5 +1,6 @@
 package com.example.ezentour.service.member;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -44,6 +45,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO viewMember(String m_id) {
 		return memberDao.viewMember(m_id);
+	}
+	
+	@Override
+	public List<MemberDTO> memberList() {
+		return memberDao.memberList();
+	}
+	
+	// 관리자가 사용자 상세 정보 확인
+	public MemberDTO memberDetail(String showM_id) {
+			return memberDao.memberDetail(showM_id);
 	}
 	
 	// 회원 가입

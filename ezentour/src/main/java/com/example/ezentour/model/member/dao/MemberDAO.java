@@ -1,12 +1,18 @@
 package com.example.ezentour.model.member.dao;
 
-import java.util.Map;
+import java.util.List;
 
 import com.example.ezentour.model.member.dto.MemberDTO;
 
 public interface MemberDAO {
 	public boolean loginCheck(MemberDTO dto);
 	public MemberDTO viewMember(String m_id);
+	
+	// 관리자가 사용자 명단 확인
+	public List<MemberDTO> memberList(); 
+	
+	// 관리자가 사용자 상세 정보 확인
+	public MemberDTO memberDetail(String showM_id);
 	
 	// 회원 가입
 	public void register(MemberDTO dto) throws Exception;
