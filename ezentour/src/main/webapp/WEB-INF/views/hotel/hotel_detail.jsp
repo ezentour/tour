@@ -17,7 +17,7 @@ $(function() {
 	var checkOutDate = document.getElementById("checkOutDate");
 	var m_id = document.getElementById("m_id"); //menu get
 	
-    $("#cart").click(function() {
+	$("#cart").click(function() {
     	if(m_id!=null){
     		if("${field}"=="U"){
 	        if(checkInDate.value== "" || checkOutDate.value == "") {
@@ -46,7 +46,7 @@ $(function() {
                 <div class="col-12">
                     <div class="breadcrumb-content d-flex align-items-center justify-content-between pb-5">
                         <h2 class="room-title">${hotel.h_name }</h2>
-                        <h2 class="room-price">&#8361;${hotel.h_price } <span>/ Per Night</span></h2>
+                        <h2 class="room-price">&#8361;<fmt:formatNumber value="${hotel.h_price }" pattern="#,###" /> <span>/ Per Night</span></h2>
                     </div>
                 </div>
             </div>

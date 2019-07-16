@@ -1,5 +1,7 @@
 package com.example.ezentour.model.member.dao;
 
+import java.util.Map;
+
 import com.example.ezentour.model.member.dto.MemberDTO;
 
 public interface MemberDAO {
@@ -18,7 +20,11 @@ public interface MemberDAO {
 	// 회원 탈퇴
 	public void withdrawal(MemberDTO dto) throws Exception;
 	
+	public int idcheck(String m_id);
+	
 	// 아이디 확인
-	public MemberDTO idCheck(String m_id) throws Exception;
+	//public MemberDTO idCheck(String m_id) throws Exception;
+	
+	//public int checkId(MemberDTO dto);
 	
 }

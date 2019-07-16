@@ -1,16 +1,22 @@
 package com.example.ezentour.model.member.dao;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.example.ezentour.model.member.dao.MemberDAO;
 import com.example.ezentour.model.member.dto.MemberDTO;
+import com.example.ezentour.service.member.MemberService;
 
 @Repository // Spring에서 관리하는 dao bean으로 설정 
 public class MemberDAOImpl implements MemberDAO {
-
+	private static final Logger LOG = LoggerFactory.getLogger(MemberDAOImpl.class);
+	
 	@Inject // mybatis 실행을 위한 SqlSession 객체를 주입시킴
 	SqlSession sqlSession;
 	
@@ -51,12 +57,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public void withdrawal(MemberDTO dto) throws Exception {
 		sqlSession.delete("member.withdrawal", dto);
 	}
-		
-	// 아이디 확인
-	@Override
-	public MemberDTO idCheck(String m_id) throws Exception {
-		return sqlSession.selectOne("member.idCheck", m_id);
-	}
 	
+	@Override
+	public int idcheck(String m_id) {
+		return sqlSession.selectOne("member.checkid", m_id);
+	}
 	
 }
