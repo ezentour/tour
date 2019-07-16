@@ -38,28 +38,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<!-- Single Footer Widget Area -->
-					<div class="col-12 col-sm-8 col-lg-4 float-right">
-						<div class="single-footer-widget mb-80">
-							<!-- Newsletter Form -->
-							<form action="#" class="nl-form">
-								<input type="text" class="form-control" placeholder="Search">
-								<button type="submit">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-							</form>
-						</div>
-					</div>
 
+					
+					<img src="${path}/resources/img/cart.PNG" align="left" height="100px" />
+					<br>
+					
+				
 						<form action="${path}/mypage/user/delete" method="post">
+						
 							<table class="ui celled table">
 								<thead>
-									<div style="position: absolute; width: 200px; height: 200px; top: 110px; left: 50;">
-										<img src="${path}/resources/img/cart.PNG" align="left"
-											height="100px" />
-									</div>
 									<tr>
-										<td>check</td>
+										<td></td>
 										<td>번호</td>
 										<td>호텔</td>
 										<td>체크인</td>
@@ -70,19 +60,18 @@
 								<tbody>
 									<c:forEach var="row" items="${list}">
 										<tr>
-											<td>
-											    	<input type="checkbox" name="check" value="${row.s_no}">
-											</td>
+											<td><input type="checkbox" name="check" value="${row.s_no}"></td>
 											<td>${row.s_no}</td>
 											<td>${row.h_name}</td>
 											<td>${row.s_checkin.substring(0,10)}</td>
 											<td>${row.c_checkout.substring(0,10)}</td>
 											<td><img
 												src="${path}/resources/img/hotel-img/${row.h_img}"
-												width="70px" height="70px" /></td>
-												</tr>
-											</c:forEach>
-									</tbody>
+												width="70px" height="70px" />
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
 									<tfoot>
 										<tr>
 											<td colspan="6" align="center">
@@ -100,6 +89,8 @@
 			</div>
 		</div>
 	</div>
+	</div>
+	
 
 	<div>
 		<p>

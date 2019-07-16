@@ -60,13 +60,11 @@ public class HotelController {
 		LOG.info(hotelDto.toString());
 		
 		cartService.insertCartList(hotelDto.getH_no(),m_id,checkInDate,checkOutDate);
-		List<CartDTO> list = cartService.viewCartList(m_id);
-		model.addAttribute("list", list);
 		
 		if(num.equals("1")) {
-			return "user/mypage/mycart";
+			return "redirect:../../mypage/user/mycart";
 		} else {
-			return "hotel/hotel_detail";
+			return "redirect:../../mypage/user/mycart";
 		}
 	}
 	
