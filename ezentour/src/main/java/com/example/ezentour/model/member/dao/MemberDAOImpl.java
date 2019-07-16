@@ -1,5 +1,6 @@
 package com.example.ezentour.model.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -32,7 +33,17 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.viewMember", m_id);
 	}
 	
+	// 관리자가 사용자 명단 확인
+	@Override
+	public List<MemberDTO> memberList() {
+		return sqlSession.selectList("member.member_list");
+	}
 	
+	// 관리자가 사용자 상세 정보 확인
+	@Override
+	public MemberDTO memberDetail(String showM_id) {
+		return sqlSession.selectOne("member.member_detail", showM_id);
+	}
 
 	// 회원 가입
 	@Override

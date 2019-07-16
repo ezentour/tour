@@ -32,6 +32,16 @@
 		 values(#{m_id}, #{m_password}, #{m_name}, #{m_tel}, #{m_email}, #{m_field})
 	</insert>
 	
+	<!-- 5. 관리자가 사용자 명단 확인 -->
+	<select id="member_list" resultType="memberDto">
+		select * from member where m_id != 'admin'
+	</select>
+	
+	<!-- 6. 관리자가 사용자 상세 정보 확인 -->
+	<select id="member_detail" resultType="memberDto">
+		select * from member where m_id = #{showM_id}
+	</select>
+	
 </mapper>
 
 
