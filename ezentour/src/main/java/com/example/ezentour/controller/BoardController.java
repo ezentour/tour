@@ -3,6 +3,7 @@ package com.example.ezentour.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ezentour.model.board.dto.BoardDTO;
+import com.example.ezentour.model.member.dto.MemberDTO;
 import com.example.ezentour.service.board.BoardService;
 
 @Controller
@@ -45,9 +47,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "board/insert.do")
-	public String bbsInsert(@ModelAttribute BoardDTO bDto) {
+	public String bbsInsert(@ModelAttribute BoardDTO bDto, HttpSession session, Model model) {
 		LOG.info("bbsInsert 시작");
+		String m_id = (String) session.getAttribute("m_id");
+		LOG.info("m_id Check : " + m_id);
+		bDto.setB_m_id(m_id);
+		LOG.info("-----------------:" + bDto.toString());
+		
 		boardService.insertBoard(bDto);
-		return "redirect:board/main";
+		
+		return "redirect:../board/main";
 	}
 }
