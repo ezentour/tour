@@ -27,6 +27,11 @@
 		on shopping_carts.s_m_id=member.m_id and member.m_id=#{m.id} 
 		order by shopping_carts.s_no 
 	</select>
+	<!-- 장바구니 삭제 -->
+	<delete id="cart_delete">
+		delete from shopping_carts 
+		where s_no=#{s_no}
+	</delete>
 </mapper>
 
 

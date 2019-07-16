@@ -17,8 +17,9 @@ $(function() {
 	var checkOutDate = document.getElementById("checkOutDate");
 	var m_id = document.getElementById("m_id"); //menu get
 	
-    $("#cart").click(function() {
+	$("#cart").click(function() {
     	if(m_id!=null){
+    		if("${field}"=="U"){
 	        if(checkInDate.value== "" || checkOutDate.value == "") {
 					alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
 				} else if(confirm("장바구니로 이동하시겠습니까?")) {
@@ -28,8 +29,11 @@ $(function() {
 					document.detail.action="${path}/hotel/detail/cart?num=2&h_no="+${hotel.h_no};
 	            document.detail.submit();
 				}
+    		}else {
+        		alert("사용자만 이용할 수 있습니다.");
+        	}
     	}else {
-    		alert("로그인을 하세요");
+    		alert("로그인하세요");
     	}
    	 });
    });
@@ -42,7 +46,7 @@ $(function() {
                 <div class="col-12">
                     <div class="breadcrumb-content d-flex align-items-center justify-content-between pb-5">
                         <h2 class="room-title">${hotel.h_name }</h2>
-                        <h2 class="room-price">&#8361;${hotel.h_price } <span>/ Per Night</span></h2>
+                        <h2 class="room-price">&#8361;<fmt:formatNumber value="${hotel.h_price }" pattern="#,###" /> <span>/ Per Night</span></h2>
                     </div>
                 </div>
             </div>

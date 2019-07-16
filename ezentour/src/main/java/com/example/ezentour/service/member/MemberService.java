@@ -22,5 +22,9 @@ public interface MemberService {
 	public void withdrawal(MemberDTO dto) throws Exception;
 	
 	// 아이디 확인
-	public MemberDTO idCheck(String m_id) throws Exception;
+	//public MemberDTO idCheck(String m_id) throws Exception;
+	
+	public int idcheck(String m_id);
+	
+	//public int checkId(MemberDTO dto);
 }
