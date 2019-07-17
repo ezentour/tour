@@ -7,8 +7,8 @@ import com.example.ezentour.model.board.dto.BoardDTO;
 public interface BoardDAO {
 	public List<BoardDTO> boardList();
 	public void insertBoard(BoardDTO bDto);
-	public BoardDTO viewBoard(String b_m_id);
-	public void deleteBoard(String b_m_id);
+	public BoardDTO viewBoard(int b_no);
+	public void deleteBoard(int b_no);
 	public void updateBoard(BoardDTO bDto);
 	public boolean checkId(String b_m_id);
 }
