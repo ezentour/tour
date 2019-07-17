@@ -15,16 +15,6 @@
 			color:#1AC2B2;
 		}
 	</style>
-	<script type="text/javascript">
-		var message = '${msg}'; 
-		var returnUrl = '${url}'; 
-		$(function() {
-			$("#write").click(function() {
-				alert(msg);
-				document.location.href=url;
-			});
-		});
-	</script>
 </head>
 <body>
 
