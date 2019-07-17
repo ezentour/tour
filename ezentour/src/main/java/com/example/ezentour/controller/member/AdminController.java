@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,9 +42,27 @@ public class AdminController {
 	// 관리자가 사용자 상세 페이지로 이동
 	@RequestMapping(value = "mypage/admin/user_detail")
 	public String memberDetail(@RequestParam String showM_id, Model model) {
-		LOG.info("****************** memberDetail()");
+		LOG.info("memberDetail()");
 		model.addAttribute("member", memberService.memberDetail(showM_id));
 		return "admin/mypage/user_detail";
+	}
+	
+	// 관리자가 사용자 수정 페이지로 이동
+	@RequestMapping(value = "mypage/admin/user_update")
+	public String memberUpdate(@RequestParam String showMID, Model model) {
+		LOG.info("memberUpdate()");
+		model.addAttribute("member", memberService.memberDetail(showMID));
+		return "admin/mypage/user_update";
+	}
+	
+	// 관리자가 사용자 수정 완료 버튼을 누름
+	@RequestMapping(value="mypage/admin/user_update_btn.do")
+	public String memberUpdateBtn(@ModelAttribute MemberDTO dto) {
+		LOG.info("memberUpdateBtn()");
+		memberService.memberUpdate(dto);
+		// redirect:mypage/admin/user_detail?list?
+		//return "admin/mypage/user_detail";
+		return "redirect:../../mypage/admin/user_detail?showM_id=" + dto.getM_id();
 	}
 	
 

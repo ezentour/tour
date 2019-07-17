@@ -3,7 +3,7 @@ package com.example.ezentour.model.board.dto;
 import java.util.Date;
 
 public class BoardDTO {
-	private String b_no;
+	private int b_no;
 	private String b_title;
 	private String b_content;
 	private String b_m_id;
@@ -13,7 +13,7 @@ public class BoardDTO {
 		super();
 	}
 
-	public BoardDTO(String b_no, String b_title, String b_content, String b_m_id, Date b_regdate) {
+	public BoardDTO(int b_no, String b_title, String b_content, String b_m_id, Date b_regdate) {
 		super();
 		this.b_no = b_no;
 		this.b_title = b_title;
@@ -22,11 +22,11 @@ public class BoardDTO {
 		this.b_regdate = b_regdate;
 	}
 
-	public String getB_no() {
+	public int getB_no() {
 		return b_no;
 	}
 
-	public void setB_no(String b_no) {
+	public void setB_no(int b_no) {
 		this.b_no = b_no;
 	}
 
