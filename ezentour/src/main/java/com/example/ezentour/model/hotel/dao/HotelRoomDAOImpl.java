@@ -20,7 +20,7 @@ public class HotelRoomDAOImpl implements HotelRoomDAO {
 	}
 
 	@Override
-	public HotelRoomDTO selectone(int hr_h_no, String hr_date) {
+	public int selectone(int hr_h_no, String hr_date) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("hr_h_no", hr_h_no);
 		map.put("hr_date", hr_date);
@@ -34,5 +34,14 @@ public class HotelRoomDAOImpl implements HotelRoomDAO {
 		map.put("hr_date", hr_date);
 		map.put("hr_room", hr_room);
 		sqlSession.update("hotelroom.hotelroom_update", map);		
+	}
+
+	@Override
+	public String RoomCheck(int hr_h_no, String hr_date, int r_room) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("hr_h_no", hr_h_no);
+		map.put("hr_date", hr_date);
+		map.put("r_room", r_room);
+		return sqlSession.selectOne("hotelroom.roomcheck", map);
 	}
 }

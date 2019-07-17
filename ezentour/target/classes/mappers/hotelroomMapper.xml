@@ -6,17 +6,26 @@
 	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 
 		설정하기 -->
 	<!-- 1. 호텔 정보 추출 후 장바구니에 삽입 -->
-	<select id="selectone" resultType="hotelroomDto">
-		select * from hotel_room where hr_h_no = #{hr_h_no} and hr_date = #{hr_date}
+	<select id="selectone" resultType="int">
+		select count(*) from
+		hotel_room where hr_h_no = #{hr_h_no} and hr_date = #{hr_date}
 	</select>
 
 	<insert id="hotelroom_insert">
-		insert into hotel_room values (#{hr_h_no}, TO_DATE('#{hr_date}','dd/MM/yy'), #{hr_room})
+		insert into hotel_room values (#{hr_h_no},
+		TO_DATE('#{hr_date}','dd/MM/yy'), #{hr_room})
 	</insert>
 
 	<update id="hotelroom_update">
-		update hotel_room set hr_room = hr_room + #{hr_room} where hr_h_no = #{hr_h_no} and hr_date = #{hr_date}
+		update hotel_room set hr_room = hr_room + #{hr_room}
+		where hr_h_no = #{hr_h_no} and hr_date = #{hr_date}
 	</update>
+
+	<select id="roomcheck" resultType="String">
+		select case when hr.hr_room + #{r_room} &lt;= h.h_room then 'true' else 'false' end as result
+		from hotel_room hr, hotel h 
+		where hr.hr_h_no = h.h_no and hr.hr_h_no = #{hr_h_no} and hr.hr_date = TO_DATE(#{hr_date},'dd/MM/yy')
+	</select>
 
 </mapper>
 
