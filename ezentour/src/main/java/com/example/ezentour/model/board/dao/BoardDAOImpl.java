@@ -1,6 +1,8 @@
 package com.example.ezentour.model.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -26,23 +28,29 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardDTO viewBoard(String b_no) {
+	public BoardDTO viewBoard(int b_no) {
 		return sqlSession.selectOne("board.boardView", b_no);
 	}
 
 	@Override
-	public void deleteBoard(String b_m_id) {
-
+	public void deleteBoard(int b_no) {
+		sqlSession.delete("board.daleteBoard", b_no);
 	}
 
 	@Override
 	public void updateBoard(BoardDTO bDto) {
-
+		sqlSession.update("board.updateBoard", bDto);
 	}
 
 	@Override
 	public boolean checkId(String b_m_id) {
-		return false;
+		boolean result = false;
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("b_m_id", b_m_id);
+		int count = sqlSession.selectOne("board.checkId", map);
+		if(count == 1) 
+			result = true;
+		return result;
 	}
 
 }

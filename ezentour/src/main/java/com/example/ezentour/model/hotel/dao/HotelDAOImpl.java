@@ -58,4 +58,9 @@ public class HotelDAOImpl implements HotelDAO {
 	public void updateHotel_approve(int h_no) {
 		sqlSession.update("hotel.hotel_approve_update", h_no);
 	}
+
+	@Override
+	public HotelDTO selectHotel_room(int h_no) {		
+		return sqlSession.selectOne("hotel.hotel_room_select", h_no);
+	}
 }
