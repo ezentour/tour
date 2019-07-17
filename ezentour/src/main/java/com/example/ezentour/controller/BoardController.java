@@ -1,9 +1,11 @@
 package com.example.ezentour.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ezentour.model.board.dto.BoardDTO;
 import com.example.ezentour.service.board.BoardService;
@@ -36,13 +37,17 @@ public class BoardController {
 	
 	//게시판 글쓰기화면
 	@RequestMapping(value = "board/write.do")
-	public String bbsWrite(HttpSession session, Model model) {
+	public String bbsWrite(HttpSession session, Model model, HttpServletResponse response) throws Exception {
 		LOG.info("bbsWrite 시작");
 		String m_id = (String) session.getAttribute("m_id");
 	
 		if(m_id == null) {
-			model.addAttribute("msg", "로그인 해주세요.");
-			model.addAttribute("url", "member/login.do"); 
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
+			out.flush(); 
+			//model.addAttribute("msg", "로그인 해주세요.");
+			return "member/login";
 		} 
 		return "board/board_write";
 	}
