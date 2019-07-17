@@ -50,37 +50,11 @@
 								} else {
 									alert("로그인하세요");
 								}
-							});
-			
-			
+							});			
+				
 		});
 	</script>
-	<script>
-	$(function() {
-		var checkInDate = document.getElementById("checkInDate");
-		var checkOutDate = document.getElementById("checkOutDate");
-		var m_id = document.getElementById("m_id"); //menu get
-		var r_room = document.getElementById("r_room");
-	$("#reservation1")
-	.click(
-			function() {
-				if (m_id != null) {
-					if ("${field}" == "U") {
-						if (checkInDate.value == ""	|| checkOutDate.value == "") {
-							alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
-						} else (confirm("예약페이지로 이동하시겠습니까?")) {
-							document.detail.action = "${path}/mypage/user/reservation_check?h_no=${hotel.h_no}";									
-							document.detail.submit();
-						}
-					} else {
-						alert("사용자만 이용할 수 있습니다.");
-					}
-				} else {
-					alert("로그인하세요");
-				}
-			});	
-	});
-	</script>
+
 
 	<!-- Breadcrumb Area Start -->
 	<div class="breadcrumb-area bg-img bg-overlay jarallax"
@@ -290,18 +264,16 @@
 				<div class="col-12 col-lg-4">
 					<!-- Hotel Reservation Area -->
 					<div class="hotel-reservation--area mb-100">
-						<form name="detail" method="post">
+						<form name="detail" method="post" action="${path}/mypage/user/reservation_check?h_no=${hotel.h_no}">
 							<div class="form-group mb-30">
 								<label for="checkInDate">숙박날짜</label>
 								<div class="input-daterange" id="datepicker">
 									<div class="row no-gutters">
 										<div class="col-6">
-											<input type="text" class="input-small form-control"
-												id="checkInDate" name="checkInDate" placeholder="체크인">
+											<input type="text" class="input-small form-control"	id="checkInDate" name="checkin" placeholder="체크인">
 										</div>
 										<div class="col-6">
-											<input type="text" class="input-small form-control"
-												id="checkOutDate" name="checkOutDate" placeholder="체크아웃">
+											<input type="text" class="input-small form-control" id="checkOutDate" name="checkout" placeholder="체크아웃">
 										</div>
 									</div>
 								</div>
@@ -320,7 +292,7 @@
 							</div>
 							<div></div>
 							<div class="form-group">
-								<button type="button" class="btn roberto-btn w-100"	id="reservation1">숙소 예약</button>
+								<button type="submit" class="btn roberto-btn w-100">숙소 예약</button>
 							</div>
 							<div class="form-group">
 								<button type="button" class="btn roberto-btn w-100" id="cart">장바구니</button>
