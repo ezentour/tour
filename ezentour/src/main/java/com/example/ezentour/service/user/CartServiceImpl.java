@@ -25,11 +25,31 @@ public class CartServiceImpl implements CartService {
 	}
 	
 	@Override
-	public List<CartDTO> viewCartList(String m_id){
-		return cartDao.viewCartList(m_id);
+	public List<CartDTO> viewCartList(String m_id,int curPage){
+		int startPage = 0;
+		int endPage = 0;
+		
+		startPage = 5*curPage-4;
+		endPage = 5*curPage;
+		
+		return cartDao.viewCartList(m_id,startPage,endPage);
 	}
+	
 	public void cartDelete(int s_no) {
 		LOG.info("s_noCheck(CartService) :" +s_no);
 		cartDao.cartDelete(s_no);
+	}
+	
+	@Override
+	public int cartListCount() {
+		int listAmount = cartDao.cartListCount();
+		int totalPage=1;
+		if(listAmount%5==0) { // 한 페이지당 5개
+			totalPage = listAmount/5;
+		} else {
+			totalPage = (listAmount/5)+1;
+		}
+		LOG.info("totalPage(CartServiceImpl) : " + totalPage); 
+		return totalPage;
 	}
 }

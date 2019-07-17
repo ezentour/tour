@@ -39,8 +39,11 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "mypage/user/mycart")
-	public String myCart(Model model, HttpSession session) {
+	public String myCart(Model model, HttpSession session,HttpServletRequest request) {
 		String m_id = (String) session.getAttribute("m_id");
+		int curPage = Integer.parseInt(request.getParameter("page"));
+		LOG.info("curPage(UserControl) : " +curPage);
+		int totalPage = cartService.cartListCount();
 		LOG.info("m_id Check : " + m_id);
 
 		if (m_id == null) {
@@ -51,7 +54,9 @@ public class UserController {
 
 			if ((memberDto.getM_field()).equals("U")) {
 				LOG.info("check(userController)");
-				List<CartDTO> list = cartService.viewCartList(m_id);
+				List<CartDTO> list = cartService.viewCartList(m_id,curPage);
+				model.addAttribute("totalPage",totalPage);
+				model.addAttribute("curPage", curPage);
 				model.addAttribute("list", list);
 				
 				return "user/mypage/mycart";
@@ -69,10 +74,7 @@ public class UserController {
 			LOG.info("IntCheckBox(userController) : " +intCheckBox);
 			cartService.cartDelete(intCheckBox);
 		}
-		String m_id = (String) session.getAttribute("m_id");
-		List<CartDTO> list = cartService.viewCartList(m_id);
-		model.addAttribute("list", list);
-		return "user/mypage/mycart";
+		return "redirect:../../mypage/user/mycart?page=1";
 	}
 	
 	@RequestMapping(value = "mypage/user/reservation_check")

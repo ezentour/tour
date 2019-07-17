@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ezentour.model.hotel.dto.HotelDTO;
 import com.example.ezentour.model.user.dto.CartDTO;
@@ -46,25 +47,27 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value = "hotel/detail/cart")
-	public String hotel_detail_cart(HttpServletRequest request,Model model,HttpSession session) throws ParseException {	
+	public String hotel_detail_cart(HttpServletRequest request,Model model,HttpSession session,RedirectAttributes redirectAttributes) throws ParseException {	
 		
 		String num = request.getParameter("num"); // 받아온 파라미터에 따라 페이지 변동
 		String checkInDate = request.getParameter("checkInDate"); // name으로 받아옴
 		String checkOutDate = request.getParameter("checkOutDate");
-		LOG.info("checkInDate : " + checkInDate);
 		String m_id = (String) session.getAttribute("m_id");
 		String str = request.getParameter("h_no");
 		int h_no = Integer.parseInt(str);
+		LOG.info("checkInDate : " + checkInDate);
 		
 		HotelDTO hotelDto = hotelService.viewHotel(h_no);
 		LOG.info(hotelDto.toString());
 		
 		cartService.insertCartList(hotelDto.getH_no(),m_id,checkInDate,checkOutDate);
 		
+		//1이면 장바구니이동?yes 그외 그 페이지
 		if(num.equals("1")) {
-			return "redirect:../../mypage/user/mycart";
+			return "redirect:../../mypage/user/mycart?page=1";
 		} else {
-			return "redirect:../../mypage/user/mycart";
+			 redirectAttributes.addAttribute("h_no", h_no);
+			return "redirect:../../hotel/detail.do";
 		}
 	}
 	

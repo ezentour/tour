@@ -28,20 +28,10 @@
 												|| checkOutDate.value == "") {
 											alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
 										} else if (confirm("장바구니로 이동하시겠습니까?")) {
-											document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="
-													+ $
-											{
-												hotel.h_no
-											}
-											;
+											document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="+ ${hotel.h_no};
 											document.detail.submit();
 										} else {
-											document.detail.action = "${path}/hotel/detail/cart?num=2&h_no="
-													+ $
-											{
-												hotel.h_no
-											}
-											;
+											document.detail.action = "${path}/hotel/detail/cart?num=2&h_no="+ ${hotel.h_no};
 											document.detail.submit();
 										}
 									} else {
