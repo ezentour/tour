@@ -36,8 +36,14 @@ public class BoardController {
 	
 	//게시판 글쓰기화면
 	@RequestMapping(value = "board/write.do")
-	public String bbsWrite() {
+	public String bbsWrite(HttpSession session, Model model) {
 		LOG.info("bbsWrite 시작");
+		String m_id = (String) session.getAttribute("m_id");
+	
+		if(m_id == null) {
+			model.addAttribute("msg", "로그인 해주세요.");
+			model.addAttribute("url", "member/login.do"); 
+		} 
 		return "board/board_write";
 	}
 	
@@ -81,7 +87,7 @@ public class BoardController {
 		LOG.info("update 시작");
 		boardService.updateBoard(bDto);
 		
-		return "redirect:../board/main";
+		return "redirect:../board/view.do?b_no=" + bDto.getB_no();
 	}
 	
 	//게시판 글삭제
