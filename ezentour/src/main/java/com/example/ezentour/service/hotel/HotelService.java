@@ -13,4 +13,5 @@ public interface HotelService {
 	public List<HotelDTO> listHotel(); 
 	public List<HotelDTO> Hotel_approve(String approve);
 	public void updateHotel_approve(int h_no);
+	public int selectHotel_room(int h_no);
 }

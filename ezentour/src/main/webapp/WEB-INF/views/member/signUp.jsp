@@ -76,12 +76,11 @@
 			} else if (mTel.value == "") {
 				alert("전화번호를 입력해주세요.");
 				return false;
-			} else if (mEmail.value = "") {
+			} else if (mEmail.value == "") {
 				alert("이메일을 입력해주세요.");
 				return false;
 			} else {
-				alert("회원가입이 완료되었습니다.");
-					
+				alert("회원가입이 완료되었습니다.");	
 				//document.back.submit();
 		    	//document.back.action="${path}/mypage/company/hotel_insertTwo";
 		    	//document.back.submit();
@@ -135,18 +134,21 @@
 					&nbsp;&nbsp;<span id="span-check-id"></span>
 					<span class="result-id"><span class="msg">아이디를 확인해주세요.</span></span>
 					<br><br>
-					<input type="password" name="m_password" id="m_password" class="form-control" placeholder="Password" autocomplete="off">
-					<input type="password" name="m_password2" id="m_password2" class="form-control" placeholder="Password check" autocomplete="off">
+					<input type="password" name="m_password" id="m_password" class="form-control" placeholder="Password" autocomplete="off" />
+					<input type="password" name="m_password2" id="m_password2" class="form-control" placeholder="Password Check" autocomplete="off" />
 					<button type="button" class="btn btn btn-secondary w-40 btn-sm" id="check-pwd">비밀번호 확인</button>
 					&nbsp;&nbsp;<span id="span-check-pwd">비밀번호를 확인해주세요.</span>
 					<br><br>
-					<input type="text" name="m_name" id="m_name" class="form-control" placeholder="Name" autocomplete="off">
-					<input type="text" name="m_tel" id="m_tel" class="form-control" placeholder="Tel" autocomplete="off">
-					<input type="text" name="m_email" id="m_email" class="form-control" placeholder="Email" autocomplete="off">
+					<input type="text" name="m_name" id="m_name" class="form-control" placeholder="Name" autocomplete="off" />
+					<input type="text" name="m_tel" id="m_tel" class="form-control" placeholder="Tel" autocomplete="off" />
+					<input type="text" name="m_email" id="m_email" class="form-control" placeholder="Email" autocomplete="off" />
+					<br>
 					<label class="custom-radio-button">
-					 <input type="radio" name="m_field" value="U" checked/>  <span class="helping-el"></span> <span class="label-text">일반</span> </label>	
-					 <label class="custom-radio-button">	
-					 <input type="radio" name="m_field" value="H" />  <span class="helping-el"></span> <span class="label-text">숙박업</span> </label>	
+						<input type="radio" name="m_field" value="U" checked/>  <span class="helping-el"></span> <span class="label-text">일반</span> 
+					</label>	
+					<label class="custom-radio-button">	
+						<input type="radio" name="m_field" value="H" />  <span class="helping-el"></span> <span class="label-text">숙박업</span>
+					</label>	
 					 <br><br>
 					<button type="submit" class="btn roberto-btn w-100" id="submitBtn" disabled="disabled">Join Us</button>
 				</form>

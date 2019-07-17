@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="reservation">
+	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 
+		설정하기 -->
+	<!-- 1. 호텔 정보 추출 후 장바구니에 삽입 -->
+
+	<select id="selectAll" resultType="reservationDto">
+		select * from reservation order by r_no
+	</select>
+
+	<insert id="insert">
+		insert into reservation values 
+		((select NVL(MAX(r_no)+1, 1) from reservation), #{r_m_id}, #{r_h_no},
+		TO_DATE(#{r_checkin},'dd/MM/yy'), TO_DATE(#{r_checkout},'dd/MM/yy'),
+		'N', r_room)
+	</insert>
+
+	<update id="update">
+		update reservation set r_cancel = 'Y' where r_no = #{r_no}
+	</update>
+
+	<select id="select_r_m_id" resultType="reservationDto">
+		select * from reservation where r_m_id = #{r_m_id}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+

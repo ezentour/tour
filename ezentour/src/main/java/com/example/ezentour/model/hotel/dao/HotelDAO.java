@@ -13,5 +13,6 @@ public interface HotelDAO {
 	public void deleteHotel(int h_no);
 	public List<HotelDTO> Hotel_approve(String h_approve);
 	public void updateHotel_approve(int h_no);
+	public HotelDTO selectHotel_room(int h_no);
 	
 }

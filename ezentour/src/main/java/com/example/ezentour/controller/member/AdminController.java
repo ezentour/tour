@@ -1,7 +1,10 @@
 package com.example.ezentour.controller.member;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.ezentour.model.member.dto.MemberDTO;
 import com.example.ezentour.service.hotel.HotelService;
+import com.example.ezentour.service.member.MemberService;
 
 @Controller
 public class AdminController {
@@ -20,10 +25,27 @@ public class AdminController {
 	
 	@Inject
 	HotelService hotelService;
+	
+	@Inject
+	MemberService memberService;
+
+	// 관리자가 사용자 명단 확인
 	@RequestMapping(value = "mypage/admin/user_list")
-	public String home() {		
-		return "admin/mypage/user_list";
+	public ModelAndView memberList(ModelAndView mav, HttpSession session) {
+		List<MemberDTO> mList = memberService.memberList();
+		mav.setViewName("admin/mypage/user_list");
+		mav.addObject("mList", mList);
+		return mav;
 	}
+	
+	// 관리자가 사용자 상세 페이지로 이동
+	@RequestMapping(value = "mypage/admin/user_detail")
+	public String memberDetail(@RequestParam String showM_id, Model model) {
+		LOG.info("****************** memberDetail()");
+		model.addAttribute("member", memberService.memberDetail(showM_id));
+		return "admin/mypage/user_detail";
+	}
+	
 
 	@RequestMapping(value = "mypage/admin/hotel_list_Y")
 	public ModelAndView hotellist_yes(ModelAndView mav) {		

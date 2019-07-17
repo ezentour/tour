@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <%@ include file="../../include/header.jsp"%>
@@ -53,19 +52,28 @@
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>작성 번호</td>
-								<td>제목</td>
-								<td>등록자</td>
-								<td>등록일</td>
+								<th>No</th>
+								<th>ID</th>
+								<th>이름</th>
+								<th>전화번호</th>
+								<th>유형</th>
 							</tr>
 						</thead>
 						<tbody id="list">
-							<tr>
-								<td>1</td>
-								<td>게시판은 이렇게</td>
-								<td>유상원</td>
-								<td>2019.07.04</td>
-							</tr>
+							<c:set var="cnt" value="0" />
+							<c:forEach var="row" items="${mList}">
+								<c:set var="cnt" value="${cnt + 1}"/>
+								<tr>
+									<td>${cnt}</td>
+									<td><a href="${path}/mypage/admin/user_detail?showM_id=${row.m_id}" style="color:#1CC3B2">${row.m_id}</a></td>
+									<td>${row.m_name}</td>
+									<td>${row.m_tel}</td>
+									<td>
+										<c:if test="${row.m_field eq 'H' }">숙박업체</c:if>
+										<c:if test="${row.m_field eq 'U' }">일반 사용자</c:if>
+									</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>			
