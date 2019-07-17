@@ -15,7 +15,7 @@
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h1 class="h1-title">사용자목록</h1>
+						<h1 class="h1-title">사용자 상세정보</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
@@ -70,8 +70,8 @@
 				</div>
 				<div class="col-8" >
 				<div class="welcome-text text-center">
-					<input type="button" class="btn roberto-btn w-8" value="뒤로가기" id="back" />&nbsp;&nbsp;
-					<input type="button" class="btn roberto-btn w-8" value="수정" id="update"/>&nbsp;&nbsp;
+					<button type="button" onclick="location.href='${path}/mypage/admin/user_list'" class="btn roberto-btn w-8">목록으로</button>&nbsp;&nbsp;
+					<button type="button" onclick="location.href='${path}/mypage/admin/user_update?showMID=${member.m_id}'" class="btn roberto-btn w-8">수정</button>&nbsp;&nbsp;
 					<input type="button" class="btn roberto-btn w-8" value="탈퇴" id="delete"/>
 				</div>
 			</div>

@@ -44,6 +44,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO memberDetail(String showM_id) {
 		return sqlSession.selectOne("member.member_detail", showM_id);
 	}
+	
+	// 관리자가 사용자 정보 수정
+	public void memberUpdate(MemberDTO dto) {
+		sqlSession.update("member.member_update", dto);
+	}
 
 	// 회원 가입
 	@Override

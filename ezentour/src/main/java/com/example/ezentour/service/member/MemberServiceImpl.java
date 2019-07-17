@@ -54,7 +54,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	// 관리자가 사용자 상세 정보 확인
 	public MemberDTO memberDetail(String showM_id) {
-			return memberDao.memberDetail(showM_id);
+		return memberDao.memberDetail(showM_id);
+	}
+	
+	// 관리자가 사용자 정보 수정
+	public void memberUpdate(MemberDTO dto) {
+		memberDao.memberUpdate(dto);
 	}
 	
 	// 회원 가입
