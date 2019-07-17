@@ -26,26 +26,23 @@ public class BoardServiceImple implements BoardService {
 	}
 
 	@Override
-	public BoardDTO viewBoard(String b_no) {
+	public BoardDTO viewBoard(int b_no) {
 		return bDao.viewBoard(b_no);
 	}
 
 	@Override
-	public void deleteBoard(String b_m_id) {
-		// TODO Auto-generated method stub
-
+	public void deleteBoard(int b_no) {
+		bDao.deleteBoard(b_no);
 	}
 
 	@Override
 	public void updateBoard(BoardDTO bDto) {
-		// TODO Auto-generated method stub
-
+		bDao.updateBoard(bDto);
 	}
 
 	@Override
 	public boolean checkId(String b_m_id) {
-		// TODO Auto-generated method stub
-		return false;
+		return bDao.checkId(b_m_id);
 	}
 
 }

@@ -12,8 +12,15 @@
 			document.boardView.action="${path}/board/main";
 			document.boardView.submit();
 		});
-		
-	})
+		$("#update").click(function() {
+			document.boardView.action="${path}/board/${dto.b_no}";
+			document.boardView.submit();
+		});
+		$("#delete").click(function() {
+			document.boardView.action="${path}/board/delete.do?b_no=${dto.b_no}";
+			document.boardView.submit();
+		});
+	});
 	</script>
 </head>
 <body>
@@ -68,6 +75,15 @@
 								<td id="content">${dto.b_content}</td>
 							</tr>
 						</table>
+						<div class="col-12" >
+						<div class="welcome-text text-center">
+							<c:if test="${sessionScope.m_id == dto.b_m_id}">
+							<input type="button" class="btn roberto-btn w-10" value="수정" id="update"/>
+							<input type="button" class="btn roberto-btn w-10" value="삭제" id="delete"/>
+							</c:if>
+							<input type="button" class="btn roberto-btn w-10" value="목록" id="list"/>
+						</div>
+					</div>
 					</form>
 					
 					</div>
@@ -75,14 +91,7 @@
 					</div><br><br><br>
 					<!-- Background End -->
 				
-
-					<div class="col-12" >
-						<div class="welcome-text text-center">
-							<input type="button" class="btn roberto-btn w-10" value="수정" id="cancel"/>
-							<input type="button" class="btn roberto-btn w-10" value="삭제" id="cancel"/>
-							<input type="button" class="btn roberto-btn w-10" value="목록" id="list"/>
-						</div>
-					</div>
+					
 				</div>
             </div>
         </div>

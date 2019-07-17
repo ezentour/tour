@@ -11,10 +11,13 @@ pageEncoding="UTF-8"%>
 	$(function() {
 	    $("#cancel").click(function() {
 	        if(confirm("취소하시겠습니까?")) {
-	            document.writeForm.action="${path}/board/main";
-	            document.writeForm.submit();
+	            history.back();
 	        }
 	    });
+	    $("#update").click(function() {
+	    	document.updateForm.action="${path}/board/update.do";
+	    	document.updateForm.submit();
+	    })
 	});
 	</script>
 </head>
@@ -56,19 +59,22 @@ pageEncoding="UTF-8"%>
 					<div class="row d-flex justify-content-center">
 					<div style="width:1200px;">
 					<div class="newsletter-form">    
-	
-			            <form action="${path}/board/insert.do" name="writeForm" method="post">
+				
+			            <form action="" name="updateForm" id="updateForm" method="post" enctype="multipart/form-data">
 			                <div class="form-group">
 			                    <label for="exampleFormControlInput1">제목</label>
-			                    <input type="text" class="form-control" id="exampleFormControlInput1" name="b_title" placeholder="제목을 작성해주세요.">
+			                    <input type="text" class="form-control" id="exampleFormControlInput1" name="b_title"
+			                    value="${dto.b_title}">
 			                </div>
 			                <div class="form-group">
 			                    <label for="exampleFormControlTextarea1">내용</label>
-			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="b_content" rows="10"></textarea>
+			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="b_content" rows="10">${dto.b_content}
+			                    </textarea>
 			                </div>
 			                <div class="col-12" >
 					         	<div class="welcome-text text-center">
-					            	<input type="submit" class="btn roberto-btn w-10" value="등록"/>&nbsp;
+					         		<input type="hidden" name="b_no" value="${dto.b_no}">
+					            	<input type="button" class="btn roberto-btn w-10" value="수정" id="update"/>&nbsp;
 					                <input type="button" class="btn roberto-btn w-10" value="취소" id="cancel"/>
 					            </div>
 					        </div>
