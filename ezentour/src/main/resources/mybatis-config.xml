@@ -10,6 +10,7 @@
 		<typeAlias alias="cartDto" type="com.example.ezentour.model.user.dto.CartDTO"/>
 		<typeAlias alias="hotelroomDto" type="com.example.ezentour.model.hotel.dto.HotelRoomDTO" />
 		<typeAlias alias="reservationDto" type="com.example.ezentour.model.user.dto.ReservationDTO"/>
+		<typeAlias alias="priceDto" type="com.example.ezentour.model.price.dto.PriceDTO"/>
 	</typeAliases>
 	
 </configuration>

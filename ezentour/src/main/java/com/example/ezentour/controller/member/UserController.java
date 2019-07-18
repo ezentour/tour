@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ezentour.model.hotel.dto.HotelDTO;
 import com.example.ezentour.model.hotel.dto.HotelRoomDTO;
 import com.example.ezentour.model.member.dto.MemberDTO;
+import com.example.ezentour.model.price.service.PriceService;
 import com.example.ezentour.model.user.dto.CartDTO;
 import com.example.ezentour.model.user.dto.ReservationDTO;
 import com.example.ezentour.service.hotel.HotelRoomService;
@@ -36,7 +37,7 @@ import com.example.ezentour.service.user.ReservationService;
 @Controller
 public class UserController {
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-	
+
 	@Inject
 	CartService cartService;
 	@Inject
@@ -45,7 +46,8 @@ public class UserController {
 	HotelService hotelService;
 	@Inject
 	HotelRoomService hotelroomService;
-
+	@Inject
+	PriceService priceService;
 	@Inject
 	ReservationService reservationService;
 
@@ -54,9 +56,10 @@ public class UserController {
 		String r_m_id = (String) session.getAttribute("m_id");
 		
 		List<ReservationDTO> list = reservationService.selectReservation(r_m_id);
+		
 		mav.setViewName("user/mypage/user_reservation");
 		mav.addObject("list", list);
-		
+
 		return mav;
 	}
 
@@ -65,12 +68,12 @@ public class UserController {
 		model.addAttribute("hotel", hotelService.viewHotel(h_no));
 		return "user/mypage/hotel_detail";
 	}
-	
+
 	@RequestMapping(value = "mypage/user/mycart")
-	public String myCart(Model model, HttpSession session,HttpServletRequest request) {
+	public String myCart(Model model, HttpSession session, HttpServletRequest request) {
 		String m_id = (String) session.getAttribute("m_id");
 		int curPage = Integer.parseInt(request.getParameter("page"));
-		LOG.info("curPage(UserControl) : " +curPage);
+		LOG.info("curPage(UserControl) : " + curPage);
 		int totalPage = cartService.cartListCount();
 		LOG.info("m_id Check : " + m_id);
 
@@ -82,11 +85,11 @@ public class UserController {
 
 			if ((memberDto.getM_field()).equals("U")) {
 				LOG.info("check(userController)");
-				List<CartDTO> list = cartService.viewCartList(m_id,curPage);
-				model.addAttribute("totalPage",totalPage);
+				List<CartDTO> list = cartService.viewCartList(m_id, curPage);
+				model.addAttribute("totalPage", totalPage);
 				model.addAttribute("curPage", curPage);
 				model.addAttribute("list", list);
-				
+
 				return "user/mypage/mycart";
 			}
 		}
@@ -94,26 +97,28 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "mypage/user/delete")
-	public String delete(HttpServletRequest request,HttpSession session,Model model) {
+	public String delete(HttpServletRequest request, HttpSession session, Model model) {
 		String[] checkBox = request.getParameterValues("check");
-		LOG.info("checkBox.length"+checkBox.length);
-		for(int i = 0;i<=checkBox.length-1;i++) {
+		LOG.info("checkBox.length" + checkBox.length);
+		for (int i = 0; i <= checkBox.length - 1; i++) {
 			int intCheckBox = Integer.parseInt(checkBox[i]);
-			LOG.info("IntCheckBox(userController) : " +intCheckBox);
+			LOG.info("IntCheckBox(userController) : " + intCheckBox);
 			cartService.cartDelete(intCheckBox);
 		}
 		return "redirect:../../mypage/user/mycart?page=1";
 	}
 
 	@RequestMapping(value = "mypage/user/reservation_check")
-	public ModelAndView reservation_check(HttpServletRequest request, HttpSession session, ModelAndView mav, @RequestParam int h_no) throws ParseException {
+	public ModelAndView reservation_check(HttpServletRequest request, HttpSession session, ModelAndView mav,
+			@RequestParam int h_no) throws ParseException {
+		String m_id = (String) session.getAttribute("m_id");
 		String checkInDate = request.getParameter("checkin"); // name으로 받아옴
 		String checkOutDate = request.getParameter("checkout");
 		String room = request.getParameter("r_room");
 		int r_room = Integer.parseInt(room);
 		String result = "";
 		String dateOk = "";
-		
+
 		HotelDTO hDto = hotelService.viewHotel(h_no);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("h_no", h_no);
@@ -122,31 +127,34 @@ public class UserController {
 		map.put("r_checkin", checkInDate);
 		map.put("r_checkout", checkOutDate);
 		map.put("r_room", r_room);
-		
-		
+
 		ArrayList<String> dates = dateInteval(checkInDate, checkOutDate);
-		
-		for(String date : dates) {
+
+		for (String date : dates) {
 			String check = hotelroomService.RoomCheck(h_no, date, r_room);
-			
-			if(check == null)
-				check = "true";			
-			System.out.println("check " + check );
-			
+
+			if (check == null)
+				check = "true";
+			System.out.println("check " + check);
+
 			if (check.equals("true")) {
-				if(!result.equals("예약불가"))
-					result = "예약가능";			
+				if (!result.equals("예약불가"))
+					result = "예약가능";
 			} else {
 				result = "예약불가";
 				dateOk += date + ", ";
 			}
 		}
-		
-		if(result.equals("예약불가")) {
+
+		if (result.equals("예약불가")) {
 			result += " (" + dateOk + " 방이 부족합니다.)";
 		}
-		
+
 		map.put("result", result);
+
+		ReservationDTO rDto2 = new ReservationDTO(m_id, h_no, checkInDate, checkOutDate);
+		boolean reservation = reservationService.selectReservation(rDto2);
+		map.put("check", reservation);
 		
 		mav.setViewName("/hotel/hotel_reservation");
 		mav.addObject("reservation", map);
@@ -154,40 +162,49 @@ public class UserController {
 		return mav;
 
 	}
-	
+
 	@RequestMapping(value = "mypage/user/reservation")
-	public String reservation(@ModelAttribute ReservationDTO rDto, HttpSession session, @RequestParam int r_h_no) {
+	public String reservation(@ModelAttribute ReservationDTO rDto, HttpSession session, @RequestParam int r_h_no, Model model)
+			throws ParseException {
 		String m_id = (String) session.getAttribute("m_id");
 		rDto.setR_m_id(m_id);
-		rDto.setR_h_no(r_h_no);	
-		
-		if(hotelroomService.selectone(r_h_no, rDto.getR_checkin()) > 0) {
-			LOG.info("방 개수 추가");			
-			hotelroomService.updateHotelRoom(r_h_no, rDto.getR_checkin(), rDto.getR_room());
-		} else {
-			HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, rDto.getR_checkin(), rDto.getR_room());	
-			LOG.info("hotelroom db 삽입 - " + hrDto.toString());
-			hotelroomService.insertHotelRoom(hrDto);
+		rDto.setR_h_no(r_h_no);
+
+		String checkin = rDto.getR_checkin();
+		String checkout = rDto.getR_checkout();
+
+		ReservationDTO rDto2 = new ReservationDTO(m_id, r_h_no, checkin, checkout);
+		boolean reservation = reservationService.selectReservation(rDto2);
+		System.out.println("---------------------" + reservation);
+		if (!reservation) {
+			ArrayList<String> dates = dateInteval(checkin, checkout);
+
+			for (String date : dates) {
+
+				if (hotelroomService.selectone(r_h_no, date) > 0) {
+					LOG.info("방 개수 추가");
+					hotelroomService.updateHotelRoom(r_h_no, date, rDto.getR_room());
+				} else {
+					HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, date, rDto.getR_room());
+					LOG.info("hotelroom db 삽입 - " + hrDto.toString());
+					hotelroomService.insertHotelRoom(hrDto);
+				}
+			}
+
+			reservationService.insertReservation(rDto);
+			int r_no = reservationService.selectReservation_no();
+			//priceService.insert(r_no, p_room);
+			LOG.info("reservation db 삽입 - " + rDto.toString());
+			
+			return "redirect:user_reservation";
+		} else {				
+			return "redirect:user_reservation";	
 		}
-		
-		if(hotelroomService.selectone(r_h_no, rDto.getR_checkout()) > 0) {
-			LOG.info("방 개수 추가");
-			hotelroomService.updateHotelRoom(r_h_no, rDto.getR_checkout(), rDto.getR_room());
-		} else {
-			HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, rDto.getR_checkout(), rDto.getR_room());	
-			LOG.info("hotelroom db 삽입 - " + hrDto.toString());
-			hotelroomService.insertHotelRoom(hrDto);
-		}
-		
-		reservationService.insertReservation(rDto);
-		LOG.info("reservation db 삽입 - " + rDto.toString());
-		
-		return "redirect:user_reservation";
-	
+
 	}
-	
+
 	public static ArrayList<String> dateInteval(String start, String end) throws ParseException {
-		final String DATE_PATTERN = "dd/MM/yy";	
+		final String DATE_PATTERN = "dd/MM/yy";
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
 		Date startDate = sdf.parse(start);
 		Date endDate = sdf.parse(end);
