@@ -29,8 +29,18 @@ public class BoardController {
 	BoardService boardService;
 	
 	@RequestMapping(value = "board/main")
-	public String home(Model model) {
-		List<BoardDTO> list = boardService.boardList();
+	public String home(Model model,HttpServletRequest request) {
+		String search = request.getParameter("search");
+		int curPage ;
+		if(search!=null) {
+			curPage =1;
+		}else {
+			curPage = Integer.parseInt(request.getParameter("page"));
+		}
+		int totalPage=boardService.boardCount() ;
+		List<BoardDTO> list = boardService.boardList(search,curPage);
+		LOG.info("searchCheck(BoardController) :" + search);
+		
 		model.addAttribute("list", list);
 		return "board/board_home";
 	}

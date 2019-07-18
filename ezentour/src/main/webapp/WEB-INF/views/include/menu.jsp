@@ -56,7 +56,7 @@
 								<li class="active"><a href="${path}/festival/main">축제</a></li>
 								<li><a href="${path}/tour/main">관광</a></li>
 								<li><a href="${path}/hotel/main">숙소</a></li>
-								<li><a href="${path}/board/main">자유게시판</a></li>
+								<li><a href="${path}/board/main?page=1&search= ">자유게시판</a></li>
 
 								<!-- 접속 계정에 따라 메뉴바 다르게 보이기 -->
 
