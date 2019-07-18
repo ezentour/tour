@@ -62,7 +62,7 @@
 										<tr>
 											<td><input type="checkbox" name="check" value="${row.s_no}"></td>
 											<td>${row.s_no}</td>
-											<td>${row.h_name}</td>
+											<td><a href="${path}/mypage/user/hotel_detail.do?h_no=${row.s_h_no }">${row.h_name}</a></td>
 											<td>${row.s_checkin.substring(0,10)}</td>
 											<td>${row.c_checkout.substring(0,10)}</td>
 											<td><img

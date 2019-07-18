@@ -1,6 +1,5 @@
 package com.example.ezentour.service.user;
 
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +10,7 @@ import com.example.ezentour.model.user.dao.ReservationDAO;
 import com.example.ezentour.model.user.dto.ReservationDTO;
 
 @Service
-public class ReservationServiceImpl implements ReservationDAO {
+public class ReservationServiceImpl implements ReservationService {
 	
 	@Inject
 	ReservationDAO rDao;

@@ -24,10 +24,11 @@
 					function() {
 						if (m_id != null) {
 							if ("${field}" == "U") {
-								if (checkInDate.value == ""
-										|| checkOutDate.value == "") {
+								if (checkInDate.value == ""	|| checkOutDate.value == "") {
 									alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
-								} else if (confirm("장바구니로 이동하시겠습니까?")) {
+								} else if(checkInDate.value == checkOutDate.value){
+									alert("최소 1박이상 해주셔야 합니다.");	
+								}else if (confirm("장바구니로 이동하시겠습니까?")) {
 									document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="+ ${hotel.h_no};
 									document.detail.submit();
 								} else {
@@ -42,6 +43,26 @@
 						}
 					});		
 		});
+		
+		function res_check(){
+			var checkIn = document.getElementById("checkInDate").value;
+			var checkOut = document.getElementById("checkOutDate").value;
+			if ("${field}" == "U") {
+				if(checkIn == "" || checkOut == "")
+					alert("날짜를 입력해주세요.")
+				else if(checkIn == checkOut)
+					alert("최소 1박이상 해주셔야 합니다.");			
+				else {
+					if (confirm("예약요청하시겠습니까?")) {
+						document.detail.action = "${path}/mypage/user/reservation_check?h_no=${hotel.h_no}";
+						document.detail.submit();
+					}
+				}
+			} else
+				alert("사용자만 예약가능합니다.");			
+		}
+		
+	
 	</script>
 
 
@@ -253,7 +274,7 @@
 				<div class="col-12 col-lg-4">
 					<!-- Hotel Reservation Area -->
 					<div class="hotel-reservation--area mb-100">
-						<form name="detail" method="post" action="${path}/mypage/user/reservation_check?h_no=${hotel.h_no}">
+						<form name="detail" method="post" >
 							<div class="form-group mb-30">
 								<label for="checkInDate">숙박날짜</label>
 								<div class="input-daterange" id="datepicker">
@@ -281,7 +302,8 @@
 							</div>
 							<div></div>
 							<div class="form-group">
-								<button type="submit" class="btn roberto-btn w-100">숙소 예약</button>
+								<button type="button" class="btn roberto-btn w-100" onclick="res_check()">숙소 예약</button>
+								
 							</div>
 							<div class="form-group">
 								<button type="button" class="btn roberto-btn w-100" id="cart">장바구니</button>
