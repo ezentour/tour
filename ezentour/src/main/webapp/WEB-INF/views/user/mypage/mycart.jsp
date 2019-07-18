@@ -6,15 +6,6 @@
 <head>
 <title>EzenTour</title>
 </head>
-<style>
-th{
-		font-weight:bold;
-		text-align:center;
-	}
-	td{
-		text-align:center;		
-	}
-</style>
 <body>
 
 	<%@ include file="../../include/menu.jsp"%>
@@ -58,12 +49,12 @@ th{
 							<table class="ui celled table">
 								<thead>
 									<tr>
-										<th></th>
-										<th>번호</th>
-										<th>호텔</th>
-										<th>체크인</th>
-										<th>체크아웃</th>
-										<th></th>
+										<td></td>
+										<td>번호</td>
+										<td>호텔</td>
+										<td>체크인</td>
+										<td>체크아웃</td>
+										<td></td>
 									</tr>
 								</thead>
 								<tbody>
@@ -71,13 +62,13 @@ th{
 										<tr>
 											<td><input type="checkbox" name="check" value="${row.s_no}"></td>
 											<td>${row.s_no}</td>
-											<td><a href="${path}/mypage/user/hotel_detail.do?h_no=${row.s_h_no }">${row.h_name}</a></td>
+											<td>${row.h_name}</td>
 											<td>${row.s_checkin.substring(0,10)}</td>
 											<td>${row.c_checkout.substring(0,10)}</td>
 											<td><img
 												src="${path}/resources/img/hotel-img/${row.h_img}"
 												width="70px" height="70px" />
-											</td>											
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -95,6 +86,17 @@ th{
 									</tfoot>
 						</table>
 				</form>
+					<nav class="roberto-pagination wow fadeInUp mb-100"
+							data-wow-delay="2ms">
+							<ul class="pagination">
+				<c:forEach var="i" begin="1" end="${totalPage}">
+								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${i}">${i}</a></li>
+				</c:forEach>
+								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${curPage+1}">Next
+										<i class="fa fa-angle-right"></i>
+								</a></li>
+							</ul>
+						</nav>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,7 @@
 package com.example.ezentour.model.user.dao;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,15 +33,27 @@ public class CartDAOImpl implements CartDAO {
 		sqlSession.insert("user.cart_insert",cartDto);
 	}
 	@Override
-	public List<CartDTO> viewCartList(String m_id){
-		List<CartDTO> list= sqlSession.selectList("user.cart_innerJoinView",m_id);
+	public List<CartDTO> viewCartList(String m_id,int startPage,int endPage){
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("m_id", m_id);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		LOG.info("viewCartListCheck(cartDAOImpl)"+map.get("startPage"));
+		
+		List<CartDTO> list= sqlSession.selectList("user.cart_innerJoinView",map);
 		return list;
 	}
-	
 	@Override
 	public void cartDelete(int s_no) {
 		LOG.info("deleteCheck(CartDAOImpl : " + s_no);
 		sqlSession.delete("user.cart_delete", s_no);
 	}
-
+	
+	@Override
+	public int  cartListCount() {
+		int count = sqlSession.selectOne("user.cart_count");
+		LOG.info("cartListCount(CartDAOImpl) : " + count);
+		return count; 
+	}
 }
