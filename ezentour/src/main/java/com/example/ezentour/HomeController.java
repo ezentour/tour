@@ -22,4 +22,8 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/search.do")
+	public String seach() {
+		return null;
+	}
 }

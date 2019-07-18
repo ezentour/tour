@@ -36,4 +36,18 @@ public class ReservationServiceImpl implements ReservationService {
 		return rDao.selectReservation();
 	}
 
+	@Override
+	public boolean selectReservation(ReservationDTO rDto) {
+		int count = rDao.selectReservation(rDto);
+		if(count>0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public int selectReservation_no() {		
+		return rDao.selectReservation_no();
+	}
+
 }

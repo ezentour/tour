@@ -26,6 +26,13 @@
 		select r.r_no, r.r_h_no, h.h_name, r.r_checkin, r.r_checkout, r.r_room, r.r_cancel from reservation r, hotel h where h.h_no = r.r_h_no and r.r_m_id = #{r_m_id}
 	</select>
 
+	<select id="select_myreservation" resultType="int">
+		select count(*) from reservation where r_h_no = #{r_h_no} and r_m_id = #{r_m_id} and r_checkin = TO_DATE(#{r_checkin},'dd/MM/yy') and r_checkout = TO_DATE(#{r_checkout},'dd/MM/yy')
+	</select>
+	
+	<select id="select_r_no" resultType="int">
+		SELECT r_no FROM reservation where rownum = 1 order by r_no desc
+	</select>
 </mapper>
 
 

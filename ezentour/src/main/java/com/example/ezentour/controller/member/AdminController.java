@@ -65,7 +65,18 @@ public class AdminController {
 		return "redirect:../../mypage/admin/user_detail?showM_id=" + dto.getM_id();
 	}
 	
+	// 관리자가 사용자 탈퇴시키기
+	@RequestMapping(value = "mypage/admin/user_delete") 
+	public ModelAndView memberDelete(@RequestParam String showM_id, ModelAndView mav) {
+		LOG.info("memberDelete()");
+		memberService.memberDelete(showM_id);
+		List<MemberDTO> mList = memberService.memberList();
+		mav.setViewName("admin/mypage/user_list");
+		mav.addObject("mList", mList);
+		return mav;
+	}
 
+	
 	@RequestMapping(value = "mypage/admin/hotel_list_Y")
 	public ModelAndView hotellist_yes(ModelAndView mav) {		
 		mav.setViewName("admin/mypage/hotel_list_Y");

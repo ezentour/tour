@@ -40,7 +40,7 @@
 	color: #1cc3b2;
 }
 
-	</style>
+	</style>	
 </head>
 
 <body>
