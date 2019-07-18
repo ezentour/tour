@@ -36,6 +36,7 @@ import com.example.ezentour.service.user.ReservationService;
 @Controller
 public class UserController {
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+	
 	@Inject
 	CartService cartService;
 	@Inject
@@ -44,8 +45,6 @@ public class UserController {
 	HotelService hotelService;
 	@Inject
 	HotelRoomService hotelroomService;
-	@Inject
-	ReservationService reservationService;
 
 	@RequestMapping(value = "mypage/user/main")
 	public String home() {
@@ -163,7 +162,7 @@ public class UserController {
 			//hotelroomService.insertHotelRoom(hrDto);
 		}
 		
-		reservationService.insertReservation(rDto);
+	
 	}
 	
 	public static ArrayList<String> dateInteval(String start, String end) throws ParseException {

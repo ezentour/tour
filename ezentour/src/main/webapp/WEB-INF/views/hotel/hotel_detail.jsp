@@ -44,6 +44,7 @@
 		});
 	</script>
 
+
 	<!-- Breadcrumb Area Start -->
 	<div class="breadcrumb-area bg-img bg-overlay jarallax"
 		style="background-image: url(${path}/resources/img/bg-img/16.jpg);">
