@@ -52,8 +52,11 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "mypage/user/mycart")
-	public String myCart(Model model, HttpSession session) {
+	public String myCart(Model model, HttpSession session,HttpServletRequest request) {
 		String m_id = (String) session.getAttribute("m_id");
+		int curPage = Integer.parseInt(request.getParameter("page"));
+		LOG.info("curPage(UserControl) : " +curPage);
+		int totalPage = cartService.cartListCount();
 		LOG.info("m_id Check : " + m_id);
 
 		if (m_id == null) {
@@ -64,9 +67,11 @@ public class UserController {
 
 			if ((memberDto.getM_field()).equals("U")) {
 				LOG.info("check(userController)");
-				List<CartDTO> list = cartService.viewCartList(m_id);
+				List<CartDTO> list = cartService.viewCartList(m_id,curPage);
+				model.addAttribute("totalPage",totalPage);
+				model.addAttribute("curPage", curPage);
 				model.addAttribute("list", list);
-
+				
 				return "user/mypage/mycart";
 			}
 		}
@@ -74,18 +79,15 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "mypage/user/delete")
-	public String delete(HttpServletRequest request, HttpSession session, Model model) {
+	public String delete(HttpServletRequest request,HttpSession session,Model model) {
 		String[] checkBox = request.getParameterValues("check");
-		LOG.info("checkBox.length" + checkBox.length);
-		for (int i = 0; i <= checkBox.length - 1; i++) {
+		LOG.info("checkBox.length"+checkBox.length);
+		for(int i = 0;i<=checkBox.length-1;i++) {
 			int intCheckBox = Integer.parseInt(checkBox[i]);
-			LOG.info("IntCheckBox(userController) : " + intCheckBox);
+			LOG.info("IntCheckBox(userController) : " +intCheckBox);
 			cartService.cartDelete(intCheckBox);
 		}
-		String m_id = (String) session.getAttribute("m_id");
-		List<CartDTO> list = cartService.viewCartList(m_id);
-		model.addAttribute("list", list);
-		return "user/mypage/mycart";
+		return "redirect:../../mypage/user/mycart?page=1";
 	}
 
 	@RequestMapping(value = "mypage/user/reservation_check")

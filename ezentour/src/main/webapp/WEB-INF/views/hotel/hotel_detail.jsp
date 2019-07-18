@@ -20,38 +20,27 @@
 			var r_room = document.getElementById("r_room");
 
 			$("#cart")
-					.click(
-							function() {
-								if (m_id != null) {
-									if ("${field}" == "U") {
-										if (checkInDate.value == ""
-												|| checkOutDate.value == "") {
-											alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
-										} else if (confirm("장바구니로 이동하시겠습니까?")) {
-											document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="
-													+ $
-											{
-												hotel.h_no
-											}
-											;
-											document.detail.submit();
-										} else {
-											document.detail.action = "${path}/hotel/detail/cart?num=2&h_no="
-													+ $
-											{
-												hotel.h_no
-											}
-											;
-											document.detail.submit();
-										}
-									} else {
-										alert("사용자만 이용할 수 있습니다.");
-									}
+			.click(
+					function() {
+						if (m_id != null) {
+							if ("${field}" == "U") {
+								if (checkInDate.value == ""
+										|| checkOutDate.value == "") {
+									alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
+								} else if (confirm("장바구니로 이동하시겠습니까?")) {
+									document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="+ ${hotel.h_no};
+									document.detail.submit();
 								} else {
-									alert("로그인하세요");
+									document.detail.action = "${path}/hotel/detail/cart?num=2&h_no="+ ${hotel.h_no};
+									document.detail.submit();
 								}
-							});			
-				
+							} else {
+								alert("사용자만 이용할 수 있습니다.");
+							}
+						} else {
+							alert("로그인하세요");
+						}
+					});		
 		});
 	</script>
 

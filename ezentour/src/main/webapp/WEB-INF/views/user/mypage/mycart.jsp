@@ -86,6 +86,17 @@
 									</tfoot>
 						</table>
 				</form>
+					<nav class="roberto-pagination wow fadeInUp mb-100"
+							data-wow-delay="2ms">
+							<ul class="pagination">
+				<c:forEach var="i" begin="1" end="${totalPage}">
+								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${i}">${i}</a></li>
+				</c:forEach>
+								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${curPage+1}">Next
+										<i class="fa fa-angle-right"></i>
+								</a></li>
+							</ul>
+						</nav>
 			</div>
 		</div>
 	</div>
