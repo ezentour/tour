@@ -64,7 +64,7 @@
 									<!-- 일반 사용자 메뉴바 -->
 									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
-											<li><a href="${path}/mypage/user/main">- 예약 내역</a></li>
+											<li><a href="${path}/mypage/user/user_reservation">- 예약 내역</a></li>
 											<li><a href="${path}/mypage/user/mycart">- 장바구니</a></li>
 										</ul></li>
 								</c:if>

@@ -8,17 +8,17 @@
 	<!-- 1. 호텔 정보 추출 후 장바구니에 삽입 -->
 	<select id="selectone" resultType="int">
 		select count(*) from
-		hotel_room where hr_h_no = #{hr_h_no} and hr_date = #{hr_date}
+		hotel_room where hr_h_no = #{hr_h_no} and hr_date = TO_DATE(#{hr_date},'dd/MM/yy')
 	</select>
 
 	<insert id="hotelroom_insert">
 		insert into hotel_room values (#{hr_h_no},
-		TO_DATE('#{hr_date}','dd/MM/yy'), #{hr_room})
+		TO_DATE(#{hr_date},'dd/MM/yy'), #{hr_room})
 	</insert>
 
 	<update id="hotelroom_update">
 		update hotel_room set hr_room = hr_room + #{hr_room}
-		where hr_h_no = #{hr_h_no} and hr_date = #{hr_date}
+		where hr_h_no = #{hr_h_no} and hr_date = TO_DATE(#{hr_date},'dd/MM/yy')
 	</update>
 
 	<select id="roomcheck" resultType="String">

@@ -15,7 +15,7 @@
 		insert into reservation values 
 		((select NVL(MAX(r_no)+1, 1) from reservation), #{r_m_id}, #{r_h_no},
 		TO_DATE(#{r_checkin},'dd/MM/yy'), TO_DATE(#{r_checkout},'dd/MM/yy'),
-		'N', r_room)
+		'N', #{r_room})
 	</insert>
 
 	<update id="update">
@@ -23,7 +23,7 @@
 	</update>
 
 	<select id="select_r_m_id" resultType="reservationDto">
-		select * from reservation where r_m_id = #{r_m_id}
+		select r.r_no, r.r_h_no, h.h_name, r.r_checkin, r.r_checkout, r.r_room, r.r_cancel from reservation r, hotel h where h.h_no = r.r_h_no and r.r_m_id = #{r_m_id}
 	</select>
 
 </mapper>

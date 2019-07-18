@@ -18,7 +18,7 @@
 	<!-- 3.장바구니 뷰 -->
 	<select id="cart_innerJoinView" resultType="cartDto">
 		select 
-		shopping_carts.s_no,hotel.h_name,shopping_carts.s_checkin,
+		shopping_carts.s_no, shopping_carts.s_h_no, hotel.h_name,shopping_carts.s_checkin,
 		shopping_carts.c_checkout,hotel.h_img,member.m_id,hotel.h_no  
 		from shopping_carts
 		inner join hotel

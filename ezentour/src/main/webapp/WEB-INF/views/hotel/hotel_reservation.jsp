@@ -25,6 +25,15 @@
 			location.href='${path}/hotel/main';
 	}
 	
+	function reservation(){		
+		if(${reservation.result == '예약불가능'}){		
+			alert("예약불가입니다.");
+		} else {
+			if(confirm("예약확정하시겠습니까?"))
+				document.form1.submit();
+		}
+	}
+	
 	</script>
 	
 </head>
@@ -67,7 +76,7 @@
 					[예약요청]<input type="text" name="r_check"  class="form-control" autocomplete="off"  value="${reservation.result}" readonly="readonly" style="color:red; font-weight:bold">
 					<br>
 					<div align=center>
-						<button type="submit" class="btn roberto-btn w-40">예약확정</button>
+						<button type="button" class="btn roberto-btn w-40"  onclick="reservation()">예약확정</button>
 						<button type="button" class="btn roberto-btn w-40" onclick="cancel()">예약취소</button>
 					</div>
 				</form>
