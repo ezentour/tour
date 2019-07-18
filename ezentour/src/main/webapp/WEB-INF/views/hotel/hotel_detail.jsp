@@ -18,61 +18,29 @@
 			var checkOutDate = document.getElementById("checkOutDate");
 			var m_id = document.getElementById("m_id"); //menu get
 			var r_room = document.getElementById("r_room");
-
 			$("#cart")
-					.click(
-							function() {
-								if (m_id != null) {
-									if ("${field}" == "U") {
-										if (checkInDate.value == "" || checkOutDate.value == "") {
-											alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
-										} else if (checkInDate.value == checkOutDate.value){
-												alert("최소 1박이상 해주셔야 합니다.");												
-										} else if (confirm("장바구니로 이동하시겠습니까?")) {
-											document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="
-													+ $
-											{
-												hotel.h_no
-											}
-											;
-											document.detail.submit();
-										} else {
-											document.detail.action = "${path}/hotel/detail/cart?num=2&h_no="
-													+ $
-											{
-												hotel.h_no
-											}
-											;
-											document.detail.submit();
-										}
-									} else {
-										alert("사용자만 이용할 수 있습니다.");
-									}
+			.click(
+					function() {
+						if (m_id != null) {
+							if ("${field}" == "U") {
+								if (checkInDate.value == ""
+										|| checkOutDate.value == "") {
+									alert("CheckIn 날짜와CheckOut 날짜를 설정해주세요.");
+								} else if (confirm("장바구니로 이동하시겠습니까?")) {
+									document.detail.action = "${path}/hotel/detail/cart?num=1&h_no="+ ${hotel.h_no};
+									document.detail.submit();
 								} else {
-									alert("로그인하세요");
+									document.detail.action = "${path}/hotel/detail/cart?num=2&h_no="+ ${hotel.h_no};
+									document.detail.submit();
 								}
-							});			
-				
+							} else {
+								alert("사용자만 이용할 수 있습니다.");
+							}
+						} else {
+							alert("로그인하세요");
+						}
+					});		
 		});
-		
-		function res_check(){
-			var checkIn = document.getElementById("checkInDate").value;
-			var checkOut = document.getElementById("checkOutDate").value;
-			if ("${field}" == "U") {
-				if(checkIn == "" || checkOut == "")
-					alert("날자를 입력해주세요.")
-				else if(checkIn == checkOut)
-					alert("최소 1박이상 해주셔야 합니다.");			
-				else {
-					if (confirm("예약요청하시겠습니까?")) {
-						document.detail.action = "${path}/mypage/user/reservation_check?h_no=${hotel.h_no}";
-						document.detail.submit();
-					}
-				}
-			} else
-				alert("사용자만 예약가능합니다.");			
-		}
-		
 	</script>
 
 
@@ -159,34 +127,27 @@
 								level : 3
 							// 지도의 확대 레벨
 							};
-
 							// 지도를 생성합니다    
 							var map = new kakao.maps.Map(mapContainer,
 									mapOption);
-
 							// 주소-좌표 변환 객체를 생성합니다
 							var geocoder = new kakao.maps.services.Geocoder();
-
 							// 주소로 좌표를 검색합니다
 							geocoder
 									.addressSearch(
 											'${hotel.h_address}',
 											function(result, status) {
-
 												// 정상적으로 검색이 완료됐으면 
 												if (status === kakao.maps.services.Status.OK) {
-
 													var coords = new kakao.maps.LatLng(
 															result[0].y,
 															result[0].x);
-
 													// 결과값으로 받은 위치를 마커로 표시합니다
 													var marker = new kakao.maps.Marker(
 															{
 																map : map,
 																position : coords
 															});
-
 													// 인포윈도우로 장소에 대한 설명을 표시합니다
 													var infowindow = new kakao.maps.InfoWindow(
 															{
@@ -194,7 +155,6 @@
 															});
 													infowindow
 															.open(map, marker);
-
 													// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 													map.setCenter(coords);
 												}
@@ -284,7 +244,7 @@
 				<div class="col-12 col-lg-4">
 					<!-- Hotel Reservation Area -->
 					<div class="hotel-reservation--area mb-100">
-						<form name="detail" method="post">
+						<form name="detail" method="post" action="${path}/mypage/user/reservation_check?h_no=${hotel.h_no}">
 							<div class="form-group mb-30">
 								<label for="checkInDate">숙박날짜</label>
 								<div class="input-daterange" id="datepicker">
@@ -312,7 +272,7 @@
 							</div>
 							<div></div>
 							<div class="form-group">
-								<button type="button" class="btn roberto-btn w-100" onclick="res_check()">숙소 예약</button>
+								<button type="submit" class="btn roberto-btn w-100">숙소 예약</button>
 							</div>
 							<div class="form-group">
 								<button type="button" class="btn roberto-btn w-100" id="cart">장바구니</button>
@@ -336,4 +296,3 @@
 </body>
 
 </html>
-
