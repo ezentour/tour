@@ -5,6 +5,14 @@
 <%@ include file="include/header.jsp"%>
 <head>
     <title>EzenTour</title>
+    <script>
+    $(function() {
+		$("#search").click(function() {
+			document.searchForm.action="";
+			document.searchForm.submit();
+		});
+    });
+    </script>
 </head>
 <!-- bootstrap 위치 지정 : https://getbootstrap.com/docs/4.0/utilities/flex/ -->
 <body>
@@ -80,17 +88,17 @@
         <div class="hotel-search-form-area">
             <div class="container-fluid">
                 <div class="hotel-search-form">
-                    <form action="#" method="post">
+                    <form action="" name="searchForm" method="post">
                         <div class="row justify-content-between align-items-end">
                         	<div class="col-6 col-md-2">
                                 <label for="">지역</label>
                                 <select name="" id="" class="form-control">
                                     <option value="a">서울</option>
-                                    <option value="b">경기</option>
-                                    <option value="03">충남/충북</option>
-                                    <option value="04">전남/전북</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
+                                    <option value="b">경기/인천</option>
+                                    <option value="03">충남/충북/대전</option>
+                                    <option value="04">전남/전북/광주</option>
+                                    <option value="05">경남/경북</option>
+                                    <option value="06">부산/대구/울산</option>
                                 </select>
                             </div>
                             <div class="col-6 col-md-2 col-lg-3">
@@ -123,21 +131,10 @@
                                     <option value="type-r">리조트/콘도</option>
                                 </select>
                             </div>
-                            <!-- <div class="col-4 col-md-2 col-lg-1">
-                                <label for="children">Children</label>
-                                <select name="children" id="children" class="form-control">
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                </select>
-                            </div>  -->
                             </div>
                             <div class="row d-flex justify-content-center">
                             <div class="col-12 col-md-3">
-                                <button type="submit" class="form-control btn roberto-btn w-100">Check Availability</button>
+                                <button type="submit" class="form-control btn roberto-btn w-100" id="search">검색하기</button>
                             </div>
                         </div>
                     </form>
