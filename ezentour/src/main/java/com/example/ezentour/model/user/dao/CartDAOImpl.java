@@ -44,7 +44,6 @@ public class CartDAOImpl implements CartDAO {
 		List<CartDTO> list= sqlSession.selectList("user.cart_innerJoinView",map);
 		return list;
 	}
-	
 	@Override
 	public void cartDelete(int s_no) {
 		LOG.info("deleteCheck(CartDAOImpl : " + s_no);

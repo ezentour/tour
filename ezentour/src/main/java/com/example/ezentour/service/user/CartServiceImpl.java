@@ -34,7 +34,6 @@ public class CartServiceImpl implements CartService {
 		
 		return cartDao.viewCartList(m_id,startPage,endPage);
 	}
-	
 	public void cartDelete(int s_no) {
 		LOG.info("s_noCheck(CartService) :" +s_no);
 		cartDao.cartDelete(s_no);

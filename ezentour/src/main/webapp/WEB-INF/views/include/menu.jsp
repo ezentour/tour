@@ -65,21 +65,18 @@
 									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
 											<li><a href="${path}/mypage/user/main">- 예약 내역</a></li>
-											<li><a href="${path}/mypage/user/mycart?page=1">- 장바구니</a></li>
+											<li><a href="${path}/mypage/user/mycart">- 장바구니</a></li>
 										</ul></li>
 								</c:if>
 								<!-- 관리자 메뉴바 -->
 								<c:if test="${m_field == 'A'}">
 									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
-											<li><a href="${path}/mypage/admin/user_list">- 사용자
-													목록</a></li>
+											<li><a href="${path}/mypage/admin/user_list">- 사용자 목록</a></li>
 											<li><a href="#">- 숙박업체 목록</a>
 												<ul class="dropdown">
-													<li><a href="${path}/mypage/admin/hotel_list_N">-
-															승인 대기</a></li>
-													<li><a href="${path}/mypage/admin/hotel_list_Y">-
-															승인 목록</a></li>
+													<li><a href="${path}/mypage/admin/hotel_list_N">- 승인 대기</a></li>
+													<li><a href="${path}/mypage/admin/hotel_list_Y">- 승인 목록</a></li>
 												</ul></li>
 										</ul></li>
 								</c:if>
@@ -88,10 +85,8 @@
 									<!-- 숙박업체 메뉴바 -->
 									<li><a href="#">마이페이지</a>
 										<ul class="dropdown">
-											<li><a href="${path}/mypage/company/hotel_list.do">-
-													숙소 목록 및 등록</a></li>
-											<li><a href="${path}/mypage/company/reservation">-
-													예약 내역</a></li>
+											<li><a href="${path}/mypage/company/hotel_list.do">- 숙소 목록 및 등록</a></li>
+											<li><a href="${path}/mypage/company/reservation">- 예약 내역</a></li>
 										</ul></li>
 								</c:if>
 							</ul>

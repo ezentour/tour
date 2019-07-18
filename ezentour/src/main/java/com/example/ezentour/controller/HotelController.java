@@ -47,7 +47,7 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value = "hotel/detail/cart")
-	public String hotel_detail_cart(HttpServletRequest request,Model model,HttpSession session,RedirectAttributes redirectAttributes) throws ParseException {	
+public String hotel_detail_cart(HttpServletRequest request,Model model,HttpSession session,RedirectAttributes redirectAttributes) throws ParseException {	
 		
 		String num = request.getParameter("num"); // 받아온 파라미터에 따라 페이지 변동
 		String checkInDate = request.getParameter("checkInDate"); // name으로 받아옴

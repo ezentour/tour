@@ -59,7 +59,9 @@
 						</div>
 					</div>
 					</c:forEach>
-				</div>
+
+					
+
 					<!-- Pagination -->
 					<nav class="roberto-pagination wow fadeInUp mb-100"
 						data-wow-delay="1000ms">
@@ -72,7 +74,7 @@
 							</a></li>
 						</ul>
 					</nav>
-				
+				</div>
 
 				<div class="col-12 col-lg-4">
 					<!-- Hotel Reservation Area -->
