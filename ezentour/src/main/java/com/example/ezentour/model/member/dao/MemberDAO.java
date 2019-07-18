@@ -17,6 +17,9 @@ public interface MemberDAO {
 	// 관리자가 사용자 정보 수정
 	public void memberUpdate(MemberDTO dto);
 	
+	// 관리자가 사용자 탈퇴시키기
+	public void memberDelete(String showM_id);
+	
 	// 회원 가입
 	public void register(MemberDTO dto) throws Exception;
 	
