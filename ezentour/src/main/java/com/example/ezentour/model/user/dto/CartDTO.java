@@ -9,6 +9,7 @@ public class CartDTO {
 	private String h_name;
 	private String h_img;
 	private String m_id;
+	private int h_no;
 	
 	public CartDTO() {}
 	
@@ -98,6 +99,14 @@ public class CartDTO {
 	public String toString() {
 		return "CartDTO [s_no=" + s_no + ", s_h_no=" + s_h_no + ", s_m_id=" + s_m_id + ", s_checkin=" + s_checkin
 				+ ", c_checkout=" + c_checkout + ", h_name=" + h_name + ", h_img=" + h_img + ", m_id=" + m_id + "]";
+	}
+
+	public int getH_no() {
+		return h_no;
+	}
+
+	public void setH_no(int h_no) {
+		this.h_no = h_no;
 	}
 
 }

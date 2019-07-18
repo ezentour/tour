@@ -50,8 +50,8 @@ public class HotelController {
 	public String hotel_detail_cart(HttpServletRequest request,Model model,HttpSession session,RedirectAttributes redirectAttributes) throws ParseException {	
 		
 		String num = request.getParameter("num"); // 받아온 파라미터에 따라 페이지 변동
-		String checkInDate = request.getParameter("checkInDate"); // name으로 받아옴
-		String checkOutDate = request.getParameter("checkOutDate");
+		String checkInDate = request.getParameter("checkin"); // name으로 받아옴
+		String checkOutDate = request.getParameter("checkout");
 		String m_id = (String) session.getAttribute("m_id");
 		String str = request.getParameter("h_no");
 		int h_no = Integer.parseInt(str);

@@ -46,11 +46,26 @@ public class UserController {
 	@Inject
 	HotelRoomService hotelroomService;
 
-	@RequestMapping(value = "mypage/user/main")
-	public String home() {
-		return "user/mypage/user_home";
+	@Inject
+	ReservationService reservationService;
+
+	@RequestMapping(value = "mypage/user/user_reservation")
+	public ModelAndView userMain(HttpSession session, ModelAndView mav) {
+		String r_m_id = (String) session.getAttribute("m_id");
+		
+		List<ReservationDTO> list = reservationService.selectReservation(r_m_id);
+		mav.setViewName("user/mypage/user_reservation");
+		mav.addObject("list", list);
+		
+		return mav;
 	}
 
+	@RequestMapping(value = "mypage/user/hotel_detail.do")
+	public String hotel_list_detail(@RequestParam int h_no, Model model) {
+		model.addAttribute("hotel", hotelService.viewHotel(h_no));
+		return "user/mypage/hotel_detail";
+	}
+	
 	@RequestMapping(value = "mypage/user/mycart")
 	public String myCart(Model model, HttpSession session,HttpServletRequest request) {
 		String m_id = (String) session.getAttribute("m_id");
@@ -141,27 +156,33 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "mypage/user/reservation")
-	public void reservation(@ModelAttribute ReservationDTO rDto, HttpSession session, @RequestParam int r_h_no) {
+	public String reservation(@ModelAttribute ReservationDTO rDto, HttpSession session, @RequestParam int r_h_no) {
 		String m_id = (String) session.getAttribute("m_id");
 		rDto.setR_m_id(m_id);
 		rDto.setR_h_no(r_h_no);	
 		
 		if(hotelroomService.selectone(r_h_no, rDto.getR_checkin()) > 0) {
+			LOG.info("방 개수 추가");			
 			hotelroomService.updateHotelRoom(r_h_no, rDto.getR_checkin(), rDto.getR_room());
 		} else {
 			HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, rDto.getR_checkin(), rDto.getR_room());	
-			System.out.println(hrDto.toString());
-			//hotelroomService.insertHotelRoom(hrDto);
+			LOG.info("hotelroom db 삽입 - " + hrDto.toString());
+			hotelroomService.insertHotelRoom(hrDto);
 		}
 		
 		if(hotelroomService.selectone(r_h_no, rDto.getR_checkout()) > 0) {
+			LOG.info("방 개수 추가");
 			hotelroomService.updateHotelRoom(r_h_no, rDto.getR_checkout(), rDto.getR_room());
 		} else {
 			HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, rDto.getR_checkout(), rDto.getR_room());	
-			System.out.println(hrDto.toString());
-			//hotelroomService.insertHotelRoom(hrDto);
+			LOG.info("hotelroom db 삽입 - " + hrDto.toString());
+			hotelroomService.insertHotelRoom(hrDto);
 		}
 		
+		reservationService.insertReservation(rDto);
+		LOG.info("reservation db 삽입 - " + rDto.toString());
+		
+		return "redirect:user_reservation";
 	
 	}
 	
