@@ -50,8 +50,8 @@
                      <div class="col-12 col-sm-8 col-lg-4 float-right">
                         <div class="single-footer-widget mb-80">
 							<!-- Newsletter Form -->
-                   	 		<form action="#" class="nl-form">
-                    			<input type="text" class="form-control" placeholder="Search">
+                   	 		<form action="${path}/board/main?page=1" class="nl-form">
+                    			<input type="text" class="form-control" name="search"  placeholder="Search">
                     			<button type="submit">
                     				<i class="fa fa-search" aria-hidden="true"></i>
                     			</button>
@@ -88,6 +88,18 @@
 						<a href="${path}/board/write.do" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms" id="write">글쓰기</a>
 					</div>
 				</div>
+				<nav class="roberto-pagination wow fadeInUp mb-100"
+							data-wow-delay="2ms">
+							<ul class="pagination">
+				<c:forEach var="i" begin="1" end="${totalPage}">
+								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${i}">${i}</a></li>
+				</c:forEach>
+								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${curPage+1}">Next
+										<i class="fa fa-angle-right"></i>
+								</a></li>
+							</ul>
+						</nav>
+				
             </div>
         </div>
     </div>
