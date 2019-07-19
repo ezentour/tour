@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ezentour.model.member.dto.MemberDTO;
-import com.example.ezentour.model.price.dto.PriceDTO;
-import com.example.ezentour.model.price.service.PriceService;
 import com.example.ezentour.service.hotel.HotelService;
 import com.example.ezentour.service.member.MemberService;
 
@@ -31,9 +29,6 @@ public class AdminController {
 	
 	@Inject
 	MemberService memberService;
-	
-	@Inject
-	PriceService priceService;
 
 	// 관리자가 사용자 명단 확인
 	@RequestMapping(value = "mypage/admin/user_list")
@@ -112,24 +107,5 @@ public class AdminController {
 	public String delete(@RequestParam int h_no) {
 		hotelService.deleteHotel(h_no);		
 		return "redirect:hotel_list_N";
-	}
-	
-	@RequestMapping(value = "mypage/admin/grossprofit")
-	public ModelAndView grossprofit(ModelAndView mav) {
-		List<PriceDTO> list = priceService.selectAll();
-		mav.setViewName("admin/mypage/grossprofit");
-		mav.addObject("list",list);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value = "mypage/admin/grossprofit_detail")
-	public ModelAndView grossprofit_detail(ModelAndView mav, @RequestParam int p_r_no) {
-		List<PriceDTO> list = priceService.select_detail(p_r_no);
-		mav.setViewName("admin/mypage/grossprofit_detail");
-		mav.addObject("list",list);
-		mav.addObject("p_r_no", p_r_no);
-		mav.addObject("total",priceService.select_total(p_r_no));
-		return mav;
 	}
 }

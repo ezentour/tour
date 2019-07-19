@@ -17,7 +17,7 @@
 	.roberto-btn4 {
 	position: relative;
 	z-index: 1;
-	width: 80px;
+	width: 50px;
 	height: 30px;
 	/*font-weight: 500;*/
 	display: inline-block;
@@ -32,33 +32,7 @@
 	transition-duration: 500ms;
 }
 
-	.roberto-btn5 {
-	position: relative;
-	z-index: 1;
-	width: 80px;
-	height: 30px;
-	/*font-weight: 500;*/
-	display: inline-block;
-	text-align: center;
-	text-transform: capitalize;
-	background-color: #1cc3b2;
-	color: #ffffff;
-	border: none;
-	border-radius: 2px;
-	-webkit-transition-duration: 500ms;
-	-o-transition-duration: 500ms;
-	transition-duration: 500ms;
-}
-
 .roberto-btn4:focus, .roberto-btn4:hover {
-	font-weight: 500;
-	-webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
-	box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
-	background-color: #ffffff;
-	color: #C8041F;
-}
-
-.roberto-btn5:focus, .roberto-btn5:hover {
 	font-weight: 500;
 	-webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
 	box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
@@ -110,7 +84,6 @@
 								<th>체크인</th>
 								<th>체크아웃</th>
 								<th>방 개수</th>
-								<th>결제금액</th>
 								<th>취소여부</th>
 								<th>예약취소</th>
 							</tr>							
@@ -123,20 +96,24 @@
 									<td>${row.r_checkin.substring(0,10) }</td>		
 									<td>${row.r_checkout.substring(0,10) }</td>	
 									<td>${row.r_room }</td>	
-									<td>${row.r_price }</td>
 									<c:if test="${row.r_cancel == 'N' }">
 									<td style="color:red"> ${row.r_cancel }</td>	
-									<td><button type="button" class="roberto-btn4"
-											onclick="location.href ='${path}/mypage/user/reservation_cancel?r_no=${row.r_no }'">예약취소</button></td>	
 									</c:if>
 									<c:if test="${row.r_cancel == 'Y' }">
 									<td style="color:blue">	${row.r_cancel }</td>	
-									<td><button type="button" class="roberto-btn5"
-											onclick="alert('취소신청하셨습니다.')">취소완료</button></td>	
 									</c:if>
+										
+									<td><button type="button" class="roberto-btn4"
+											onclick="approve('${path}/mypage/admin/hotel_approve_update?h_no=${row.r_h_no }')">취소</button></td>		
 								</tr>
 							</c:forEach>						</tbody>
 					</table>
+				</div>
+
+				<div class="col-12" >
+					<div class="welcome-text text-center">
+						<a href="#" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">글쓰기</a>
+					</div>
 				</div>
             </div>
         </div>

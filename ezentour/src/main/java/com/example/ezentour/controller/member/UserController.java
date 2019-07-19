@@ -192,11 +192,8 @@ public class UserController {
 			}
 
 			reservationService.insertReservation(rDto);
-			
 			int r_no = reservationService.selectReservation_no();
-			int p_room = reservationService.selectReservation_money(r_no);
-			priceService.insert(r_no, p_room);
-			
+			//priceService.insert(r_no, p_room);
 			LOG.info("reservation db 삽입 - " + rDto.toString());
 			
 			return "redirect:user_reservation";
@@ -205,31 +202,7 @@ public class UserController {
 		}
 
 	}
-	
-	@RequestMapping(value = "mypage/user/reservation_cancel")
-	public String reservation_cancel_view(@RequestParam int r_no, Model model) throws ParseException {
-		ReservationDTO rDto = reservationService.select_reservation_cancel(r_no);
-		String result = cancel_condition(rDto.getR_checkin());
-		model.addAttribute("result", result);
-		model.addAttribute("reservation", rDto);
-		return "user/mypage/reservation_cancel";
-	}
-	
-	@RequestMapping(value = "mypage/user/reservation_cancel.do")
-	public String reservation_cancel(@RequestParam int r_price, @RequestParam int r_no, @RequestParam String r_check) {
-		reservationService.updateReservation(r_no);
-		int p_room = -r_price;		
-		
-		if(r_check.equals("취소가능 : 50% 환불")) {
-			p_room = p_room/2;
-			priceService.insert(r_no, p_room);	
-		} else
-			priceService.insert(r_no, p_room);	
-		
-		return "redirect:user_reservation";
-	}
-	
-	
+
 	public static ArrayList<String> dateInteval(String start, String end) throws ParseException {
 		final String DATE_PATTERN = "dd/MM/yy";
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
@@ -249,47 +222,5 @@ public class UserController {
 		}
 
 		return dates;
-	}
-	
-	//체크인 취소여부
-	public static String cancel_condition(String checkin) throws ParseException {
-		checkin = checkin.substring(0,10);
-		final String DATE_PATTERN = "yyyy-MM-dd";
-		String result = "";
-		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-		Date date = sdf.parse(checkin);
-		Calendar c = Calendar.getInstance(); // 체크인날짜
-		c.setTime(date);
-		
-		Calendar current = Calendar.getInstance();
-		/*SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yy");
-		String datetime1 = sdf1.format(current.getTime());
-		System.out.println("--> " + datetime1);
-		System.out.println(current);*/	
-		
-		Calendar c7 = Calendar.getInstance(); // 체크인 일주일전
-		c7.setTime(date);
-		c7.add(Calendar.DATE, -6);
-		//String date7 = sdf.format(c7.getTime());
-		//System.out.println("일주일전 : " + date7);
-
-		Calendar c1 = Calendar.getInstance(); // 체크인 하루전, 당일
-		c1.setTime(date);
-		c1.add(Calendar.DATE, -1);
-		//String date1 = sdf.format(c1.getTime());
-		//System.out.println("하루전 : " + date1);
-
-		if (current.compareTo(c7) < 0) {
-			System.out.println("일주일전 100% 환불");
-			result = "취소가능 : 100% 환불";
-		} else if (current.compareTo(c7) >= 0 && current.compareTo(c1) < 0) {
-			System.out.println("2~6일 100% 환불");
-			result = "취소가능 : 50% 환불";
-		} else {
-			System.out.println("당일과 하루전");
-			result = "취소불가";
-		}
-
-		return result;
 	}
 }
