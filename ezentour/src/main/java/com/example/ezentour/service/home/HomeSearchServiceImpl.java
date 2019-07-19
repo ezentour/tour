@@ -13,11 +13,11 @@ import com.example.ezentour.model.home.dto.HomeSearchDTO;
 public class HomeSearchServiceImpl implements HomeSearchService {
 
 	@Inject
-	HomeSearchDAO hsDao;
+	HomeSearchDAO hDao;
 	
 	@Override
-	public List<HomeSearchDTO> select(String h_address) {
-		return null;
+	public List<HomeSearchDTO> list(String h_address, String checkin, String checkout, int hr_room, String h_type) {
+		return hDao.list(h_address, checkin, checkout, hr_room, h_type);
 	}
 
 }
