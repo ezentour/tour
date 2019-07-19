@@ -2,8 +2,6 @@ package com.example.ezentour.controller;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,14 +12,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ezentour.model.hotel.dto.HotelDTO;
-import com.example.ezentour.model.user.dto.CartDTO;
+import com.example.ezentour.service.hotel.HotelReviewService;
 import com.example.ezentour.service.hotel.HotelService;
 import com.example.ezentour.service.member.MemberService;
 import com.example.ezentour.service.user.CartService;
@@ -35,6 +32,8 @@ public class HotelController {
 	CartService cartService;
 	@Inject
 	MemberService memberService;
+	@Inject
+	HotelReviewService hotelReviewService;
 	
 	@RequestMapping(value = "hotel/main")
 	public ModelAndView hotel_home(ModelAndView mav) {		
@@ -73,11 +72,16 @@ public class HotelController {
 	
 	@RequestMapping(value="hotel/detail.do")
 	public String hotel_list_detail(@RequestParam int h_no, Model model,HttpSession sesstion) {
+		// 호텔 정보
 		model.addAttribute("hotel", hotelService.viewHotel(h_no));
+		// 호텔 리뷰 정보
+		model.addAttribute("reviewList", hotelReviewService.listReview(h_no));
+		
 		String m_id = (String) sesstion.getAttribute("m_id");
-		if(m_id!=null) {
-		model.addAttribute("field", memberService.viewMember(m_id).getM_field());
+		if(m_id != null) {
+			model.addAttribute("field", memberService.viewMember(m_id).getM_field());
+			return "hotel/hotel_detail";
+		} 
 		return "hotel/hotel_detail";
-		} return "hotel/hotel_detail";
 	}
 }

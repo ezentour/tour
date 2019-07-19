@@ -31,8 +31,7 @@
 				<nav class="classy-navbar justify-content-between" id="robertoNav">
 
 					<!-- Logo -->
-					<a class="nav-brand" href="${path}"><img
-						src="${path}/resources/img/core-img/ezenlogo.png" alt=""></a>
+					<a class="nav-brand" href="${path}"><img src="${path}/resources/img/core-img/ezenlogo.png" alt=""></a>
 
 					<!-- Navbar Toggler -->
 					<div class="classy-navbar-toggler">
@@ -108,8 +107,6 @@
 							</div>
 
 						</div>
-
-
 
 						<!-- Nav End -->
 					</div>

@@ -52,8 +52,7 @@
 							<div class="room-feature">
 								<h6>
 									숙소종류 <span>${row.h_type }</span>
-								</h6>													
-														
+								</h6>		
 							</div>
 							<a href="${path}/hotel/detail.do?h_no=${row.h_no}" class="btn view-detail-btn">View	Details <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 						</div>

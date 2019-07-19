@@ -198,77 +198,34 @@
 						<h4>Room Review</h4>
 
 						<!-- Single Review Area -->
+						<c:forEach var="row" items="${reviewList}">
 						<div class="single-room-review-area d-flex align-items-center">
-							<div class="reviwer-thumbnail">
-								<img src="${path}/resources/img/bg-img/53.jpg" alt="">
-							</div>
 							<div class="reviwer-content">
-								<div
-									class="reviwer-title-rating d-flex align-items-center justify-content-between">
+								<div class="reviwer-title-rating d-flex align-items-center justify-content-between">
 									<div class="reviwer-title">
-										<span>27 Aug 2019</span>
-										<h6>Brandon Kelley</h6>
+										<span>${row.hre_date.substring(0,11)}</span>
+										<h6>${row.hre_m_id}</h6>
 									</div>
+									<div style="visibility: hidden;">
+										Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, con
+									</div>	
 									<div class="reviwer-rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
+										<c:forEach begin="1" end="${row.hre_score}" varStatus="status">
+											<!-- <i class="fa fa-star-o"></i>-->
+											<i class="fa fa-star"></i>
+										</c:forEach>
 									</div>
 								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor
-									sit amet, consectetur, adipisci velit, sed quia non numquam
-									eius modi tempora.</p>
+								<p>${row.hre_comment}</p>
 							</div>
 						</div>
+						</c:forEach>
 
-						<!-- Single Review Area -->
 						<div class="single-room-review-area d-flex align-items-center">
-							<div class="reviwer-thumbnail">
-								<img src="${path}/resources/img/bg-img/54.jpg" alt="">
-							</div>
-							<div class="reviwer-content">
-								<div
-									class="reviwer-title-rating d-flex align-items-center justify-content-between">
-									<div class="reviwer-title">
-										<span>27 Aug 2019</span>
-										<h6>Sounron Masha</h6>
-									</div>
-									<div class="reviwer-rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor
-									sit amet, consectetur, adipisci velit, sed quia non numquam
-									eius modi tempora.</p>
-							</div>
+							<div class="welcome-text text-center">
+					           	<input type="button" class="btn roberto-btn w-10" value="리뷰 작성하기"/>&nbsp;
+					        </div>
 						</div>
-
-						<!-- Single Review Area -->
-						<div class="single-room-review-area d-flex align-items-center">
-							<div class="reviwer-thumbnail">
-								<img src="${path}/resources/img/bg-img/55.jpg" alt="">
-							</div>
-							<div class="reviwer-content">
-								<div
-									class="reviwer-title-rating d-flex align-items-center justify-content-between">
-									<div class="reviwer-title">
-										<span>27 Aug 2019</span>
-										<h6>Amada Lyly</h6>
-									</div>
-									<div class="reviwer-rating">
-										<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-											class="fa fa-star"></i>
-									</div>
-								</div>
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor
-									sit amet, consectetur, adipisci velit, sed quia non numquam
-									eius modi tempora.</p>
-							</div>
-						</div>
-
 					</div>
 				</div>
 				<div class="col-12 col-lg-4">
