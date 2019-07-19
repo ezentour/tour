@@ -8,7 +8,7 @@
     <script>
     $(function() {
 		$("#search").click(function() {
-			document.searchForm.action="";
+			document.searchForm.action="${path}/search.do";
 			document.searchForm.submit();
 		});
     });
@@ -92,13 +92,13 @@
                         <div class="row justify-content-between align-items-end">
                         	<div class="col-6 col-md-2">
                                 <label for="">지역</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="a">서울</option>
-                                    <option value="b">경기/인천</option>
-                                    <option value="03">충남/충북/대전</option>
-                                    <option value="04">전남/전북/광주</option>
-                                    <option value="05">경남/경북</option>
-                                    <option value="06">부산/대구/울산</option>
+                                <select name="region" id="" class="form-control">
+                                    <option value="서울">서울</option>
+                                    <option value="경기/인천">경기/인천</option>
+                                    <option value="충청/대전">충청/대전</option>
+                                    <option value="전라/광주">전라/광주</option>
+                                    <option value="경상">경상</option>
+                                    <option value="부산/대구/울산">부산/대구/울산</option>
                                 </select>
                             </div>
                             <div class="col-6 col-md-2 col-lg-3">
@@ -113,22 +113,21 @@
                             <div class="col-4 col-md-2">
                                 <label for="room">Room</label>
                                 <select name="room" id="room" class="form-control">
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
                                 </select>
                             </div>
                             <div class="col-4 col-md-2">
                                 <label for="hotel-type">숙소</label>
                                 <select name="hotel-type" id="hotel-type" class="form-control">
-                                    <option value="type-h">호텔</option>
-                                    <option value="type-f">팬션</option>
-                                    <option value="type-g">게스트하우스</option>
-                                    <option value="type-m">모텔</option>
-                                    <option value="type-r">리조트/콘도</option>
+                                    <option value="호텔">호텔</option>
+                                    <option value="팬션">팬션</option>
+                                    <option value="게스트하우스">게스트하우스</option>
+                                    <option value="리조트/콘도">리조트/콘도</option>
                                 </select>
                             </div>
                             </div>
