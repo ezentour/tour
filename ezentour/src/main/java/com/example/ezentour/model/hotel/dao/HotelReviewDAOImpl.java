@@ -19,4 +19,10 @@ public class HotelReviewDAOImpl implements HotelReviewDAO {
 	public List<HotelReviewDTO> listReview(int h_no) {
 		return sqlSession.selectList("review.review_list", h_no);
 	}
+	
+	@Override
+	public void insertReview(HotelReviewDTO hreDto) {
+		sqlSession.insert("review.review_insert", hreDto);
+	}
+	
 }

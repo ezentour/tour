@@ -10,7 +10,11 @@
 		select * from hotel_review where hre_h_no=#{h_no} order by hre_date
 	</select>
 	
-
+	<!-- 2. 호텔 리뷰 작성 완료 버튼 클릭 -->
+	<insert id="review_insert">
+		insert into hotel_review
+		 values((select NVL(MAX(hre_no)+1, 1) from hotel_review), #{hre_h_no}, #{m_id}, #{hre_comment}, #{hre_score}, sysdate)
+	</insert>
 </mapper>
 
 

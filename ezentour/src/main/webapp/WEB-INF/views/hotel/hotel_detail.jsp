@@ -210,9 +210,15 @@
 										Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, con
 									</div>	
 									<div class="reviwer-rating">
-										<c:forEach begin="1" end="${row.hre_score}" varStatus="status">
-											<!-- <i class="fa fa-star-o"></i>-->
-											<i class="fa fa-star"></i>
+									<c:set var="cnt" value="0" />
+										<c:forEach begin="1" end="5" varStatus="status">
+											<c:set var="cnt" value="${cnt + 1}"/>
+											<c:if test="${cnt > row.hre_score}">
+												<i class="fa fa-star-o"></i>
+											</c:if>
+											<c:if test="${cnt <= row.hre_score}">
+												<i class="fa fa-star"></i>
+											</c:if>
 										</c:forEach>
 									</div>
 								</div>
@@ -223,8 +229,8 @@
 
 						<div class="single-room-review-area d-flex align-items-center">
 							<div class="welcome-text text-center">
-					           	<input type="button" class="btn roberto-btn w-10" value="리뷰 작성하기"/>&nbsp;
-					        </div>
+								<a href="${path}/hotel/hotel_review_write.do?h_no=${hotel.h_no}" class="btn roberto-btn mt-10">리뷰 작성하기</a>
+							</div>
 						</div>
 					</div>
 				</div>

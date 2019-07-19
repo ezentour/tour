@@ -73,8 +73,8 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 	 @RequestMapping(value = "member/register", method = RequestMethod.POST)
 	 public String postRegister(MemberDTO dto) throws Exception {
 		 LOG.info("post resister");
-		 LOG.info("*************************************** " + dto.getM_email());
 		 memberService.register(dto);
+		 LOG.info("dto" + dto.toString());
 		 return "redirect:/";
 	 }
 		

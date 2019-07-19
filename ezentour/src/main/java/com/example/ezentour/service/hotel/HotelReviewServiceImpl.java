@@ -18,4 +18,9 @@ public class HotelReviewServiceImpl implements HotelReviewService {
 	public List<HotelReviewDTO> listReview(int h_no) {
 		return hotelReviewDao.listReview(h_no);
 	}
+	
+	@Override
+	public void insertReview(HotelReviewDTO hreDto) {
+		hotelReviewDao.insertReview(hreDto);
+	}
 }
