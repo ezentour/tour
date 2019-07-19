@@ -38,13 +38,13 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 	public String colorPick(){
 		ArrayList<String> color = new ArrayList<String>();
 		
-		color.add(1,"bg-primary");
-		color.add(2,"bg-success");
-		color.add(3,"bg-info");
-		color.add(4,"bg-warning");
-		color.add(5,"bg-danger");
+		color.add("bg-primary");
+		color.add("bg-success");
+		color.add("bg-info");
+		color.add("bg-warning");
+		color.add("bg-danger");
 		
-		randomNum = (int)((Math.random()*5)+1);
+		randomNum = (int) (Math.random() * 5);
 		randomColor = color.get(randomNum);
 		
 		LOG.info("randomColorCheck(boardCommentServiceImpl) : " +randomColor);
