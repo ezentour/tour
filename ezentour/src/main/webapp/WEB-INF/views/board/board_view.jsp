@@ -9,7 +9,7 @@
 	<script>
 	$(function() {
 		$("#list").click(function() {
-			document.boardView.action="${path}/board/main";
+			document.boardView.action="${path}/board/main?page=1";
 			document.boardView.submit();
 		});
 		$("#update").click(function() {
@@ -20,8 +20,14 @@
 			document.boardView.action="${path}/board/delete.do?b_no=${dto.b_no}";
 			document.boardView.submit();
 		});
+		$("#comment").click(function() {
+			document.boardView.action="${path}/board/comment.do";
+			document.boardView.submit();
+		});
 	});
 	</script>
+	
+
 </head>
 <body>
 
@@ -85,13 +91,30 @@
 						</div>
 					</div>
 					</form>
-					
+					<br>
+						<table >
+							<tr >
+								<td class="bg-warning"><div>1</div></td>
+							</tr>
+							<tr>
+								<td class = "bg-info"><div>2</div></td>
+							</tr>
+						</table>
+						<br><br>
+					<form action="" name="updateForm" id="updateForm" method="post" enctype="multipart/form-data">
+			                <div class="form-group">
+			                    <label for="exampleFormControlInput1"><b>댓글...</b></label>
+			                </div>
+			                <div class="form-group">
+			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3">
+			                    </textarea>
+			                    <input type="button" class="btn btn-info" value="등록" id="comment" style="float: right"/>&nbsp;
+			                </div>
+			            </form>
 					</div>
 					</div>
 					</div><br><br><br>
 					<!-- Background End -->
-				
-					
 				</div>
             </div>
         </div>
