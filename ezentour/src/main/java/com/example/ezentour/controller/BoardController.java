@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.ezentour.model.board.dto.BoardCommentDTO;
 import com.example.ezentour.model.board.dto.BoardDTO;
+import com.example.ezentour.service.board.BoardCommentService;
 import com.example.ezentour.service.board.BoardService;
 
 @Controller
@@ -27,6 +29,8 @@ public class BoardController {
 	
 	@Inject
 	BoardService boardService;
+	@Inject
+	BoardCommentService bCommentService;
 	
 	//검색
 	@RequestMapping(value="board/search")
@@ -121,12 +125,20 @@ public class BoardController {
 		return "redirect:../board/main?page=1";
 	}
 	
-	//댓글 삽입
+	//댓글 삽입 & view
 	@RequestMapping(value="board/comment.do")
-	public String comment(HttpServletRequest request) {
-		String comment = request.getParameter("comment");
+	public String comment(Model model,HttpServletRequest request,HttpSession session) {
+		String c_content = request.getParameter("c_content");
+		int c_b_no = Integer.parseInt(request.getParameter("c_b_no"));
+		String c_m_id= (String) session.getAttribute("m_id");
+		LOG.info("checkBoardController : " + c_content +" , " + c_b_no+", " +c_m_id);
 		
-		return "";
+		bCommentService.commetInsert(c_m_id, c_content, c_b_no);
+		List <BoardCommentDTO> list = bCommentService.commentList();
+		String randomColor = bCommentService.colorPick();
+		model.addAttribute("list",list);
+		model.addAttribute("randomColor",randomColor);
+		return "redirect:../board/view.do?b_no="+c_b_no;
 		
 	}
 	

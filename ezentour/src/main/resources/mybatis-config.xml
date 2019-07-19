@@ -9,9 +9,11 @@
 		<typeAlias alias="boardDto" type="com.example.ezentour.model.board.dto.BoardDTO"/>
 		<typeAlias alias="cartDto" type="com.example.ezentour.model.user.dto.CartDTO"/>
 		<typeAlias alias="hotelroomDto" type="com.example.ezentour.model.hotel.dto.HotelRoomDTO" />
+		<typeAlias alias="hotelReviewDto" type="com.example.ezentour.model.hotel.dto.HotelReviewDTO" />
 		<typeAlias alias="reservationDto" type="com.example.ezentour.model.user.dto.ReservationDTO"/>
 		<typeAlias alias="priceDto" type="com.example.ezentour.model.price.dto.PriceDTO"/>
 		<typeAlias alias="HomeSearchDto" type="com.example.ezentour.model.home.dto.HomeSearchDTO"/>
+		<typeAlias alias="commentDto" type="com.example.ezentour.model.board.dto.BoardCommentDTO"/>
 	</typeAliases>
 	
 </configuration>

@@ -47,4 +47,14 @@ public class ReservationDAOImpl implements ReservationDAO {
 		return sqlSession.selectOne("reservation.select_r_no");
 	}
 
+	@Override
+	public int selectReservation_money(int r_no) {
+		return sqlSession.selectOne("reservation.select_reservation_money", r_no);
+	}
+
+	@Override
+	public ReservationDTO select_reservation_cancel(int r_no) {		
+		return sqlSession.selectOne("select_reservation_cancel", r_no);
+	}
+
 }

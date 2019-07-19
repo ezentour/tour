@@ -50,4 +50,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return rDao.selectReservation_no();
 	}
 
+	@Override
+	public int selectReservation_money(int r_no) {		
+		return rDao.selectReservation_money(r_no);
+	}
+
+	@Override
+	public ReservationDTO select_reservation_cancel(int r_no) {		
+		return rDao.select_reservation_cancel(r_no);
+	}
+
 }

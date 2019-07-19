@@ -20,10 +20,7 @@
 			document.boardView.action="${path}/board/delete.do?b_no=${dto.b_no}";
 			document.boardView.submit();
 		});
-		$("#comment").click(function() {
-			document.boardView.action="${path}/board/comment.do";
-			document.boardView.submit();
-		});
+		
 	});
 	</script>
 	
@@ -93,22 +90,21 @@
 					</form>
 					<br>
 						<table >
-							<tr >
-								<td class="bg-warning"><div>1</div></td>
-							</tr>
-							<tr>
-								<td class = "bg-info"><div>2</div></td>
-							</tr>
+							<c:forEach var="row" items="${list}">
+								<tr class="bg-primary" >
+									<td>${row.c_regdate}  ${row.c_m_id}  : ${row.c_content}</td>
+								</tr>
+							</c:forEach>			
 						</table>
 						<br><br>
-					<form action="" name="updateForm" id="updateForm" method="post" enctype="multipart/form-data">
+					<form action="${path}/board/comment.do?c_b_no=${dto.b_no}" name="updateForm" id="updateForm" method="post" enctype="multipart/form-data">
 			                <div class="form-group">
 			                    <label for="exampleFormControlInput1"><b>댓글...</b></label>
 			                </div>
 			                <div class="form-group">
-			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3">
+			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="c_content" rows="3">
 			                    </textarea>
-			                    <input type="button" class="btn btn-info" value="등록" id="comment" style="float: right"/>&nbsp;
+			                    <button type="submit" class="btn btn-info" id="comment" style="float: right">등록</button>&nbsp;
 			                </div>
 			            </form>
 					</div>
