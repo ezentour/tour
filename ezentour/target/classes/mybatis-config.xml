@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 별칭(alias) 부여 -->
+	<typeAliases>
+		<typeAlias alias="memberDto" type="com.example.ezentour.model.member.dto.MemberDTO" />
+		<typeAlias alias="hotelDto" type="com.example.ezentour.model.hotel.dto.HotelDTO" />
+		<typeAlias alias="boardDto" type="com.example.ezentour.model.board.dto.BoardDTO"/>
+		<typeAlias alias="cartDto" type="com.example.ezentour.model.user.dto.CartDTO"/>
+		<typeAlias alias="hotelroomDto" type="com.example.ezentour.model.hotel.dto.HotelRoomDTO" />
+		<typeAlias alias="hotelReviewDto" type="com.example.ezentour.model.hotel.dto.HotelReviewDTO" />
+		<typeAlias alias="reservationDto" type="com.example.ezentour.model.user.dto.ReservationDTO"/>
+		<typeAlias alias="priceDto" type="com.example.ezentour.model.price.dto.PriceDTO"/>
+	</typeAliases>
+	
+</configuration>
+

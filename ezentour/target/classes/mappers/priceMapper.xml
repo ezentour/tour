@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="price">
+	<insert id="insert" >
+		insert into price
+		values((select NVL(MAX(p_no)+1, 1) from price), #{p_r_no}, #{p_room}*0.1,#{p_room}*0.9,#{p_room})
+	</insert>
+	
+	<select id="selectAll" resultType="priceDto">
+		select p_r_no, sum(p_admin) as p_admin from price group by p_r_no order by p_r_no
+	</select>
+	
+	
+	<select id="select_detail" resultType="priceDto">
+		select * from price where p_r_no = #{p_r_no} order by p_no
+	</select>
+	
+	<select id="select_total" resultType="priceDto">
+		select sum(p_room) as p_room, sum(p_admin) as p_admin, sum(p_hostel) as p_hostel from price where p_r_no = #{p_r_no} group by p_r_no 
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+

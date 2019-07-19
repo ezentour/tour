@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
+	<!-- 1. 로그인 여부 확인하기 -->
+	<select id="login_check" parameterType="memberDto" resultType="String" >
+		select m_name from member
+		where m_id=#{m_id} and m_password=#{m_password}
+	</select>
+	
+	<!-- 2. 아이디 검색하기 -->
+	<select id="viewMember" resultType="memberDto">
+		select * from member where m_id=#{m_id}
+	</select>
+	
+	<!-- 3. 아이디 중복여부 확인하기 -->
+	<!--<select id="idCheck" resultType="memberDto">
+		select m_id from member where m_id=#{m_id}
+	</select>
+	-->
+	
+	<!-- 3. 아이디 중복여부 확인하기 -->
+	<select id="checkid" parameterType="memberDto" resultType="java.lang.Integer">
+		select NVL(COUNT(*),0) from member where m_id=#{m_id}
+	</select>
+
+	<!-- 4. 회원 가입 -->
+	<insert id="register">
+		insert into member(m_id, m_password, m_name, m_tel, m_email, m_field)
+		 values(#{m_id}, #{m_password}, #{m_name}, #{m_tel}, #{m_email}, #{m_field})
+	</insert>
+	
+	<!-- 5. 관리자가 사용자 명단 확인 -->
+	<select id="member_list" resultType="memberDto">
+		select * from member where m_id != 'admin'
+	</select>
+	
+	<!-- 6. 관리자가 사용자 상세 정보 확인 -->
+	<select id="member_detail" resultType="memberDto">
+		select * from member where m_id = #{showM_id}
+	</select>
+	
+	<!-- 7. 관리자가 사용자 정보 수정 -->
+	<update id="member_update">
+		update member
+		set m_name=#{m_name}, m_tel=#{m_tel}, m_email=#{m_email}
+		where m_id=#{m_id}
+	</update>
+	
+	<!-- 8. 관리자가 사용자 탈퇴시키기 -->
+	<delete id="member_delete">
+		delete from member where m_id=#{showM_id}
+	</delete>
+
+
+</mapper>
+
+
+
+
+
+
+

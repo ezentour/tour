@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="reservation">
+	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 
+		설정하기 -->
+	<!-- 1. 호텔 정보 추출 후 장바구니에 삽입 -->
+
+	<select id="selectAll" resultType="reservationDto">
+		select * from reservation order by r_no
+	</select>
+
+	<insert id="insert">
+		insert into reservation values 
+		((select NVL(MAX(r_no)+1, 1) from reservation), #{r_m_id}, #{r_h_no},
+		TO_DATE(#{r_checkin},'dd/MM/yy'), TO_DATE(#{r_checkout},'dd/MM/yy'),
+		'N', #{r_room})
+	</insert>
+
+	<update id="update">
+		update reservation set r_cancel = 'Y' where r_no = #{r_no}
+	</update>
+
+	<select id="select_r_m_id" resultType="reservationDto">
+		select r.r_no, r.r_h_no, h.h_name, r.r_checkin, r.r_checkout, r.r_room, (r.r_room * h.h_price) as r_price, r.r_cancel from reservation r, hotel h where h.h_no = r.r_h_no and r.r_m_id = #{r_m_id} order by r.r_no
+	</select>
+
+	<select id="select_myreservation" resultType="int">
+		select count(*) from reservation where r_h_no = #{r_h_no} and r_m_id = #{r_m_id} and r_checkin = TO_DATE(#{r_checkin},'dd/MM/yy') and r_checkout = TO_DATE(#{r_checkout},'dd/MM/yy')
+	</select>
+	
+	<select id="select_r_no" resultType="int">
+		SELECT r_no FROM reservation where rownum = 1 order by r_no desc
+	</select>
+	
+	<select id="select_reservation_cancel" resultType="reservationDto">
+		select  r.r_no, r.r_h_no, h.h_name, r.r_checkin, r.r_checkout, r.r_room, (r.r_room * h.h_price) as r_price, r.r_cancel from reservation r, hotel h where h.h_no = r.r_h_no and r.r_no = #{r_no}
+	</select>
+	
+	<select id="select_reservation_money" resultType="int">
+		select r.r_room*h.h_price as p_room from hotel h, reservation r where h.h_no = r.r_h_no and r.r_no = #{r_no}
+	</select>
+</mapper>
+
+
+
+
+
+
+
