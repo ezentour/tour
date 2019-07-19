@@ -78,6 +78,7 @@
 													<li><a href="${path}/mypage/admin/hotel_list_N">- 승인 대기</a></li>
 													<li><a href="${path}/mypage/admin/hotel_list_Y">- 승인 목록</a></li>
 												</ul></li>
+												<li><a href="${path}/mypage/admin/grossprofit">- 매출액 관리</a></li>
 										</ul></li>
 								</c:if>
 

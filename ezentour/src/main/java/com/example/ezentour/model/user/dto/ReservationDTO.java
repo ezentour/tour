@@ -9,6 +9,8 @@ public class ReservationDTO {
 	private String r_cancel;
 	private int r_room;
 	private String h_name;
+	private int r_price;	
+	
 
 	public ReservationDTO() {
 		super();
@@ -104,6 +106,14 @@ public class ReservationDTO {
 	public String toString() {
 		return "ReservationDTO [r_no=" + r_no + ", r_m_id=" + r_m_id + ", r_h_no=" + r_h_no + ", r_checkin=" + r_checkin
 				+ ", r_checkout=" + r_checkout + ", r_cancel=" + r_cancel + ", r_room=" + r_room + "]";
+	}
+
+	public int getR_price() {
+		return r_price;
+	}
+
+	public void setR_price(int r_price) {
+		this.r_price = r_price;
 	}
 
 }
