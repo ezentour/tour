@@ -28,19 +28,21 @@ public class BoardController {
 	@Inject
 	BoardService boardService;
 	
+	@RequestMapping(value="board/search")
+	public String search(Model model,HttpServletRequest request) {
+		String search = request.getParameter("search");
+		List<BoardDTO> list = boardService.boardSearch(search);
+		return "board/board_home";
+	}
+	
 	@RequestMapping(value = "board/main")
 	public String home(Model model,HttpServletRequest request) {
-		String search = request.getParameter("search");
-		int curPage ;
-		if(search!=null) {
-			curPage =1;
-		}else {
-			curPage = Integer.parseInt(request.getParameter("page"));
-		}
+		int curPage = Integer.parseInt(request.getParameter("page"));
 		int totalPage=boardService.boardCount() ;
-		List<BoardDTO> list = boardService.boardList(search,curPage);
-		LOG.info("searchCheck(BoardController) :" + search);
+		List<BoardDTO> list = boardService.boardList(curPage);
 		
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("curPage", curPage);
 		model.addAttribute("list", list);
 		return "board/board_home";
 	}
@@ -82,7 +84,7 @@ public class BoardController {
 		
 		boardService.insertBoard(bDto);
 		
-		return "redirect:../board/main";
+		return "redirect:../board/main?page=1";
 	}
 	
 	//게시판 수정화면
@@ -114,7 +116,7 @@ public class BoardController {
 		LOG.info("****************" + bno);
 
 		boardService.deleteBoard(bno);
-		return "redirect:../board/main";
+		return "redirect:../board/main?page=1";
 		
 	}
 	

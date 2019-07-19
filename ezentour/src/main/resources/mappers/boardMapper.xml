@@ -12,13 +12,16 @@
 					select rownum as rnum, A.b_no, A.b_title, A.b_content, A.b_m_id, A.b_regdate
 						from (
 							select b_no, b_title, b_content, b_m_id, b_regdate from board
-							where b_m_id is not null or b_m_id like '%'||#{search}||'%'
 							order by b_no desc ) A
 				where rownum <= #{endPage} ) X
-			where rownum >= #{startPage}
+			where X.rnum >= #{startPage}
 		]]>
 	</select>
 	
+	<select id="boardSearch" resultType="boardDto">
+	select * from board
+     where b_m_id like '%'||#{search}||'%' order by b_no desc
+	</select>
 	<!-- 2. 게시판 상세화면 -->
 	<select id="boardView" resultType="boardDto">
 		select * from board where b_no=#{b_no}

@@ -50,7 +50,7 @@
                      <div class="col-12 col-sm-8 col-lg-4 float-right">
                         <div class="single-footer-widget mb-80">
 							<!-- Newsletter Form -->
-                   	 		<form action="${path}/board/main?page=1" class="nl-form">
+                   	 		<form action="${path}/board/search" class="nl-form">
                     			<input type="text" class="form-control" name="search"  placeholder="Search">
                     			<button type="submit">
                     				<i class="fa fa-search" aria-hidden="true"></i>
@@ -92,9 +92,9 @@
 							data-wow-delay="2ms">
 							<ul class="pagination">
 				<c:forEach var="i" begin="1" end="${totalPage}">
-								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${i}">${i}</a></li>
+								<li class="page-item"><a class="page-link" href="${path}/board/main?page=${i}">${i}</a></li>
 				</c:forEach>
-								<li class="page-item"><a class="page-link" href="${path}/mypage/user/mycart?page=${curPage+1}">Next
+								<li class="page-item"><a class="page-link" href="${path}/board/main?page=${curPage+1}">Next
 										<i class="fa fa-angle-right"></i>
 								</a></li>
 							</ul>

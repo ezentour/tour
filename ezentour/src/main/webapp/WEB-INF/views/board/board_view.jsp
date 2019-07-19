@@ -9,7 +9,7 @@
 	<script>
 	$(function() {
 		$("#list").click(function() {
-			document.boardView.action="${path}/board/main";
+			document.boardView.action="${path}/board/main?page=1";
 			document.boardView.submit();
 		});
 		$("#update").click(function() {
