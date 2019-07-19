@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
 	$(function() {
 	    $("#cancel").click(function() {
 	        if(confirm("취소하시겠습니까?")) {
-	            document.writeForm.action="${path}/board/main";
+	            document.writeForm.action="${path}/board/main?page=1";
 	            document.writeForm.submit();
 	        }
 	    });
