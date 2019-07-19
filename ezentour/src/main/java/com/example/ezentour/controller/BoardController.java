@@ -28,10 +28,12 @@ public class BoardController {
 	@Inject
 	BoardService boardService;
 	
+	//검색
 	@RequestMapping(value="board/search")
 	public String search(Model model,HttpServletRequest request) {
 		String search = request.getParameter("search");
 		List<BoardDTO> list = boardService.boardSearch(search);
+		model.addAttribute("list", list);
 		return "board/board_home";
 	}
 	
@@ -117,6 +119,14 @@ public class BoardController {
 
 		boardService.deleteBoard(bno);
 		return "redirect:../board/main?page=1";
+	}
+	
+	//댓글 삽입
+	@RequestMapping(value="board/comment.do")
+	public String comment(HttpServletRequest request) {
+		String comment = request.getParameter("comment");
+		
+		return "";
 		
 	}
 	
