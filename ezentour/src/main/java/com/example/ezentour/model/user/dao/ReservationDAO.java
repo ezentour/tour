@@ -11,4 +11,6 @@ public interface ReservationDAO {
 	public List<ReservationDTO> selectReservation();
 	public int selectReservation(ReservationDTO rDto);
 	public int selectReservation_no();
+	public int selectReservation_money(int r_no);
+	public ReservationDTO select_reservation_cancel(int r_no);
 }
