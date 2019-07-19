@@ -22,10 +22,14 @@ public class BoardDAOImpl implements BoardDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardDTO> boardList(String search,int startPage, int endPage ) {
+	public List<BoardDTO> boardSearch(String search){
+		List<BoardDTO> list= sqlSession.selectList("board.boardSearch",search);
+		return list;
+	}
+	@Override
+	public List<BoardDTO> boardList(int startPage, int endPage ) {
 		HashMap<String, Object> map = new HashMap<>();
 		
-		map.put("search", search);
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);
 		LOG.info("BoardListCheck(boardDAOImpl)"+map.get("startPage"));

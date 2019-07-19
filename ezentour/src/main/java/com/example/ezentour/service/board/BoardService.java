@@ -5,7 +5,8 @@ import java.util.List;
 import com.example.ezentour.model.board.dto.BoardDTO;
 
 public interface BoardService {
-	public List<BoardDTO> boardList(String search,int curPage);
+	public List<BoardDTO> boardList(int curPage);
+	public List<BoardDTO> boardSearch(String search);
 	public void insertBoard(BoardDTO bDto);
 	public BoardDTO viewBoard(int b_no);
 	public void deleteBoard(int b_no);

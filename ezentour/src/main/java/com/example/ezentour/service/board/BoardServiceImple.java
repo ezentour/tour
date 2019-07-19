@@ -19,14 +19,18 @@ public class BoardServiceImple implements BoardService {
 	BoardDAO bDao;
 	
 	@Override
-	public List<BoardDTO> boardList(String search,int curPage) {
+	public List<BoardDTO> boardSearch(String search){
+		return bDao.boardSearch(search);
+	}
+	@Override
+	public List<BoardDTO> boardList(int curPage) {
 		int startPage = 0;
 		int endPage = 0;
 		
 		startPage = 5*curPage-4;
 		endPage = 5*curPage;
 		
-		return bDao.boardList(search,startPage,endPage);
+		return bDao.boardList(startPage,endPage);
 	}
 	
 	@Override
