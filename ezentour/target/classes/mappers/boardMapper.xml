@@ -17,7 +17,7 @@
 			where X.rnum >= #{startPage}
 		]]>
 	</select>
-	
+	<!-- 검색 -->
 	<select id="boardSearch" resultType="boardDto">
 	select * from board
      where b_m_id like '%'||#{search}||'%' order by b_no desc
@@ -53,5 +53,17 @@
 	<select id="count" resultType="java.lang.Integer">
 	select count(*)
 	from board
+	</select>
+	
+	<!-- 댓글 삽입 -->
+	
+	<insert id="comment_insert">
+	insert into comment_board 
+	values ((select NVL(MAX(c_no)+1, 1) from comment_board), #{c_m_id}, #{c_content}, #{c_b_no}, sysdate)
+	</insert>
+	
+	<!-- 댓글 view -->
+	<select id="comment_view" resultType="commentDto" >
+		select * from comment_board
 	</select>
 </mapper>
