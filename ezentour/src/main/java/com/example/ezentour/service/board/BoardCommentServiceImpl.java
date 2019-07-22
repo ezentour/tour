@@ -38,10 +38,4 @@ public class BoardCommentServiceImpl implements BoardCommentService {
 		bCommentDao.commentDelete(c_no);
 	}
 	
-	@Override
-	public boolean deleteAuthority(String sessionId, String commentId) {
-		if(sessionId.equals(commentId)) {
-			return true;
-		}else return false;
-	}
 }

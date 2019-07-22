@@ -145,24 +145,11 @@ public class BoardController {
 		
 		//댓글 삭제
 		@RequestMapping(value="board/commentDelete")
-		public String commentDelete(HttpServletRequest request,HttpServletResponse response, HttpSession session) throws IOException {
+		public String commentDelete(HttpServletRequest request) throws IOException {
 			int c_no = Integer.parseInt(request.getParameter("c_no"));
 			int c_b_no = Integer.parseInt(request.getParameter("c_b_no"));
-			String commentId = request.getParameter("c_m_id");
-			String sessionId = (String) session.getAttribute("m_id");
-			LOG.info("Check(BoardController) : " + c_no+"," +c_b_no+", " +commentId+", " +sessionId);
 			
-			boolean result = bCommentService.deleteAuthority(sessionId, commentId);
-			LOG.info("authorityCheck : " + result);
-			
-			if(result==false) {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('권한이 없습니다.'); </script>");
-				out.flush();
-			} else {
-				bCommentService.commentDelete(c_no);
-			}
+			bCommentService.commentDelete(c_no);
 			return "redirect:../board/view.do?b_no="+c_b_no;
 		}
 	
