@@ -59,6 +59,12 @@
 	<select id="hotel_room_select">
 		select h_room from hotel where h_no = #{h_no}
 	</select>
+	
+	<!-- 메인화면 날짜선택 없을 때 -->
+	<select id="datex" resultType="hotelDto">
+		select * from hotel
+		where h_address like '%'||#{h_address}||'%' and #{h_room}>0 and h_type=#{h_type} order by h_no
+	</select>
 </mapper>
 
 

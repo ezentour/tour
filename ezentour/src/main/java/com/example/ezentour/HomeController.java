@@ -24,6 +24,7 @@ import com.example.ezentour.model.hotel.dto.HotelDTO;
 import com.example.ezentour.model.user.dto.ReservationDTO;
 import com.example.ezentour.service.home.HomeSearchService;
 import com.example.ezentour.service.hotel.HotelRoomService;
+import com.example.ezentour.service.hotel.HotelService;
 
 
 @Controller
@@ -33,7 +34,9 @@ public class HomeController {
 	
 	@Inject
 	HomeSearchService homeSearchService;
-	@Inject 
+	@Inject
+	HotelService hotelService;
+	@Inject
 	HotelRoomService hotelroomService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -44,28 +47,69 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "search.do")
-	public ModelAndView searchList(HttpServletRequest request, HomeSearchDTO hDto, ModelAndView mav) {
+	public ModelAndView searchList(HttpServletRequest request, HomeSearchDTO hDto, ModelAndView mav, HotelDTO hotelDto) throws ParseException {
 		String h_address = request.getParameter("region");
 		String checkin = request.getParameter("checkin-date");
 		String checkout = request.getParameter("checkout-date");
-		int hr_room = Integer.parseInt(request.getParameter("room"));
+		int room = Integer.parseInt(request.getParameter("room"));
+		
 		String h_type = request.getParameter("hotel-type");
-
-		List<HomeSearchDTO> list = homeSearchService.list(h_address, checkin, checkout, hr_room, h_type);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("h_address", h_address);
-		map.put("checkin", checkin);
-		map.put("checkout", checkout);
-		map.put("hr_room", hr_room);
-		map.put("h_type", h_type);
-		map.put("h_type", h_type);
-
-		LOG.info("**********" + map);
-		mav.setViewName("hotel/hotel_home");
-		mav.addObject("list", list);
+		int select_room = Integer.parseInt(request.getParameter("room"));
 		
-		return mav;
-		
+		if(checkin.equals("") && checkout.equals("")) {
+			List<HotelDTO> list = hotelService.dateListHotel(h_address, room, h_type);
+			mav.setViewName("hotel/hotel_home");
+			mav.addObject("list", list);
+			
+			return mav;
+		} else {
+			List<HomeSearchDTO> hsList = homeSearchService.list(h_address, checkin, checkout, select_room, h_type);
+			
+			LOG.info("*************hsList:" + hsList);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("h_address", h_address);
+			map.put("checkin", checkin);
+			map.put("checkout", checkout);
+			map.put("select_room", select_room);
+			map.put("h_type", h_type);
+			
+			int h_no = Integer.parseInt(request.getParameter("h_no"));
+			select_room = Integer.parseInt(request.getParameter("r_room"));
+			LOG.info("*************request:" + h_no + select_room);
+			String result = "";
+			String dateOk = "";
+			
+			ArrayList<String> dates = dateInteval(checkin, checkout);
+			
+			for (String date : dates) {
+				String check = hotelroomService.RoomCheck(h_no, date, room);
+
+				if (check == null)
+					check = "true";
+				System.out.println("check " + check);
+
+				if (check.equals("true")) {
+					if (!result.equals("예약불가"))
+						result = "예약가능";
+				} else {
+					result = "예약불가";
+					dateOk += date + ", ";
+				}
+			}
+
+			if (result.equals("예약불가")) {
+				result += " (" + dateOk + " 방이 부족합니다.)";
+			}
+
+			map.put("result", result);
+
+			
+			mav.setViewName("hotel/hotel_home");
+			mav.addObject("list", map);
+
+			return mav;
+		}
 	}
 	
 	public static ArrayList<String> dateInteval(String start, String end) throws ParseException {
