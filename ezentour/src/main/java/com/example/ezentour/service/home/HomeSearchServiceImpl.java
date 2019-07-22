@@ -16,8 +16,8 @@ public class HomeSearchServiceImpl implements HomeSearchService {
 	HomeSearchDAO hDao;
 	
 	@Override
-	public List<HomeSearchDTO> list(String h_address, String checkin, String checkout, int hr_room, String h_type) {
-		return hDao.list(h_address, checkin, checkout, hr_room, h_type);
+	public List<HomeSearchDTO> list(String h_address, String checkin, String checkout, int select_room, String h_type) {
+		return hDao.list(h_address, checkin, checkout, select_room, h_type);
 	}
 
 }

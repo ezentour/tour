@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.example.ezentour.controller.HotelController;
 import com.example.ezentour.model.home.dto.HomeSearchDTO;
-import com.example.ezentour.model.user.dto.CartDTO;
 
 @Repository
 public class HomeSearchDAOImpl implements HomeSearchDAO {
@@ -22,18 +21,20 @@ public class HomeSearchDAOImpl implements HomeSearchDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<HomeSearchDTO> list(String h_address, String checkin,  String checkout, int hr_room, String h_type) {
+	public List<HomeSearchDTO> list(String h_address, String checkin, String checkout, int select_room, String h_type) {
+
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("h_address", h_address);
 		map.put("checkin", checkin);
 		map.put("checkout", checkout);
-		map.put("hr_room", hr_room);
+		map.put("select_room", select_room);
 		map.put("h_type", h_type);
+	
+		LOG.info("*******************homesearch : " + map.toString());
 		
-		LOG.info("List<HomeSearchDTO> list" + map.get("checkin"));
+		List<HomeSearchDTO> list= sqlSession.selectList("hotel.dateo", map);
 		
-		List<HomeSearchDTO> list= sqlSession.selectList("home.SearchList", map);
 		return list;
 	}
 

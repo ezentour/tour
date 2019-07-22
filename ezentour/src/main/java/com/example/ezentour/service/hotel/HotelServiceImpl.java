@@ -63,5 +63,10 @@ public class HotelServiceImpl implements HotelService {
 		int room = hDto.getH_room();		
 		return room;
 	}
+	
+	@Override
+	public List<HotelDTO> dateListHotel(String h_address, int h_room, String h_type) {
+		return hotelDao.dateListHotel(h_address, h_room, h_type);
+	}; 
 
 }

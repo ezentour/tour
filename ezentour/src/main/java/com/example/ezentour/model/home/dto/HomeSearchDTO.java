@@ -15,6 +15,7 @@ public class HomeSearchDTO {
 	private String h_type;
 	private String h_content;
 	private int h_room;
+	private int select_room;
 	
 	public HomeSearchDTO() {
 		super();
@@ -22,7 +23,7 @@ public class HomeSearchDTO {
 
 	public HomeSearchDTO(String checkin, String checkout, int hr_room, int h_no, String h_name, String h_address,
 			String h_tel, int h_price, String h_approve, String h_m_id, String h_img, String h_type, String h_content,
-			int h_room) {
+			int h_room, int select_room) {
 		super();
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -38,6 +39,7 @@ public class HomeSearchDTO {
 		this.h_type = h_type;
 		this.h_content = h_content;
 		this.h_room = h_room;
+		this.select_room = select_room;
 	}
 
 	public String getCheckin() {
@@ -152,12 +154,20 @@ public class HomeSearchDTO {
 		this.h_room = h_room;
 	}
 
+	public int getSelect_room() {
+		return select_room;
+	}
+
+	public void setSelect_room(int select_room) {
+		this.select_room = select_room;
+	}
+
 	@Override
 	public String toString() {
 		return "HomeSearchDTO [checkin=" + checkin + ", checkout=" + checkout + ", hr_room=" + hr_room + ", h_no="
 				+ h_no + ", h_name=" + h_name + ", h_address=" + h_address + ", h_tel=" + h_tel + ", h_price=" + h_price
 				+ ", h_approve=" + h_approve + ", h_m_id=" + h_m_id + ", h_img=" + h_img + ", h_type=" + h_type
-				+ ", h_content=" + h_content + ", h_room=" + h_room + "]";
+				+ ", h_content=" + h_content + ", h_room=" + h_room + ", select_room=" + select_room + "]";
 	}
 
 }

@@ -95,6 +95,7 @@
                                 <select name="region" id="" class="form-control">
                                     <option value="서울">서울</option>
                                     <option value="경기/인천">경기/인천</option>
+                                    <option value="강원">강원</option>
                                     <option value="충청/대전">충청/대전</option>
                                     <option value="전라/광주">전라/광주</option>
                                     <option value="경상">경상</option>
@@ -125,7 +126,7 @@
                                 <label for="hotel-type">숙소</label>
                                 <select name="hotel-type" id="hotel-type" class="form-control">
                                     <option value="호텔">호텔</option>
-                                    <option value="팬션">팬션</option>
+                                    <option value="펜션">펜션</option>
                                     <option value="게스트하우스">게스트하우스</option>
                                     <option value="리조트/콘도">리조트/콘도</option>
                                 </select>
