@@ -7,13 +7,15 @@
 <title>EzenTour</title>
 
 <style>
-th{
-		font-weight:bold;
-		text-align:center;
-	}
-	td{
-		text-align:center;
-	}
+th {
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
 .roberto-btn4 {
 	position: relative;
 	z-index: 1;
@@ -81,23 +83,33 @@ th{
 								<th>매출상세</th>
 							</tr>
 						</thead>
+						<c:set var="sum" value="0" />
 						<tbody id="list">
+
 							<c:forEach var="row" items="${list}">
 								<tr>
 									<td>${row.p_r_no}</td>
+
 									<c:if test="${row.p_admin == 0}">
-									<td>${row.p_admin} <span style="color:red">(환불 100%)</span></td>
+										<td>${row.p_admin}<span style="color: red">(환불
+												100%)</span></td>
 									</c:if>
 									<c:if test="${row.p_admin != 0}">
-									<td>${row.p_admin}</td>
+										<td>${row.p_admin}</td>
 									</c:if>
-									
+									<c:set var="sum" value="${sum + row.p_admin}" />
 									<td><button type="button" class="roberto-btn4"
 											onclick="location.href ='${path}/mypage/admin/grossprofit_detail?p_r_no=${row.p_r_no }'">상세보기</button>
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
+						<tfoot>
+							<tr>
+								<th colspan="3">관리자 총 매출액 <br><span style="color:blue; font-size:1.5em"><c:out value="${sum}" /></span>
+								</th>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 			</div>
@@ -110,6 +122,6 @@ th{
 		</p>
 	</div>
 
-	<%@ include file="../../include/footer.jsp"%>
+<%@ include file="../../include/footer.jsp"%>
 </body>
 </html>

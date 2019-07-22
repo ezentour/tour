@@ -7,4 +7,5 @@ public interface HotelRoomService {
 	public int selectone(int hr_h_no, String hr_date);
 	public void updateHotelRoom(int hr_h_no, String hr_date, int hr_room);
 	public String RoomCheck(int hr_h_no, String hr_date, int r_room);
+	public void updateCancel(int hr_h_no, String hr_date, int hr_room);
 }

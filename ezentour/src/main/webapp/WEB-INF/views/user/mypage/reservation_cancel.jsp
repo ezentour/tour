@@ -14,8 +14,11 @@ function reset(){
 
 function reservation_cancel(){	
 	if(${result == '취소불가'}){		
-		alert("취소불가입니다.");
-	} else {
+			alert("취소가 불가능합니다.")
+	} else if(${result == '취소가능 : 환불불가'}){
+		if(confirm("환불이 불가합니다. 취소확정하시겠습니까?"))
+			document.form1.submit();			
+	} else{
 		if(confirm("취소확정하시겠습니까?"))
 			document.form1.submit();			
 	}
@@ -67,10 +70,14 @@ function reservation_cancel(){
 											<li>체크인 당일, 하루전 :<span style="color: red"> 환불불가</span></li>
 										</ul>
 									</div>
-									<form name="form1" method="post" action="${path}/mypage/user/reservation_cancel.do?r_no=${reservation.r_no}">
-										[숙소명]<input type="text" name="h_name" class="form-control"autocomplete="off" value="${reservation.h_name }" readonly="readonly"> 
-										[체크인]<input type="text" name="r_checkin" class="form-control" autocomplete="off"value="${reservation.r_checkin.substring(0,10) }" readonly="readonly">
-										[체크아웃]<input type="text" name="r_checkout"class="form-control" autocomplete="off"value="${reservation.r_checkout.substring(0,10) }" readonly="readonly">
+									<form name="form1" method="post" action="${path}/mypage/user/reservation_cancel.do?r_no=${reservation.r_no}&r_h_no=${reservation.r_h_no}">
+										[숙소명]<input type="text" name="h_name" class="form-control"autocomplete="off" value="${reservation.h_name }" readonly="readonly">
+										<fmt:parseDate value="${reservation.r_checkin.substring(0,10)}" pattern="yyyy-MM-dd" var="dayin" />
+										<fmt:formatDate value="${dayin}" pattern="dd/MM/yy" var="checkin" />
+										<fmt:parseDate value="${reservation.r_checkout.substring(0,10)}" pattern="yyyy-MM-dd" var="dayout" />
+										<fmt:formatDate value="${dayout}" pattern="dd/MM/yy" var="checkout" /> 
+										[체크인]<input type="text" name="r_checkin" class="form-control" autocomplete="off"value="${checkin }" readonly="readonly">
+										[체크아웃]<input type="text" name="r_checkout"class="form-control" autocomplete="off"value="${checkout }" readonly="readonly">
 										[방개수]<input type="text" name="r_room" class="form-control"autocomplete="off" value="${reservation.r_room }"readonly="readonly">
 										[총 가격]<input type="text" name="r_price" class="form-control"autocomplete="off"value="${reservation.r_price }"readonly="readonly"> 
 										[취소요청]

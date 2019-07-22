@@ -44,4 +44,14 @@ public class HotelRoomDAOImpl implements HotelRoomDAO {
 		map.put("r_room", r_room);
 		return sqlSession.selectOne("hotelroom.roomcheck", map);
 	}
+
+	@Override
+	public void updateCancel(int hr_h_no, String hr_date, int hr_room) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("hr_h_no", hr_h_no);
+		map.put("hr_date", hr_date);
+		map.put("hr_room", hr_room);
+		sqlSession.update("hotelroom.hotelroom_cancel", map);		
+		
+	}
 }
