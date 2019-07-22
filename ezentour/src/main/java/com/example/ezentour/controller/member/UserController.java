@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ezentour.model.hotel.dto.HotelDTO;
 import com.example.ezentour.model.hotel.dto.HotelRoomDTO;
 import com.example.ezentour.model.member.dto.MemberDTO;
-import com.example.ezentour.model.price.service.PriceService;
 import com.example.ezentour.model.user.dto.CartDTO;
 import com.example.ezentour.model.user.dto.ReservationDTO;
 import com.example.ezentour.service.hotel.HotelRoomService;
@@ -37,7 +36,7 @@ import com.example.ezentour.service.user.ReservationService;
 @Controller
 public class UserController {
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-
+	
 	@Inject
 	CartService cartService;
 	@Inject
@@ -46,8 +45,7 @@ public class UserController {
 	HotelService hotelService;
 	@Inject
 	HotelRoomService hotelroomService;
-	@Inject
-	PriceService priceService;
+
 	@Inject
 	ReservationService reservationService;
 
@@ -56,10 +54,9 @@ public class UserController {
 		String r_m_id = (String) session.getAttribute("m_id");
 		
 		List<ReservationDTO> list = reservationService.selectReservation(r_m_id);
-		
 		mav.setViewName("user/mypage/user_reservation");
 		mav.addObject("list", list);
-
+		
 		return mav;
 	}
 
@@ -68,12 +65,12 @@ public class UserController {
 		model.addAttribute("hotel", hotelService.viewHotel(h_no));
 		return "user/mypage/hotel_detail";
 	}
-
+	
 	@RequestMapping(value = "mypage/user/mycart")
-	public String myCart(Model model, HttpSession session, HttpServletRequest request) {
+	public String myCart(Model model, HttpSession session,HttpServletRequest request) {
 		String m_id = (String) session.getAttribute("m_id");
 		int curPage = Integer.parseInt(request.getParameter("page"));
-		LOG.info("curPage(UserControl) : " + curPage);
+		LOG.info("curPage(UserControl) : " +curPage);
 		int totalPage = cartService.cartListCount();
 		LOG.info("m_id Check : " + m_id);
 
@@ -85,11 +82,11 @@ public class UserController {
 
 			if ((memberDto.getM_field()).equals("U")) {
 				LOG.info("check(userController)");
-				List<CartDTO> list = cartService.viewCartList(m_id, curPage);
-				model.addAttribute("totalPage", totalPage);
+				List<CartDTO> list = cartService.viewCartList(m_id,curPage);
+				model.addAttribute("totalPage",totalPage);
 				model.addAttribute("curPage", curPage);
 				model.addAttribute("list", list);
-
+				
 				return "user/mypage/mycart";
 			}
 		}
@@ -97,28 +94,26 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "mypage/user/delete")
-	public String delete(HttpServletRequest request, HttpSession session, Model model) {
+	public String delete(HttpServletRequest request,HttpSession session,Model model) {
 		String[] checkBox = request.getParameterValues("check");
-		LOG.info("checkBox.length" + checkBox.length);
-		for (int i = 0; i <= checkBox.length - 1; i++) {
+		LOG.info("checkBox.length"+checkBox.length);
+		for(int i = 0;i<=checkBox.length-1;i++) {
 			int intCheckBox = Integer.parseInt(checkBox[i]);
-			LOG.info("IntCheckBox(userController) : " + intCheckBox);
+			LOG.info("IntCheckBox(userController) : " +intCheckBox);
 			cartService.cartDelete(intCheckBox);
 		}
 		return "redirect:../../mypage/user/mycart?page=1";
 	}
 
 	@RequestMapping(value = "mypage/user/reservation_check")
-	public ModelAndView reservation_check(HttpServletRequest request, HttpSession session, ModelAndView mav,
-			@RequestParam int h_no) throws ParseException {
-		String m_id = (String) session.getAttribute("m_id");
+	public ModelAndView reservation_check(HttpServletRequest request, HttpSession session, ModelAndView mav, @RequestParam int h_no) throws ParseException {
 		String checkInDate = request.getParameter("checkin"); // name으로 받아옴
 		String checkOutDate = request.getParameter("checkout");
 		String room = request.getParameter("r_room");
 		int r_room = Integer.parseInt(room);
 		String result = "";
 		String dateOk = "";
-
+		
 		HotelDTO hDto = hotelService.viewHotel(h_no);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("h_no", h_no);
@@ -127,34 +122,31 @@ public class UserController {
 		map.put("r_checkin", checkInDate);
 		map.put("r_checkout", checkOutDate);
 		map.put("r_room", r_room);
-
+		
+		
 		ArrayList<String> dates = dateInteval(checkInDate, checkOutDate);
-
-		for (String date : dates) {
+		
+		for(String date : dates) {
 			String check = hotelroomService.RoomCheck(h_no, date, r_room);
-
-			if (check == null)
-				check = "true";
-			System.out.println("check " + check);
-
+			
+			if(check == null)
+				check = "true";			
+			System.out.println("check " + check );
+			
 			if (check.equals("true")) {
-				if (!result.equals("예약불가"))
-					result = "예약가능";
+				if(!result.equals("예약불가"))
+					result = "예약가능";			
 			} else {
 				result = "예약불가";
 				dateOk += date + ", ";
 			}
 		}
-
-		if (result.equals("예약불가")) {
+		
+		if(result.equals("예약불가")) {
 			result += " (" + dateOk + " 방이 부족합니다.)";
 		}
-
+		
 		map.put("result", result);
-
-		ReservationDTO rDto2 = new ReservationDTO(m_id, h_no, checkInDate, checkOutDate);
-		boolean reservation = reservationService.selectReservation(rDto2);
-		map.put("check", reservation);
 		
 		mav.setViewName("/hotel/hotel_reservation");
 		mav.addObject("reservation", map);
@@ -162,76 +154,40 @@ public class UserController {
 		return mav;
 
 	}
-
+	
 	@RequestMapping(value = "mypage/user/reservation")
-	public String reservation(@ModelAttribute ReservationDTO rDto, HttpSession session, @RequestParam int r_h_no, Model model)
-			throws ParseException {
+	public String reservation(@ModelAttribute ReservationDTO rDto, HttpSession session, @RequestParam int r_h_no) {
 		String m_id = (String) session.getAttribute("m_id");
 		rDto.setR_m_id(m_id);
-		rDto.setR_h_no(r_h_no);
-
-		String checkin = rDto.getR_checkin();
-		String checkout = rDto.getR_checkout();
-
-		ReservationDTO rDto2 = new ReservationDTO(m_id, r_h_no, checkin, checkout);
-		boolean reservation = reservationService.selectReservation(rDto2);
-		System.out.println("---------------------" + reservation);
-		if (!reservation) {
-			ArrayList<String> dates = dateInteval(checkin, checkout);
-
-			for (String date : dates) {
-
-				if (hotelroomService.selectone(r_h_no, date) > 0) {
-					LOG.info("방 개수 추가");
-					hotelroomService.updateHotelRoom(r_h_no, date, rDto.getR_room());
-				} else {
-					HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, date, rDto.getR_room());
-					LOG.info("hotelroom db 삽입 - " + hrDto.toString());
-					hotelroomService.insertHotelRoom(hrDto);
-				}
-			}
-
-			reservationService.insertReservation(rDto);
-			
-			int r_no = reservationService.selectReservation_no();
-			int p_room = reservationService.selectReservation_money(r_no);
-			priceService.insert(r_no, p_room);
-			
-			LOG.info("reservation db 삽입 - " + rDto.toString());
-			
-			return "redirect:user_reservation";
-		} else {				
-			return "redirect:user_reservation";	
-		}
-
-	}
-	
-	@RequestMapping(value = "mypage/user/reservation_cancel")
-	public String reservation_cancel_view(@RequestParam int r_no, Model model) throws ParseException {
-		ReservationDTO rDto = reservationService.select_reservation_cancel(r_no);
-		String result = cancel_condition(rDto.getR_checkin());
-		model.addAttribute("result", result);
-		model.addAttribute("reservation", rDto);
-		return "user/mypage/reservation_cancel";
-	}
-	
-	@RequestMapping(value = "mypage/user/reservation_cancel.do")
-	public String reservation_cancel(@RequestParam int r_price, @RequestParam int r_no, @RequestParam String r_check) {
-		reservationService.updateReservation(r_no);
-		int p_room = -r_price;		
+		rDto.setR_h_no(r_h_no);	
 		
-		if(r_check.equals("취소가능 : 50% 환불")) {
-			p_room = p_room/2;
-			priceService.insert(r_no, p_room);	
-		} else
-			priceService.insert(r_no, p_room);	
+		if(hotelroomService.selectone(r_h_no, rDto.getR_checkin()) > 0) {
+			LOG.info("방 개수 추가");			
+			hotelroomService.updateHotelRoom(r_h_no, rDto.getR_checkin(), rDto.getR_room());
+		} else {
+			HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, rDto.getR_checkin(), rDto.getR_room());	
+			LOG.info("hotelroom db 삽입 - " + hrDto.toString());
+			hotelroomService.insertHotelRoom(hrDto);
+		}
+		
+		if(hotelroomService.selectone(r_h_no, rDto.getR_checkout()) > 0) {
+			LOG.info("방 개수 추가");
+			hotelroomService.updateHotelRoom(r_h_no, rDto.getR_checkout(), rDto.getR_room());
+		} else {
+			HotelRoomDTO hrDto = new HotelRoomDTO(r_h_no, rDto.getR_checkout(), rDto.getR_room());	
+			LOG.info("hotelroom db 삽입 - " + hrDto.toString());
+			hotelroomService.insertHotelRoom(hrDto);
+		}
+		
+		reservationService.insertReservation(rDto);
+		LOG.info("reservation db 삽입 - " + rDto.toString());
 		
 		return "redirect:user_reservation";
+	
 	}
 	
-	
 	public static ArrayList<String> dateInteval(String start, String end) throws ParseException {
-		final String DATE_PATTERN = "dd/MM/yy";
+		final String DATE_PATTERN = "dd/MM/yy";	
 		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
 		Date startDate = sdf.parse(start);
 		Date endDate = sdf.parse(end);
@@ -249,47 +205,5 @@ public class UserController {
 		}
 
 		return dates;
-	}
-	
-	//체크인 취소여부
-	public static String cancel_condition(String checkin) throws ParseException {
-		checkin = checkin.substring(0,10);
-		final String DATE_PATTERN = "yyyy-MM-dd";
-		String result = "";
-		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
-		Date date = sdf.parse(checkin);
-		Calendar c = Calendar.getInstance(); // 체크인날짜
-		c.setTime(date);
-		
-		Calendar current = Calendar.getInstance();
-		/*SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yy");
-		String datetime1 = sdf1.format(current.getTime());
-		System.out.println("--> " + datetime1);
-		System.out.println(current);*/	
-		
-		Calendar c7 = Calendar.getInstance(); // 체크인 일주일전
-		c7.setTime(date);
-		c7.add(Calendar.DATE, -6);
-		//String date7 = sdf.format(c7.getTime());
-		//System.out.println("일주일전 : " + date7);
-
-		Calendar c1 = Calendar.getInstance(); // 체크인 하루전, 당일
-		c1.setTime(date);
-		c1.add(Calendar.DATE, -1);
-		//String date1 = sdf.format(c1.getTime());
-		//System.out.println("하루전 : " + date1);
-
-		if (current.compareTo(c7) < 0) {
-			System.out.println("일주일전 100% 환불");
-			result = "취소가능 : 100% 환불";
-		} else if (current.compareTo(c7) >= 0 && current.compareTo(c1) < 0) {
-			System.out.println("2~6일 100% 환불");
-			result = "취소가능 : 50% 환불";
-		} else {
-			System.out.println("당일과 하루전");
-			result = "취소불가";
-		}
-
-		return result;
 	}
 }

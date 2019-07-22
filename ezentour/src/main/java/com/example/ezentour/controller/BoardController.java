@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.ezentour.model.board.dto.BoardCommentDTO;
 import com.example.ezentour.model.board.dto.BoardDTO;
-import com.example.ezentour.service.board.BoardCommentService;
 import com.example.ezentour.service.board.BoardService;
 
 @Controller
@@ -29,26 +27,10 @@ public class BoardController {
 	
 	@Inject
 	BoardService boardService;
-	@Inject
-	BoardCommentService bCommentService;
-	
-	//검색
-	@RequestMapping(value="board/search")
-	public String search(Model model,HttpServletRequest request) {
-		String search = request.getParameter("search");
-		List<BoardDTO> list = boardService.boardSearch(search);
-		model.addAttribute("list", list);
-		return "board/board_home";
-	}
 	
 	@RequestMapping(value = "board/main")
-	public String home(Model model,HttpServletRequest request) {
-		int curPage = Integer.parseInt(request.getParameter("page"));
-		int totalPage=boardService.boardCount() ;
-		List<BoardDTO> list = boardService.boardList(curPage);
-		
-		model.addAttribute("totalPage", totalPage);
-		model.addAttribute("curPage", curPage);
+	public String home(Model model) {
+		List<BoardDTO> list = boardService.boardList();
 		model.addAttribute("list", list);
 		return "board/board_home";
 	}
@@ -90,7 +72,7 @@ public class BoardController {
 		
 		boardService.insertBoard(bDto);
 		
-		return "redirect:../board/main?page=1";
+		return "redirect:../board/main";
 	}
 	
 	//게시판 수정화면
@@ -122,23 +104,7 @@ public class BoardController {
 		LOG.info("****************" + bno);
 
 		boardService.deleteBoard(bno);
-		return "redirect:../board/main?page=1";
-	}
-	
-	//댓글 삽입 & view
-	@RequestMapping(value="board/comment.do")
-	public String comment(Model model,HttpServletRequest request,HttpSession session) {
-		String c_content = request.getParameter("c_content");
-		int c_b_no = Integer.parseInt(request.getParameter("c_b_no"));
-		String c_m_id= (String) session.getAttribute("m_id");
-		LOG.info("checkBoardController : " + c_content +" , " + c_b_no+", " +c_m_id);
-		
-		bCommentService.commetInsert(c_m_id, c_content, c_b_no);
-		List <BoardCommentDTO> list = bCommentService.commentList();
-		String randomColor = bCommentService.colorPick();
-		model.addAttribute("list",list);
-		model.addAttribute("randomColor",randomColor);
-		return "redirect:../board/view.do?b_no="+c_b_no;
+		return "redirect:../board/main";
 		
 	}
 	
