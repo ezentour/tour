@@ -9,7 +9,7 @@
 	<script>
 	$(function() {
 		$("#list").click(function() {
-			document.boardView.action="${path}/board/main?page=1";
+			document.boardView.action="${path}/board/main";
 			document.boardView.submit();
 		});
 		$("#update").click(function() {
@@ -20,11 +20,8 @@
 			document.boardView.action="${path}/board/delete.do?b_no=${dto.b_no}";
 			document.boardView.submit();
 		});
-		
 	});
 	</script>
-	
-
 </head>
 <body>
 
@@ -88,29 +85,13 @@
 						</div>
 					</div>
 					</form>
-					<br>
-						<table >
-							<c:forEach var="row" items="${list}">
-								<tr class="bg-primary" >
-									<td>${row.c_regdate}  ${row.c_m_id}  : ${row.c_content}</td>
-								</tr>
-							</c:forEach>			
-						</table>
-						<br><br>
-					<form action="${path}/board/comment.do?c_b_no=${dto.b_no}" name="updateForm" id="updateForm" method="post" enctype="multipart/form-data">
-			                <div class="form-group">
-			                    <label for="exampleFormControlInput1"><b>댓글...</b></label>
-			                </div>
-			                <div class="form-group">
-			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="c_content" rows="3">
-			                    </textarea>
-			                    <button type="submit" class="btn btn-info" id="comment" style="float: right">등록</button>&nbsp;
-			                </div>
-			            </form>
+					
 					</div>
 					</div>
 					</div><br><br><br>
 					<!-- Background End -->
+				
+					
 				</div>
             </div>
         </div>

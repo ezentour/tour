@@ -41,10 +41,7 @@
 				<table class="ui celled table">						
 					<tr>
 						<th>ID</th>
-						<td>
-							<input type="hidden" name="m_id" value="${member.m_id}">
-							${member.m_id}
-						</td>
+						<td><input name="m_id" value="${member.m_id}" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<th>이름</th>

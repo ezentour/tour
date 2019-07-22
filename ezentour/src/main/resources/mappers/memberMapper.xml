@@ -49,12 +49,6 @@
 		where m_id=#{m_id}
 	</update>
 	
-	<!-- 8. 관리자가 사용자 탈퇴시키기 -->
-	<delete id="member_delete">
-		delete from member where m_id=#{showM_id}
-	</delete>
-
-
 </mapper>
 
 
