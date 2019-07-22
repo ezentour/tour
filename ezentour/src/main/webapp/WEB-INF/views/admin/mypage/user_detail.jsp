@@ -5,6 +5,7 @@
 <head>
 	<title>EzenTour</title>
 </head>
+
 <body>
 
 	<%@ include file="../../include/menu.jsp"%>
@@ -72,7 +73,8 @@
 				<div class="welcome-text text-center">
 					<button type="button" onclick="location.href='${path}/mypage/admin/user_list'" class="btn roberto-btn w-8">목록으로</button>&nbsp;&nbsp;
 					<button type="button" onclick="location.href='${path}/mypage/admin/user_update?showMID=${member.m_id}'" class="btn roberto-btn w-8">수정</button>&nbsp;&nbsp;
-					<input type="button" class="btn roberto-btn w-8" value="탈퇴" id="delete"/>
+					<button type="button" onclick="if(confirm('탈퇴 처리하시겠습니까?')){location.href='${path}/mypage/admin/user_delete?showM_id=${member.m_id}'}" class="btn roberto-btn w-8" name="deleteBtn">삭제</button>
+					<!-- <input type="button" class="btn roberto-btn w-8" value="탈퇴" id="delete"/> -->
 				</div>
 			</div>
         </div>

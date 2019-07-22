@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="home">
+	<select id="SearchList" resultType="HomeSearchDto">
+		select h.*, hr.hr_room from hotel h
+		inner join hotel_room hr on h.h_no=hr.hr_h_no
+		where h.h_address like '%'||#{h_address}||'%' and hr.hr_date=#{hr_date} and #{hr_room}>0 and h.h_type=#{h_type}
+	</select>
+</mapper>

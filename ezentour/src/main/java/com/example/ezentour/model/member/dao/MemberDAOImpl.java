@@ -50,6 +50,12 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("member.member_update", dto);
 	}
 
+	// 관리자가 사용자 탈퇴시키기
+	public void memberDelete(String showM_id) {
+		sqlSession.delete("member.member_delete", showM_id);
+	}
+		
+		
 	// 회원 가입
 	@Override
 	public void register(MemberDTO dto) throws Exception {

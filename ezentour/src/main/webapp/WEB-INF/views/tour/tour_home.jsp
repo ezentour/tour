@@ -41,7 +41,7 @@ td {
 	<!-- Breadcrumb Area Start -->
 	<div
 		class="breadcrumb-area contact-breadcrumb bg-img bg-overlay jarallax"
-		style="background-image: url(${path}/resources/img/bg-img/18.jpg);">
+		style="background-image: url(${path}/resources/img/bg-img/tour-pisa-italy.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">

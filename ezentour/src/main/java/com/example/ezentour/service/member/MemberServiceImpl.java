@@ -62,6 +62,11 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.memberUpdate(dto);
 	}
 	
+	// 관리자가 사용자 탈퇴시키기
+	public void memberDelete(String showM_id) {
+		memberDao.memberDelete(showM_id);
+	}
+	
 	// 회원 가입
 	@Override
 	public void register(MemberDTO dto) throws Exception {

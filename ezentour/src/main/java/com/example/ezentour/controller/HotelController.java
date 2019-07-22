@@ -1,13 +1,13 @@
 package com.example.ezentour.controller;
 
 
+import java.io.PrintWriter;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,12 +16,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.ezentour.model.board.dto.BoardDTO;
 import com.example.ezentour.model.hotel.dto.HotelDTO;
-import com.example.ezentour.model.user.dto.CartDTO;
+import com.example.ezentour.model.hotel.dto.HotelReviewDTO;
+import com.example.ezentour.service.hotel.HotelReviewService;
 import com.example.ezentour.service.hotel.HotelService;
 import com.example.ezentour.service.member.MemberService;
 import com.example.ezentour.service.user.CartService;
@@ -35,6 +38,8 @@ public class HotelController {
 	CartService cartService;
 	@Inject
 	MemberService memberService;
+	@Inject
+	HotelReviewService hotelReviewService;
 	
 	@RequestMapping(value = "hotel/main")
 	public ModelAndView hotel_home(ModelAndView mav) {		
@@ -72,12 +77,69 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value="hotel/detail.do")
-	public String hotel_list_detail(@RequestParam int h_no, Model model,HttpSession sesstion) {
+	public String hotel_list_detail(@RequestParam int h_no, Model model,HttpSession session) {
+		// 호텔 정보
 		model.addAttribute("hotel", hotelService.viewHotel(h_no));
-		String m_id = (String) sesstion.getAttribute("m_id");
-		if(m_id!=null) {
-		model.addAttribute("field", memberService.viewMember(m_id).getM_field());
+		// 호텔 리뷰 정보
+		model.addAttribute("reviewList", hotelReviewService.listReview(h_no));
+		
+		String m_id = (String) session.getAttribute("m_id");
+		if(m_id != null) {
+			model.addAttribute("field", memberService.viewMember(m_id).getM_field());
+			return "hotel/hotel_detail";
+		} 
 		return "hotel/hotel_detail";
-		} return "hotel/hotel_detail";
 	}
+	
+	// 호텔 리뷰 작성 페이지로 이동
+	@RequestMapping(value = "hotel/hotel_review_write.do")
+	public String hotel_review_write(HttpServletRequest request, HttpSession session,
+			Model model, HttpServletResponse response) throws Exception {
+		LOG.info("hotel_review_write()");
+		
+		int h_no = Integer.parseInt(request.getParameter("h_no"));
+		
+		// 호텔 정보
+		model.addAttribute("hotel", hotelService.viewHotel(h_no));
+		// 호텔 리뷰 정보
+		model.addAttribute("reviewList", hotelReviewService.listReview(h_no));
+		
+		//session.setAttribute("h_no", hno);
+		
+		//HotelReviewService.write(hno);
+		//return "redirect:../board/main?page=1";
+		
+		String m_id = (String) session.getAttribute("m_id");
+		
+		if(m_id == null) {
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.');</script>");
+			out.flush(); 
+			return "member/login";
+		}
+		return "hotel/hotel_review";
+	}
+	
+	// 호텔 리뷰 작성 완료 버튼 클릭
+	@RequestMapping(value = "hotel/hotel_review_writeBtn", method=RequestMethod.POST)
+	public String hotel_review_writeBtn(@ModelAttribute HotelReviewDTO hreDto, HttpServletRequest request, Model model,HttpSession session) {
+		int hre_h_no = Integer.parseInt(request.getParameter("h_no"));
+		
+		// 호텔 정보
+		model.addAttribute("hotel", hotelService.viewHotel(hre_h_no));
+		// 호텔 리뷰 정보
+		model.addAttribute("reviewList", hotelReviewService.listReview(hre_h_no));
+	
+		String m_id = (String) session.getAttribute("m_id");
+		
+		hreDto.setHre_h_no(hre_h_no);
+		hreDto.setHre_m_id(m_id);
+
+		hotelReviewService.insertReview(hreDto);
+
+		return "redirect:../hotel/detail.do?h_no=" + hre_h_no;
+		
+	}
+	
 }

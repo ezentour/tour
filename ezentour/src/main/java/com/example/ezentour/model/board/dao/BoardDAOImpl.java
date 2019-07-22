@@ -7,19 +7,35 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.example.ezentour.controller.BoardController;
 import com.example.ezentour.model.board.dto.BoardDTO;
+import com.example.ezentour.model.user.dto.CartDTO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
-
+	private static final Logger LOG = LoggerFactory.getLogger(BoardDAOImpl.class);
 	@Inject
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardDTO> boardList() {
-		return sqlSession.selectList("board.boardList");
+	public List<BoardDTO> boardSearch(String search){
+		List<BoardDTO> list= sqlSession.selectList("board.boardSearch",search);
+		return list;
+	}
+	@Override
+	public List<BoardDTO> boardList(int startPage, int endPage ) {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		LOG.info("BoardListCheck(boardDAOImpl)"+map.get("startPage"));
+		
+		List<BoardDTO> list= sqlSession.selectList("board.boardList",map);
+		return list;
 	}
 
 	@Override
@@ -53,4 +69,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return result;
 	}
 
+	public int boardCount() {
+		int count = sqlSession.selectOne("board.count");
+		LOG.info("boardCount(boardDAOImpl) : " + count);
+		return count; 
+	}
 }
