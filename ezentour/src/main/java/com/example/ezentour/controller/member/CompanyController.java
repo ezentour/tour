@@ -22,7 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ezentour.model.hotel.dto.HotelDTO;
+import com.example.ezentour.model.user.dto.ReservationDTO;
 import com.example.ezentour.service.hotel.HotelService;
+import com.example.ezentour.service.user.ReservationService;
 
 import oracle.net.aso.h;
 
@@ -35,6 +37,9 @@ public class CompanyController {
 
 	@Inject
 	HotelService hotelService;
+	
+	@Inject
+	ReservationService reservationService;
 
 	@RequestMapping(value = "mypage/company/hotel_list.do")
 	public ModelAndView hotel_list(ModelAndView mav, HttpSession session) {
@@ -102,8 +107,13 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "mypage/company/reservation")
-	public String reservation() {
-		return "company/mypage/reservation";
+	public ModelAndView reservation(ModelAndView mav, HttpSession session) {
+		String m_id = (String) session.getAttribute("m_id");
+
+		List<ReservationDTO> list = reservationService.selectReservation_hostel(m_id);
+		mav.setViewName("company/mypage/reservation");
+		mav.addObject("list", list);
+		return mav;
 	}
 
 	@RequestMapping("mypage/company/josogo.do")

@@ -26,6 +26,11 @@
 		from hotel_room hr, hotel h 
 		where hr.hr_h_no = h.h_no and hr.hr_h_no = #{hr_h_no} and hr.hr_date = TO_DATE(#{hr_date},'dd/MM/yy')
 	</select>
+	
+	<update id="hotelroom_cancel">
+		update hotel_room set hr_room = hr_room - #{hr_room}
+		where hr_h_no = #{hr_h_no} and hr_date = TO_DATE(#{hr_date},'dd/MM/yy')
+	</update>
 
 </mapper>
 

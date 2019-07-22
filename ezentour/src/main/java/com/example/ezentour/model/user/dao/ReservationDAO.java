@@ -8,6 +8,7 @@ public interface ReservationDAO {
 	public void insertReservation(ReservationDTO rDto);
 	public void updateReservation(int r_no);
 	public List<ReservationDTO> selectReservation(String r_m_id);
+	public List<ReservationDTO> selectReservation_hostel(String m_id);
 	public List<ReservationDTO> selectReservation();
 	public int selectReservation(ReservationDTO rDto);
 	public int selectReservation_no();

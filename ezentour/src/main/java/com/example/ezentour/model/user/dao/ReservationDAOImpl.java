@@ -54,7 +54,13 @@ public class ReservationDAOImpl implements ReservationDAO {
 
 	@Override
 	public ReservationDTO select_reservation_cancel(int r_no) {		
-		return sqlSession.selectOne("select_reservation_cancel", r_no);
+		return sqlSession.selectOne("reservation.select_reservation_cancel", r_no);
+	}
+
+	@Override
+	public List<ReservationDTO> selectReservation_hostel(String m_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("reservation.select_hostel_reservation", m_id);
 	}
 
 }

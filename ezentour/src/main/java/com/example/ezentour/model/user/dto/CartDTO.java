@@ -7,6 +7,7 @@ public class CartDTO {
 	private String s_checkin;
 	private String c_checkout;
 	private String h_name;
+	private int h_room;
 	private String h_img;
 	private String m_id;
 	private int h_no;
@@ -107,6 +108,14 @@ public class CartDTO {
 
 	public void setH_no(int h_no) {
 		this.h_no = h_no;
+	}
+
+	public int getH_room() {
+		return h_room;
+	}
+
+	public void setH_room(int h_room) {
+		this.h_room = h_room;
 	}
 
 }

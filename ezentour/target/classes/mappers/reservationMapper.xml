@@ -35,11 +35,15 @@
 	</select>
 	
 	<select id="select_reservation_cancel" resultType="reservationDto">
-		select  r.r_no, r.r_h_no, h.h_name, r.r_checkin, r.r_checkout, r.r_room, (r.r_room * h.h_price) as r_price, r.r_cancel from reservation r, hotel h where h.h_no = r.r_h_no and r.r_no = #{r_no}
+		select r.r_no, r.r_h_no, h.h_name, r.r_checkin, r.r_checkout, r.r_room, (r.r_room * h.h_price) as r_price, r.r_cancel from reservation r, hotel h where h.h_no = r.r_h_no and r.r_no = #{r_no}
 	</select>
 	
 	<select id="select_reservation_money" resultType="int">
 		select r.r_room*h.h_price as p_room from hotel h, reservation r where h.h_no = r.r_h_no and r.r_no = #{r_no}
+	</select>
+	
+	<select id="select_hostel_reservation" resultType="reservationDto">
+		select r.*, h.h_name from reservation r, hotel h where h.h_m_id = #{m_id} and h.h_no = r.r_h_no
 	</select>
 </mapper>
 

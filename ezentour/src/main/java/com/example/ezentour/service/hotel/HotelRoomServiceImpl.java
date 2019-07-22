@@ -32,4 +32,9 @@ public class HotelRoomServiceImpl implements HotelRoomService {
 		return hrDao.RoomCheck(hr_h_no, hr_date, r_room);
 	}
 
+	@Override
+	public void updateCancel(int hr_h_no, String hr_date, int hr_room) {
+		hrDao.updateCancel(hr_h_no, hr_date, hr_room);
+	}
+
 }
