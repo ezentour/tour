@@ -1,5 +1,6 @@
 package com.example.ezentour.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.ezentour.model.board.dto.BoardCommentDTO;
 import com.example.ezentour.model.board.dto.BoardDTO;
+import com.example.ezentour.service.board.BoardCommentService;
 import com.example.ezentour.service.board.BoardService;
 
 @Controller
@@ -27,10 +30,27 @@ public class BoardController {
 	
 	@Inject
 	BoardService boardService;
+	@Inject
+	BoardCommentService bCommentService;
 	
+	//검색
+	@RequestMapping(value="board/search")
+	public String search(Model model,HttpServletRequest request) {
+		String search = request.getParameter("search");
+		List<BoardDTO> list = boardService.boardSearch(search);
+		model.addAttribute("list", list);
+		return "board/board_home";
+	}
+	
+     //보드 메인 화면
 	@RequestMapping(value = "board/main")
-	public String home(Model model) {
-		List<BoardDTO> list = boardService.boardList();
+	public String home(Model model,HttpServletRequest request) {
+		int curPage = Integer.parseInt(request.getParameter("page"));
+		int totalPage=boardService.boardCount() ;
+		List<BoardDTO> list = boardService.boardList(curPage);
+		
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("curPage", curPage);
 		model.addAttribute("list", list);
 		return "board/board_home";
 	}
@@ -52,14 +72,16 @@ public class BoardController {
 		return "board/board_write";
 	}
 	
-	//게시판 상세화면
-	@RequestMapping(value = "board/view.do")
-	public String bbsView(@RequestParam int b_no, Model model) {
-		LOG.info("bbsView 시작");
-		model.addAttribute("dto", boardService.viewBoard(b_no));
-		
-		return "board/board_view";
-	}
+	//게시판 상세화면 & 댓글 리스트 view
+		@RequestMapping(value = "board/view.do")
+		public String bbsView(@RequestParam int b_no, Model model) {
+			List <BoardCommentDTO> list = bCommentService.commentList(b_no); // 댓글 리스트 출력
+			
+			model.addAttribute("list",list);
+			model.addAttribute("dto", boardService.viewBoard(b_no));
+			
+			return "board/board_view";
+		}
 	
 	//게시판 글쓰기 삽입
 	@RequestMapping(value = "board/insert.do")
@@ -72,7 +94,7 @@ public class BoardController {
 		
 		boardService.insertBoard(bDto);
 		
-		return "redirect:../board/main";
+		return "redirect:../board/main?page=1";
 	}
 	
 	//게시판 수정화면
@@ -104,8 +126,44 @@ public class BoardController {
 		LOG.info("****************" + bno);
 
 		boardService.deleteBoard(bno);
-		return "redirect:../board/main";
-		
+		return "redirect:../board/main?page=1";
 	}
+	
+	//댓글 삽입
+		@RequestMapping(value="board/comment.do")
+		public String comment(Model model,HttpServletRequest request,HttpSession session) {
+			String c_content = request.getParameter("c_content");
+			int c_b_no = Integer.parseInt(request.getParameter("c_b_no"));
+			String c_m_id= (String) session.getAttribute("m_id");
+			LOG.info("checkBoardController : " + c_content +" , " + c_b_no+", " +c_m_id);
+			
+			bCommentService.commetInsert(c_m_id, c_content, c_b_no);
+			
+			return "redirect:../board/view.do?b_no="+c_b_no;
+			
+		}
+		
+		//댓글 삭제
+		@RequestMapping(value="board/commentDelete")
+		public String commentDelete(HttpServletRequest request,HttpServletResponse response, HttpSession session) throws IOException {
+			int c_no = Integer.parseInt(request.getParameter("c_no"));
+			int c_b_no = Integer.parseInt(request.getParameter("c_b_no"));
+			String commentId = request.getParameter("c_m_id");
+			String sessionId = (String) session.getAttribute("m_id");
+			LOG.info("Check(BoardController) : " + c_no+"," +c_b_no+", " +commentId+", " +sessionId);
+			
+			boolean result = bCommentService.deleteAuthority(sessionId, commentId);
+			LOG.info("authorityCheck : " + result);
+			
+			if(result==false) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('권한이 없습니다.'); </script>");
+				out.flush();
+			} else {
+				bCommentService.commentDelete(c_no);
+			}
+			return "redirect:../board/view.do?b_no="+c_b_no;
+		}
 	
 }

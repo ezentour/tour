@@ -6,14 +6,28 @@
 	<!-- resultType을 alias 처리하기 위해서는 src/main/resources/mybatis-config.xml에서 설정하기 -->
 	<!-- 1. 게시판 목록 -->
 	<select id="boardList" resultType="boardDto" >
-		select * from board
-		order by b_no desc
+	 	<![CDATA[ 
+			select X.rnum, X.b_no, X.b_title, X.b_content, X.b_m_id, X.b_regdate
+				from (
+					select rownum as rnum, A.b_no, A.b_title, A.b_content, A.b_m_id, A.b_regdate
+						from (
+							select b_no, b_title, b_content, b_m_id, b_regdate from board
+							order by b_no desc ) A
+				where rownum <= #{endPage} ) X
+			where X.rnum >= #{startPage}
+		]]>
+	</select>
+	<!-- 검색 -->
+	<select id="boardSearch" resultType="boardDto">
+	select * from board
+     where b_m_id like '%'||#{search}||'%' order by b_no desc
 	</select>
 	
 	<!-- 2. 게시판 상세화면 -->
 	<select id="boardView" resultType="boardDto">
 		select * from board where b_no=#{b_no}
 	</select>
+	
 	
 	<!-- 3. 게시판 글쓰기 -->
 	<insert id="insertBoard" parameterType="boardDto">
@@ -35,4 +49,27 @@
 	<select id="checkId" resultType="String">
 		select count(*) from board where b_m_id=#{b_m_id}
 	</select>
+	
+	<!-- 7. 게시판 count -->
+	<select id="count" resultType="java.lang.Integer">
+	select count(*)
+	from board
+	</select>
+	
+	<!-- 댓글 삽입 -->
+	
+	<insert id="comment_insert">
+	insert into comment_board 
+	values ((select NVL(MAX(c_no)+1, 1) from comment_board), #{c_m_id}, #{c_content}, #{c_b_no}, sysdate)
+	</insert>
+	
+	<!-- 댓글 view -->
+	<select id="comment_view" resultType="commentDto" >
+		select * from comment_board where c_b_no =#{b_no} order by c_no
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="comment_delete">
+		delete from comment_board where c_no=#{c_no}
+	</delete>
 </mapper>

@@ -8,8 +8,9 @@
 	<title>EzenTour</title>
 	<script>
 	$(function() {
+		var c_content = document.getElementById("exampleFormControlTextarea1"); 
 		$("#list").click(function() {
-			document.boardView.action="${path}/board/main";
+			document.boardView.action="${path}/board/main?page=1";
 			document.boardView.submit();
 		});
 		$("#update").click(function() {
@@ -20,8 +21,55 @@
 			document.boardView.action="${path}/board/delete.do?b_no=${dto.b_no}";
 			document.boardView.submit();
 		});
+		$("#comment").click(function() {
+			if("${m_id}"==null){
+				alert("로그인 하세요");
+			}else if("${m_id}"!="${dto.b_m_id}"&&"${m_field}"=="U"){// m_id 로그인 아이디, dto.b_m_id 게시글 작성 아이디 
+				alert("권한이 없습니다.");
+			}else if(c_content==null){
+				alert("내용을 입력하세요");
+			} else{
+				document.c_content.action="${path}/board/comment.do?c_b_no=${dto.b_no}" ;
+				document.c_content.submit();
+			}
+		});
+		
 	});
 	</script>
+	<style>
+					.balloon {
+		    display: inline-block;
+		    position: relative;
+		    background: #3EE3E6;
+		    height: 57px;
+		    width: auto;
+		    margin: 0 auto 50px;
+		    border-radius: 11px;
+		}
+		.balloon:after {
+		    content: '';
+		    position: absolute;
+		    height: 30px;
+		    width: 100px;
+		    border-radius: 25px;
+		    z-index: -1;
+		    background: #fff;
+		    bottom: -20px;
+		    left: 50px;
+		}
+		.balloon:before {
+		    content: '';
+		    position: absolute;
+		    height: 30px;
+		    width: 100px;
+		    border-radius: 25px;
+		    z-index: -1;
+		    background: #3EE3E6;
+		    bottom: -15px;
+		    left: 35px;
+		}
+	</style>
+
 </head>
 <body>
 
@@ -85,13 +133,38 @@
 						</div>
 					</div>
 					</form>
-					
+					<br><br>
+					<hr>
+					<!-- 댓글 테이블 -->
+					<form name="commentDeleteForm" method="post" >
+						<table>
+							<c:forEach var="row" items="${list}">
+								<tr>
+									<td class="balloon"><br>  &nbsp;&nbsp; ${row.c_regdate.substring(0,10)} &nbsp;&nbsp;${row.c_m_id} &nbsp;&nbsp; :&nbsp;&nbsp; ${row.c_content} &nbsp;&nbsp;&nbsp;
+										<a href="${path}/board/commentDelete?c_b_no=${row.c_b_no}&c_no=${row.c_no}&c_m_id=${row.c_m_id}">
+												<img src="${path}/resources/img/x.png" width="10px" height="10px">
+										</a>
+										&nbsp;&nbsp;
+									</td>
+								</tr>
+							</c:forEach>	
+						</table>
+					</form>
+						<br><br>
+							
+					<form name="c_content" method="post" enctype="multipart/form-data">
+			                <div class="form-group">
+			                    <label for="exampleFormControlInput1"><b>댓글...</b></label>
+			                </div>
+			                <div class="form-group">
+			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="c_content" rows="3"></textarea>
+			                    <button type="button" class="btn btn-info" id="comment" style="float: right">등록</button>&nbsp;
+			                </div>
+			            </form>
 					</div>
 					</div>
 					</div><br><br><br>
 					<!-- Background End -->
-				
-					
 				</div>
             </div>
         </div>
