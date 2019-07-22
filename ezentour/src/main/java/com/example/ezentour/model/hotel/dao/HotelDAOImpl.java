@@ -1,16 +1,22 @@
 package com.example.ezentour.model.hotel.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.example.ezentour.controller.HotelController;
 import com.example.ezentour.model.hotel.dto.HotelDTO;
+import com.example.ezentour.model.user.dto.CartDTO;
 
 @Repository
 public class HotelDAOImpl implements HotelDAO {
+	private static final Logger LOG = LoggerFactory.getLogger(HotelController.class);
 	@Inject
 	SqlSession sqlSession;
 	
@@ -63,4 +69,19 @@ public class HotelDAOImpl implements HotelDAO {
 	public HotelDTO selectHotel_room(int h_no) {		
 		return sqlSession.selectOne("hotel.hotel_room_select", h_no);
 	}
+	
+	@Override
+	public List<HotelDTO> dateListHotel(String h_address, int h_room, String h_type) {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("h_address", h_address);
+		map.put("h_room", h_room);
+		map.put("h_type", h_type);
+		
+		LOG.info("*********************map : " + map.toString());
+		
+		List<HotelDTO> list= sqlSession.selectList("hotel.datex", map);
+		
+		return list;
+	}; 
 }

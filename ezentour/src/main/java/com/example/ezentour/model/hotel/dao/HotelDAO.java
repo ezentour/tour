@@ -14,5 +14,5 @@ public interface HotelDAO {
 	public List<HotelDTO> Hotel_approve(String h_approve);
 	public void updateHotel_approve(int h_no);
 	public HotelDTO selectHotel_room(int h_no);
-	
+	public List<HotelDTO> dateListHotel(String h_address, int h_room, String h_type); 
 }
