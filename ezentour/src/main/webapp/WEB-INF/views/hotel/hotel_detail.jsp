@@ -5,8 +5,26 @@
 <%@ include file="../include/header.jsp"%>
 <head>
 <title>EzenTour</title>
+	<script>
+    $(function() {
+      var $startDate = $('#checkInDate');
+      var $endDate = $('#checkOutDate');
+      $startDate.datepicker({
+        autoHide: true,
+        startDate: new Date(),
+        format: 'dd/mm/yy',
+      });
+      $endDate.datepicker({
+        autoHide: true,
+        startDate: $startDate.datepicker('getDate'),
+        format: 'dd/mm/yy',
+      });
+      $startDate.on('change', function () {
+        $endDate.datepicker('setStartDate', $startDate.datepicker('getDate'));
+      });
+    });
+  </script>
 </head>
-
 <body>
 	<%@ include file="../include/menu.jsp"%>
 	<script type="text/javascript"
@@ -66,7 +84,6 @@
 			} else 
 				alert("로그인하세요");
 		}
-		
 	
 	</script>
 
@@ -199,7 +216,7 @@
 						</script>
 
 					</div>
-
+					
 					<!-- Room Review -->
 					<div class="room-review-area mb-100">
 						<h4>Room Review</h4>
@@ -246,17 +263,13 @@
 					<div class="hotel-reservation--area mb-100">
 						<form name="detail" method="post" >
 							<div class="form-group mb-30">
-								<label for="checkInDate">숙박날짜</label>
-								<div class="input-daterange" id="datepicker">
-									<div class="row no-gutters">
-										<div class="col-6">
-											<input type="text" class="input-small form-control"	id="checkInDate" name="checkin" placeholder="체크인" value="${checkin }">
-										</div>
-										<div class="col-6">
-											<input type="text" class="input-small form-control" id="checkOutDate" name="checkout"  placeholder="체크아웃" value="${checkout }" >
-										</div>
-									</div>
-								</div>
+								<label for="checkInDate">체크인</label>
+									<input type="text" class="input-small form-control" id="checkInDate"
+										style="width:200px" name="checkin" placeholder="클릭하세요" value="${checkin }">
+								<br>
+								<label for="checkOutDate">체크아웃</label>
+									<input type="text" class="input-small form-control" id="checkOutDate"
+										style="width:200px" name="checkout" placeholder="클릭하세요" value="${checkout }">
 							</div>
 							<div class="form-group mb-30">
 								<label for="guests">방개수</label>
