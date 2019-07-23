@@ -6,7 +6,6 @@
 <head>
 <title>EzenTour</title>
 </head>
-
 <body>
 	<%@ include file="../include/menu.jsp"%>
 	<script type="text/javascript"

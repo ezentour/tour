@@ -83,5 +83,17 @@ public class HotelDAOImpl implements HotelDAO {
 		List<HotelDTO> list= sqlSession.selectList("hotel.datex", map);
 		
 		return list;
+	}
+
+	@Override
+	public HotelDTO selectHotel_room(int h_no, String h_address, String h_type) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("h_address", h_address);
+		map.put("h_no", h_no);
+		map.put("h_type", h_type);
+		
+		return sqlSession.selectOne("hotel.hoteldto_select", map );
 	}; 
 }
