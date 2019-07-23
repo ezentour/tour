@@ -51,7 +51,7 @@
                         <div class="single-footer-widget mb-80">
 							<!-- Newsletter Form -->
                    	 		<form action="${path}/board/search" class="nl-form">
-                    			<input type="text" class="form-control" name="search"  placeholder="Search">
+                    			<input type="text" class="form-control" name="search"  placeholder="작성자 검색" style="color:white">
                     			<button type="submit">
                     				<i class="fa fa-search" aria-hidden="true"></i>
                     			</button>

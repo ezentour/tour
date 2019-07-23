@@ -98,7 +98,7 @@ td {
 										<tr>
 											<td><input type="checkbox" name="check" value="${row.s_no}"></td>
 											<td>${row.s_no}</td>
-											<td><a href="${path}/mypage/user/hotel_detail.do?h_no=${row.h_no }">${row.h_name}</a></td>
+											<td style="font-weight:bold"><a href="${path}/mypage/user/hotel_detail.do?h_no=${row.h_no }">${row.h_name}</a></td>
 										<fmt:parseDate value="${row.s_checkin.substring(0,10)}" pattern="yyyy-MM-dd" var="dayin" />
 										<fmt:formatDate value="${dayin}" pattern="dd/MM/yy" var="checkin" />
 										<fmt:parseDate value="${row.c_checkout.substring(0,10)}" pattern="yyyy-MM-dd" var="dayout" />

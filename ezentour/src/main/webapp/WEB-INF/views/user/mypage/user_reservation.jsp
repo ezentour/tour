@@ -124,7 +124,7 @@ td {
 							<c:forEach var="row" items="${list}">
 								<tr>
 									<td>${row.r_no}</td>
-									<td><a
+									<td style="font-weight:bold"><a
 										href="${path}/mypage/user/hotel_detail.do?h_no=${row.r_h_no }">${row.h_name }</a></td>
 									<td>${row.r_checkin.substring(0,10) }</td>
 									<td>${row.r_checkout.substring(0,10) }</td>
@@ -143,7 +143,7 @@ td {
 									<c:if test="${row.r_cancel == 'Y' }">
 										<td style="color: blue">${row.r_cancel }</td>										
 											<td><button type="button" class="roberto-btn5"
-													onclick="alert('취소신청하셨습니다.')">취소완료</button></td>
+													onclick="location.href ='${path}/mypage/user/cancel_detail?p_r_no=${row.r_no }'">취소상세</button></td>
 										</c:if>								
 								</tr>
 							</c:forEach>

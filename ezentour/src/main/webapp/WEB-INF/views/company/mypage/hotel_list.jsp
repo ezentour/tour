@@ -50,17 +50,17 @@ text-align :center
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>No.</td>
-								<td>숙소이름</td>
-								<td>숙소유형</td>
-								<td>승인여부</td>
+								<th>No.</th>
+								<th>숙소이름</th>
+								<th>숙소유형</th>
+								<td>승인여부</th>
 							</tr>
 						</thead>
 						<tbody id="list">
 							<c:forEach var="row" items="${list}">
 								<tr>
 									<th>${row.h_no}</th>
-									<td><a href="${path}/mypage/company/hotel_detail.do?h_no=${row.h_no }">${row.h_name }</a></td>
+									<td style="font-weight:bold;"><a href="${path}/mypage/company/hotel_detail.do?h_no=${row.h_no }">${row.h_name }</a></td>
 									<td>${row.h_type }</td>		
 									<td>${row.h_approve }</td>						
 								</tr>
