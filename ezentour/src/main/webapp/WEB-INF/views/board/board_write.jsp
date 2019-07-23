@@ -66,6 +66,7 @@ pageEncoding="UTF-8"%>
 			                    <label for="exampleFormControlTextarea1">내용</label>
 			                    <textarea class="form-control" id="exampleFormControlTextarea1" name="b_content" rows="10"></textarea>
 			                </div>
+			                <br>
 			                <div class="col-12" >
 					         	<div class="welcome-text text-center">
 					            	<input type="submit" class="btn roberto-btn w-10" value="등록"/>&nbsp;

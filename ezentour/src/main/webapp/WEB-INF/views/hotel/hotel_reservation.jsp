@@ -87,7 +87,7 @@ input {
 						type="text" name="h_price" class="form-control" autocomplete="off"
 						value="${reservation.h_price}" readonly="readonly"> [총 가격]<input
 						type="text" name="r_price" class="form-control" autocomplete="off"
-						value="${reservation.h_price * reservation.r_room }"
+						value="${reservation.r_price }"
 						readonly="readonly"> [예약요청]
 						<c:if test = "${reservation.result == '예약가능' }">
 						<input type="text"

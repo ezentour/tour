@@ -42,19 +42,6 @@ th {
 }
 </style>
 </head>
-<script>
-	function approve(str) {
-		if (confirm("승인하시겠습니까?")) {
-			location.replace(str);
-		}
-	}
-
-	function approve_no(str) {
-		if (confirm("승인거부하시겠습니까?(숙박목록에서 삭제됩니다.)")) {
-			location.replace(str);
-		}
-	}
-</script>
 <body>
 
 	<%@ include file="../../include/menu.jsp"%>

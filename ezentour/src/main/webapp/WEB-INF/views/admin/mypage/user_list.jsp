@@ -5,6 +5,15 @@
 <head>
 	<title>EzenTour</title>
 </head>
+<style>
+tr td {
+	text-align: center
+}
+
+th {
+	text-align: center
+}
+</style>
 <body>
 
 	<%@ include file="../../include/menu.jsp"%>
