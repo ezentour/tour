@@ -52,7 +52,7 @@
 						</div>
 						<!-- Nav Start -->
 						<div class="classynav">
-							<ul id="nav">
+							<ul id="nav" style="font-weight : bold">
 								<li class="active"><a href="${path}/festival/main">축제</a></li>
 								<li><a href="${path}/tour/main">관광</a></li>
 								<li><a href="${path}/hotel/main">숙소</a></li>
@@ -92,22 +92,19 @@
 								</c:if>
 							</ul>
 
-							<div class="" >
-	
+							<div style="margin-left : 120px; ">	
 								<c:choose>
 									<c:when test="${empty username}">
-										<a href="${path}/member/login.do">로그인</a>&nbsp;&nbsp;&nbsp;
-	                          	     		<a href="${path}/member/signUp.do">회원
-											가입</a>
+										<a href="${path}/member/login.do"style="background-color: #1cc3b2; color:white; font-weight:bold">&nbsp;&nbsp;로그인&nbsp;&nbsp;</a>&nbsp;&nbsp;
+	                          	     		<a href="${path}/member/signUp.do"style="background-color: #1cc3b2; color:white; font-weight:bold">&nbsp;&nbsp;회원가입&nbsp;&nbsp;</a>
 									</c:when>
 									<c:otherwise>
-										<span style="font-size: 0.9em;" id="m_id">${username}님
+										<span style="font-size: 0.9em;" id="m_id"><b>${username}</b>님
 											환영합니다.</span>&nbsp;&nbsp;
-	                                		<a href="${path}/member/logout.do">로그아웃</a>
+	                                		<a href="${path}/member/logout.do" style="background-color: #1cc3b2; color:white; font-weight:bold">&nbsp;&nbsp;로그아웃&nbsp;&nbsp;</a>
 									</c:otherwise>
 								</c:choose>
 							</div>
-
 						</div>
 
 

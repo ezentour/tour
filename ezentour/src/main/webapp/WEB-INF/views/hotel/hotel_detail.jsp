@@ -5,6 +5,7 @@
 <%@ include file="../include/header.jsp"%>
 <head>
 <title>EzenTour</title>
+
 	<script>
     $(function() {
       var $startDate = $('#checkInDate');

@@ -72,6 +72,12 @@
 	]]>
 	</select>	
 	
+	<select id="hoteldto_select" resultType="hotelDto">
+		select h.* from hotel h
+		where h.h_address like '%'||#{h_address}||'%' and h.h_type=#{h_type}
+		and h.h_no = #{h_no} order by h.h_no	
+	</select>
+	
 </mapper>
 
 
