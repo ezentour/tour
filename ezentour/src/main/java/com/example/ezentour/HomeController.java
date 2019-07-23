@@ -39,7 +39,7 @@ public class HomeController {
 		return "index";
 	}
 	
-	// 홈 조건 검색
+	// 홈 조건 검색!
 	@RequestMapping(value = "search.do")
 	public ModelAndView searchList(HttpServletRequest request, ModelAndView mav, HotelDTO hotelDto)
 			throws ParseException {
