@@ -148,33 +148,7 @@
 		</div>
 	</div>
 	<!-- Rooms Area End -->
-
-	<!-- Call To Action Area Start -->
-	<section class="roberto-cta-area">
-		<div class="container">
-			<div class="cta-content bg-img bg-overlay jarallax"
-				style="background-image: url(${path}/resources/img/bg-img/1.jpg);">
-				<div class="row align-items-center">
-					<div class="col-12 col-md-7">
-						<div class="cta-text mb-50">
-							<h2>예약하러 가기</h2>
-							<h6>숙소 예약 화면으로 이동합니다.</h6>
-						</div>
-					</div>
-					<div class="col-12 col-md-5 text-right">
-						<a href="#" class="btn roberto-btn mb-50">예약</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Call To Action Area End -->
-
-	<div>
-		<p>
-			<br>
-		</p>
-	</div>
+	<br><br><br>
 
 	<%@ include file="../include/footer.jsp"%>
 
