@@ -69,7 +69,9 @@
 							</c:if>
 						</table>	
 				</div>
+				
 				<div class="col-8" >
+				<br><br><br>
 				<div class="welcome-text text-center">
 					<button type="button" onclick="location.href='${path}/mypage/admin/user_list'" class="btn roberto-btn w-8">목록으로</button>&nbsp;&nbsp;
 					<button type="button" onclick="location.href='${path}/mypage/admin/user_update?showMID=${member.m_id}'" class="btn roberto-btn w-8">수정</button>&nbsp;&nbsp;

@@ -65,8 +65,7 @@
 							<c:forEach var="row" items="${list}">
 								<tr>
 									<td>${row.r_no}</td>
-									<td><a
-										href="${path}/mypage/user/hotel_detail.do?h_no=${row.r_h_no }">${row.h_name }</a></td>
+									<td>${row.h_name }</td>
 									<td>${row.r_checkin.substring(0,10) }</td>
 									<td>${row.r_checkout.substring(0,10) }</td>
 									<td>${row.r_room }</td>
