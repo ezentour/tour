@@ -24,6 +24,7 @@
       });
     });
   </script>
+
 </head>
 <body>
 	<%@ include file="../include/menu.jsp"%>
@@ -264,11 +265,11 @@
 						<form name="detail" method="post" >
 							<div class="form-group mb-30">
 								<label for="checkInDate">체크인</label>
-									<input type="text" class="input-small form-control" id="checkInDate"
+									<input type="text" class="input-small form-control" id="checkInDate" autocomplete="off" 
 										style="width:200px" name="checkin" placeholder="클릭하세요" value="${checkin }">
 								<br>
 								<label for="checkOutDate">체크아웃</label>
-									<input type="text" class="input-small form-control" id="checkOutDate"
+									<input type="text" class="input-small form-control" id="checkOutDate" autocomplete="off" 
 										style="width:200px" name="checkout" placeholder="클릭하세요" value="${checkout }">
 							</div>
 							<div class="form-group mb-30">
