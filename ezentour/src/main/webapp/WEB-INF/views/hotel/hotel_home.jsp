@@ -5,6 +5,25 @@
 <%@ include file="../include/header.jsp"%>
 <head>
 <title>EzenTour</title>
+	<script>
+    $(function() {
+      var $startDate = $('#checkInDate');
+      var $endDate = $('#checkOutDate');
+      $startDate.datepicker({
+        autoHide: true,
+        startDate: new Date(),
+        format: 'dd/mm/yy',
+      });
+      $endDate.datepicker({
+        autoHide: true,
+        startDate: $startDate.datepicker('getDate'),
+        format: 'dd/mm/yy',
+      });
+      $startDate.on('change', function () {
+        $endDate.datepicker('setStartDate', $startDate.datepicker('getDate'));
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -81,19 +100,13 @@
 					<div class="hotel-reservation--area mb-100">
 						<form action="#" method="post">
 							<div class="form-group mb-30">
-								<label for="checkInDate">숙박날짜</label>
-								<div class="input-daterange" id="datepicker">
-									<div class="row no-gutters">
-										<div class="col-6">
-											<input type="text" class="input-small form-control"
-												id="checkInDate" name="checkInDate" placeholder="체크인">
-										</div>
-										<div class="col-6">
-											<input type="text" class="input-small form-control"
-												name="checkOutDate" placeholder="체크아웃">
-										</div>
-									</div>
-								</div>
+								<label for="checkInDate">체크인</label>
+									<input type="text" class="input-small form-control" id="checkInDate"
+										style="width:200px" name="checkin" placeholder="클릭하세요" value="${checkin }">
+								<br>
+								<label for="checkOutDate">체크아웃</label>
+									<input type="text" class="input-small form-control" id="checkOutDate"
+										style="width:200px" name="checkout" placeholder="클릭하세요" value="${checkout }">
 							</div>
 							<div class="form-group mb-30">
 								<label for="guests">숙소유형</label>
@@ -126,8 +139,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn roberto-btn w-100">숙소
-									검색</button>
+								<button type="submit" class="btn roberto-btn w-100">숙소 검색</button>
 							</div>
 						</form>
 					</div>
