@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ezentour.controller.member.UserController;
 import com.example.ezentour.model.hotel.dto.HotelDTO;
-import com.example.ezentour.service.home.HomeSearchService;
 import com.example.ezentour.service.hotel.HotelRoomService;
 import com.example.ezentour.service.hotel.HotelService;
 
@@ -26,8 +25,6 @@ public class HomeController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
-	@Inject
-	HomeSearchService homeSearchService;
 	@Inject
 	HotelService hotelService;
 	@Inject
