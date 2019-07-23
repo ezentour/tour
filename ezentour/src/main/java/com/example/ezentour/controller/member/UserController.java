@@ -273,6 +273,27 @@ public class UserController {
 		return dates;
 	}
 	
+	public  ArrayList<String> dateInteval2(String start, String end) throws ParseException {
+		final String DATE_PATTERN = "dd/MM/yy";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_PATTERN);
+		Date startDate = sdf.parse(start);
+		Date endDate = sdf.parse(end);
+		ArrayList<String> dates = new ArrayList<String>();
+		Date currentDate = startDate;
+		while (currentDate.compareTo(endDate) < 0) {
+			dates.add(sdf.format(currentDate));
+			Calendar c = Calendar.getInstance();
+			c.setTime(currentDate);
+			c.add(Calendar.DAY_OF_MONTH, 1);
+			currentDate = c.getTime();
+		}
+		for (String date : dates) {
+			System.out.println(date);
+		}
+
+		return dates;
+	}
 	// 날짜 일수 계산
 	public static long calDateBetweenAandB(String date1, String date2) {
 		long calDateDays = 0;
