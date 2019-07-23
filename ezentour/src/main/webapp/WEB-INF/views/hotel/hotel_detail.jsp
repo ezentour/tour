@@ -47,19 +47,24 @@
 		function res_check(){
 			var checkIn = document.getElementById("checkInDate").value;
 			var checkOut = document.getElementById("checkOutDate").value;
-			if ("${field}" == "U") {
-				if(checkIn == "" || checkOut == "")
-					alert("날짜를 입력해주세요.")
-				else if(checkIn == checkOut)
-					alert("최소 1박이상 해주셔야 합니다.");			
-				else {
-					if (confirm("예약요청하시겠습니까?")) {
-						document.detail.action = "${path}/mypage/user/reservation_check?h_no=${hotel.h_no}";
-						document.detail.submit();
+			var m_id = document.getElementById("m_id"); //menu get
+			
+			if (m_id != null) {
+				if ("${field}" == "U") {
+					if(checkIn == "" || checkOut == "")
+						alert("날짜를 입력해주세요.")
+					else if(checkIn == checkOut)
+						alert("최소 1박이상 해주셔야 합니다.");			
+					else {
+						if (confirm("예약요청하시겠습니까?")) {
+							document.detail.action = "${path}/mypage/user/reservation_check?h_no=${hotel.h_no}";
+							document.detail.submit();
+						}
 					}
-				}
-			} else
-				alert("사용자만 예약가능합니다.");			
+				} else
+					alert("사용자만 예약가능합니다.");
+			} else 
+				alert("로그인하세요");
 		}
 		
 	
@@ -245,10 +250,10 @@
 								<div class="input-daterange" id="datepicker">
 									<div class="row no-gutters">
 										<div class="col-6">
-											<input type="text" class="input-small form-control"	id="checkInDate" name="checkin" placeholder="체크인">
+											<input type="text" class="input-small form-control"	id="checkInDate" name="checkin" placeholder="체크인" value="${checkin }">
 										</div>
 										<div class="col-6">
-											<input type="text" class="input-small form-control" id="checkOutDate" name="checkout" placeholder="체크아웃">
+											<input type="text" class="input-small form-control" id="checkOutDate" name="checkout"  placeholder="체크아웃" value="${checkout }" >
 										</div>
 									</div>
 								</div>

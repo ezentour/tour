@@ -10,7 +10,7 @@
 	
 	<select id="selectAll" resultType="priceDto">
 		select p_r_no, sum(p_admin) as p_admin from price group by p_r_no order by p_r_no
-	</select>
+	</select>	
 	
 	
 	<select id="select_detail" resultType="priceDto">

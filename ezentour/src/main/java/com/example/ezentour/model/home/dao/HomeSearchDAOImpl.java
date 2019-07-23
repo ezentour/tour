@@ -21,20 +21,21 @@ public class HomeSearchDAOImpl implements HomeSearchDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<HomeSearchDTO> list(String h_address, String date, int select_room, String h_type) {
+	public List<HomeSearchDTO> list(String h_address, String checkin, String checkout, int select_room, String h_type) {
 
 		HashMap<String, Object> map = new HashMap<>();
 		
 		map.put("h_address", h_address);
-		map.put("hr_date", date);
+		map.put("checkin", checkin);
+		map.put("checkout", checkout);
 		map.put("select_room", select_room);
 		map.put("h_type", h_type);
 	
 		LOG.info("*******************homesearch : " + map.toString());
 		
-		return sqlSession.selectList("hotel.hotel_searchList", map);
+		List<HomeSearchDTO> list= sqlSession.selectList("hotel.dateo", map);
 		
-		
+		return list;
 	}
 
 }

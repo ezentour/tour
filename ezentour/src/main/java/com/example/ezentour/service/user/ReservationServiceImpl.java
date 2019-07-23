@@ -60,4 +60,10 @@ public class ReservationServiceImpl implements ReservationService {
 		return rDao.select_reservation_cancel(r_no);
 	}
 
+	@Override
+	public List<ReservationDTO> selectReservation_hostel(String m_id) {
+		// TODO Auto-generated method stub
+		return rDao.selectReservation_hostel(m_id);
+	}
+
 }

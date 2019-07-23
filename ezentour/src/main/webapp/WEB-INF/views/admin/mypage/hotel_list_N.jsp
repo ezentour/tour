@@ -90,11 +90,11 @@ th {
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<td>번호</td>
-								<td>숙박이름</td>
-								<td>숙박유형</td>
-								<td>승인여부</td>
-								<td></td>
+								<th>번호</th>
+								<th>숙박이름</th>
+								<th>숙박유형</th>
+								<th>승인여부</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody id="list">

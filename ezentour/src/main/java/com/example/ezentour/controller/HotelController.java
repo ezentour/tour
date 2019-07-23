@@ -46,7 +46,7 @@ public class HotelController {
 		
 		List<HotelDTO> list = hotelService.listHotel();
 		mav.setViewName("hotel/hotel_home");
-		mav.addObject("hsList", list);
+		mav.addObject("list", list);
 		
 		return mav;
 	}

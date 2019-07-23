@@ -5,6 +5,14 @@
 <%@ include file="include/header.jsp"%>
 <head>
     <title>EzenTour</title>
+    <script>
+    $(function() {
+		$("#search").click(function() {
+			document.searchForm.action="${path}/search.do";
+			document.searchForm.submit();
+		});
+    });
+    </script>
 </head>
 <!-- bootstrap 위치 지정 : https://getbootstrap.com/docs/4.0/utilities/flex/ -->
 <body>
@@ -80,11 +88,11 @@
         <div class="hotel-search-form-area">
             <div class="container-fluid">
                 <div class="hotel-search-form">
-                    <form action="${path}/search.do" name="searchForm" method="post">
+                    <form action="" name="searchForm" method="post">
                         <div class="row justify-content-between align-items-end">
                         	<div class="col-6 col-md-2">
                                 <label for="">지역</label>
-                                <select name="h_address" id="" class="form-control">
+                                <select name="region" id="" class="form-control">
                                     <option value="서울">서울</option>
                                     <option value="경기/인천">경기/인천</option>
                                     <option value="강원">강원</option>
@@ -93,20 +101,15 @@
                                     <option value="경상">경상</option>
                                     <option value="부산/대구/울산">부산/대구/울산</option>
                                 </select>
-                               </div>
-                               <div>
-	                               	<label for="checkIn">숙박날짜</label>
-	                                <div class="input-daterange" id="datepicker">
-										<div class="row no-gutters">
-				                            <div class="col-6">
-												<input type="text" class="input-small form-control"	id="checkIn" name="checkin-date" placeholder="체크인">
-											</div>
-											<div class="col-6">
-												<input type="text" class="input-small form-control" id="checkOut" name="checkout-date" placeholder="체크아웃">
-											</div>
-										</div>
-									</div>
-								</div>
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-3">
+                                <label for="checkIn">Check In</label>
+                                <input type="date" class="form-control" id="checkIn" name="checkin-date">
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-3">
+                                <label for="checkOut">Check Out</label>
+                                <input type="date" class="form-control" id="checkOut" name="checkout-date">
+                            </div>
                             <!-- 네모박스 크기 늘리기 : col-md-1의 숫자 늘리기 -->
                             <div class="col-4 col-md-2">
                                 <label for="room">Room</label>

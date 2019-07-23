@@ -230,7 +230,7 @@ tr {
 						 <button type="button" class="btn btn btn-secondary w-30 btn-sm" style="background-color: #1cc3b2; border : none "onclick="goPopup();">주소검색</button>
 						<input
 						type="text" name="h_address" id="roadFullAddr" class="form-control"
-						placeholder="숙소주소" autocomplete="off" > <input
+						placeholder="숙소주소" autocomplete="off" readonly="readonly" > <input
 						type="text" name="h_tel" id="h_tel" class="form-control"
 						placeholder="전화번호" autocomplete="off"> <input
 						type="text" name="h_price" id="h_price" class="form-control"

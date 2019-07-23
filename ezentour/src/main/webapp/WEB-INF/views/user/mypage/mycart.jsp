@@ -5,6 +5,41 @@
 <%@ include file="../../include/header.jsp"%>
 <head>
 <title>EzenTour</title>
+<style>
+th {
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+.roberto-btn5 {
+	position: relative;
+	z-index: 1;
+	width: 80px;
+	height: 30px;
+	/*font-weight: 500;*/
+	display: inline-block;
+	text-align: center;
+	text-transform: capitalize;
+	background-color: #1cc3b2;
+	color: #ffffff;
+	border: none;
+	border-radius: 2px;
+	-webkit-transition-duration: 500ms;
+	-o-transition-duration: 500ms;
+	transition-duration: 500ms;
+}
+.roberto-btn5:focus, .roberto-btn5:hover {
+	font-weight: 500;
+	-webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
+	box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
+	background-color: #ffffff;
+	color: #1cc3b2;
+}
+
+</style>
 </head>
 <body>
 
@@ -49,12 +84,13 @@
 							<table class="ui celled table">
 								<thead>
 									<tr>
-										<td></td>
-										<td>번호</td>
-										<td>호텔</td>
-										<td>체크인</td>
-										<td>체크아웃</td>
-										<td></td>
+										<th></th>
+										<th>번호</th>
+										<th>숙소이름</th>
+										<th>체크인</th>
+										<th>체크아웃</th>
+										<th>숙소사진</th>										
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -62,19 +98,26 @@
 										<tr>
 											<td><input type="checkbox" name="check" value="${row.s_no}"></td>
 											<td>${row.s_no}</td>
-											<td><a href="${path}/mypage/user/hotel_detail.do?h_no=${row.s_h_no }">${row.h_name}</a></td>
-											<td>${row.s_checkin.substring(0,10)}</td>
-											<td>${row.c_checkout.substring(0,10)}</td>
+											<td style="font-weight:bold"><a href="${path}/mypage/user/hotel_detail.do?h_no=${row.h_no }">${row.h_name}</a></td>
+										<fmt:parseDate value="${row.s_checkin.substring(0,10)}" pattern="yyyy-MM-dd" var="dayin" />
+										<fmt:formatDate value="${dayin}" pattern="dd/MM/yy" var="checkin" />
+										<fmt:parseDate value="${row.c_checkout.substring(0,10)}" pattern="yyyy-MM-dd" var="dayout" />
+										<fmt:formatDate value="${dayout}" pattern="dd/MM/yy" var="checkout" /> 
+											<td>${checkin}</td>
+											<td>${checkout}</td>
 											<td><img
 												src="${path}/resources/img/hotel-img/${row.h_img}"
 												width="70px" height="70px" />
+											</td>											
+											<td>											
+											<button type="button" class="roberto-btn5"	onclick="location.href ='${path}/mypage/user/reserve.do?h_no=${row.h_no }&checkin=${checkin }&checkout=${checkout }'">예약하기</button>
 											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
 									<tfoot>
 										<tr>
-											<td colspan="6" align="center">
+											<td colspan="7" align="center">
 												<div class="col-12">
 													<div class="welcome-text text-center">
 														<button type="submit" class="btn roberto-btn mt-30"

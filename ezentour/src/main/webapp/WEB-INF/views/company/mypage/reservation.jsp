@@ -5,6 +5,15 @@
 <%@ include file="../../include/header.jsp"%>
 <head>
 	<title>EzenTour</title>
+	<style>
+	th{
+		font-weight:bold;
+		text-align:center;
+	}
+	td{
+		text-align:center;
+	}
+	</style>
 </head>
 <body>
 
@@ -37,44 +46,41 @@
         <div class="container">
           <div class="row">
 				<div class="col-12">
-				  <!-- Single Footer Widget Area -->
-                     <div class="col-12 col-sm-8 col-lg-4 float-right">
-                        <div class="single-footer-widget mb-80">
-							<!-- Newsletter Form -->
-                   	 		<form action="#" class="nl-form">
-                    			<input type="text" class="form-control" placeholder="Search">
-                    			<button type="submit">
-                    				<i class="fa fa-search" aria-hidden="true"></i>
-                    			</button>
-                  			</form>
-                  		</div>
-                  	</div>
-                    
+				 
 					<table class="ui celled table">
+						<!-- <thead style="background-color: #1CC3B2; color:white;"> -->
 						<thead>
 							<tr>
-								<td>작성 번호</td>
-								<td>제목</td>
-								<td>등록자</td>
-								<td>등록일</td>
+								<th>예약번호</th>
+								<th>예약숙박</th>
+								<th>체크인</th>
+								<th>체크아웃</th>
+								<th>방 개수</th>
+								<th>결제금액</th>
+								<th>취소여부</th>								
 							</tr>
 						</thead>
 						<tbody id="list">
-							<tr>
-								<td>1</td>
-								<td>게시판은 이렇게</td>
-								<td>유상원</td>
-								<td>2019.07.04</td>
-							</tr>
+
+							<c:forEach var="row" items="${list}">
+								<tr>
+									<td>${row.r_no}</td>
+									<td>${row.h_name }</td>
+									<td>${row.r_checkin.substring(0,10) }</td>
+									<td>${row.r_checkout.substring(0,10) }</td>
+									<td>${row.r_room }</td>
+									<td>${row.r_price }</td>
+									<c:if test="${row.r_cancel == 'N' }">
+										<td style="color: red">${row.r_cancel }</td>										
+									</c:if>
+									<c:if test="${row.r_cancel == 'Y' }">
+										<td style="color: blue">${row.r_cancel }</td>	
+										</c:if>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
-				</div>
-
-				<div class="col-12" >
-					<div class="welcome-text text-center">
-						<a href="#" class="btn roberto-btn mt-30" data-animation="fadeInUp" data-delay="700ms">글쓰기</a>
-					</div>
-				</div>
+				</div>				
             </div>
         </div>
     </div>

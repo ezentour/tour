@@ -7,13 +7,12 @@
 <title>EzenTour</title>
 
 <style>
-th {
-	font-weight: bold;
-	text-align: center;
+tr td {
+	text-align: center
 }
 
-td {
-	text-align: center;
+th {
+	text-align: center
 }
 
 .roberto-btn4 {
@@ -41,6 +40,7 @@ td {
 	background-color: #ffffff;
 	color: #1cc3b2;
 }
+
 </style>
 </head>
 <body>
@@ -53,12 +53,12 @@ td {
 			<div class="row h-100 align-items-center">
 				<div class="col-12">
 					<div class="breadcrumb-content text-center">
-						<h1 class="h1-title">관리자매출액</h1>
+						<h1 class="h1-title">취소상세화면</h1>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="${path}/">Home</a></li>
 								<li class="breadcrumb-item active" aria-current="page">My
-									page (admin)</li>
+									page (user)</li>
 							</ol>
 						</nav>
 					</div>
@@ -75,40 +75,38 @@ td {
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
+				<h4 style="font-weight:bold">예약번호 [ ${p_r_no } ]</h4>
 					<table class="ui celled table">
 						<thead>
 							<tr>
-								<th>예약번호</th>
-								<th>관리자이익</th>
-								<th>매출상세</th>
+								<th></th>
+								<th>결제금액</th>								
 							</tr>
 						</thead>
-						<c:set var="sum" value="0" />
 						<tbody id="list">
-
+						<c:set var="i" value="y" />
 							<c:forEach var="row" items="${list}">
-								<tr>
-									<td>${row.p_r_no}</td>
-
-									<c:if test="${row.p_admin == 0}">
-										<td>${row.p_admin}<span style="color: red">(환불
-												100%)</span></td>
+							<tr >	
+									<c:if test="${i == 'y'}">
+									<td>예약</td>
 									</c:if>
-									<c:if test="${row.p_admin != 0}">
-										<td>${row.p_admin}</td>
+									<c:if test="${i == 'n'}">
+									<td>취소</td>
 									</c:if>
-									<c:set var="sum" value="${sum + row.p_admin}" />
-									<td><button type="button" class="roberto-btn4"
-											onclick="location.href ='${path}/mypage/admin/grossprofit_detail?p_r_no=${row.p_r_no }'">상세보기</button>
-									</td>
-								</tr>
-							</c:forEach>
+									<c:if test = "${row.p_admin < 0 && row.p_hostel < 0 && row.p_room < 0}">
+									<td style="color:red">${row.p_room }</td>									
+									</c:if>
+									<c:if test = "${row.p_admin > 0 && row.p_hostel > 0 && row.p_room > 0}">
+									<td style="color:blue">${row.p_room }</td>									
+									</c:if>
+							</tr>			
+							<c:set var="i" value="n" />				
+							</c:forEach>						
 						</tbody>
 						<tfoot>
-							<tr>
-								<th colspan="3">관리자 총 매출액 <br><span style="color:blue; font-size:1.5em"><c:out value="${sum}" /></span>
-								</th>
-							</tr>
+							<tr>		
+								<th>총 금액</th>						
+								<th>= ${total.p_room  }</th>								
 						</tfoot>
 					</table>
 				</div>
@@ -122,6 +120,6 @@ td {
 		</p>
 	</div>
 
-<%@ include file="../../include/footer.jsp"%>
+	<%@ include file="../../include/footer.jsp"%>
 </body>
 </html>

@@ -44,34 +44,11 @@
 		    background: #e8f1f8;
 		    height: auto;
 		    width: auto;
-		    margin: 0 auto 50px;
-		    border: 1px ridge #00BFFF;
+		    margin: 0 auto 50px;		   
 		    border-radius: 11px;
 		}
-		.balloon:after {
-		    content: '';
-		    position: absolute;
-		    height: 30px;
-		    width: 100px;
-		    border-radius: 25px;
-		    z-index: -1;
-		     border: 1px ridge #00BFFF;
-		    background: #fff;
-		    bottom: -20px;
-		    left: 50px;
-		}
-		.balloon:before {
-		    content: '';
-		    position: absolute;
-		    height: 30px;
-		    width: 100px;
-		    border-radius: 25px;
-		    z-index: -1;
-		     border: 1px ridge #00BFFF;
-		    background:  #e8f1f8;
-		    bottom: -15px;
-		    left: 35px;
-		}
+		
+	
 	</style>
 
 </head>
@@ -128,18 +105,20 @@
 							</tr>
 						</table>
 						<div class="col-12" >
-						<div class="welcome-text text-center">
+						
+					</div>
+					</form>
+					<br><br>
+					<hr>
+					<br><br>
+					<div class="welcome-text text-center">
 							<c:if test="${sessionScope.m_id == dto.b_m_id}">
 							<input type="button" class="btn roberto-btn w-10" value="수정" id="update"/>
 							<input type="button" class="btn roberto-btn w-10" value="삭제" id="delete"/>
 							</c:if>
 							<input type="button" class="btn roberto-btn w-10" value="목록" id="list"/>
 						</div>
-					</div>
-					</form>
-					<br><br>
-					<hr>
-					<br><br>
+					<br><br><br><br>
 					<!-- 댓글 테이블 -->
 					<form name="commentDeleteForm" method="post" >
 						<table>

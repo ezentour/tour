@@ -32,7 +32,7 @@
 	
 	
 	<select id="hotel_list" resultType="hotelDto">
-		select * from hotel where h_approve='Y' order by h_no
+		select * from hotel order by h_no
 	</select>
 	
 	<select id="hotel_select_mid" resultType="hotelDto">
@@ -56,22 +56,15 @@
 		update hotel set h_approve = 'Y' where h_no = #{h_no}
 	</update>
 	
+	<select id="hotel_room_select">
+		select h_room from hotel where h_no = #{h_no}
+	</select>
 	
 	<!-- 메인화면 날짜선택 없을 때 -->
 	<select id="datex" resultType="hotelDto">
 		select * from hotel
 		where h_address like '%'||#{h_address}||'%' and #{h_room}>0 and h_type=#{h_type} order by h_no
 	</select>
-	
-	<!-- 지역 숙소 상태에 따른 출력 -->
-	<select id="hotel_searchList" resultType="hotelDto">
-	<![CDATA[ 
-			select h.*, hr.*, case when hr.hr_room + #{select_room} <= h.h_room then 'true' else 'false' end as result 
-		from (select * from hotel_room where hr_date=#{hr_date}) hr, hotel h
-		where h.h_address like '%'||#{h_address}||'%' and h.h_type=#{h_type} order by h.h_no
-	]]>
-	</select>	
-	
 </mapper>
 
 

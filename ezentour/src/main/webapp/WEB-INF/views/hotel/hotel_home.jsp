@@ -37,7 +37,7 @@
 			<div class="row">
 				<div class="col-12 col-lg-8">
 					<!-- Single Room Area -->
-					<c:forEach var="row" items="${hsList}">
+					<c:forEach var="row" items="${list}">
 					<div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
 						<!-- Room Thumbnail -->
 						<div class="room-thumbnail">
