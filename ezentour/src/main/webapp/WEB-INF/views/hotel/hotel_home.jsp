@@ -130,11 +130,11 @@
 						<form method="POST" name="searchDetail">
 							<div class="form-group mb-30">
 								<label for="checkInDate"><b>체크인</b></label>
-									<input type="text" class="input-small form-control" id="checkInDate"
+									<input type="text" class="input-small form-control" id="checkInDate" autocomplete="off" 
 										style="width:200px" name="checkin" placeholder="클릭하세요" value="${checkin }">
 								<br>
 								<label for="checkOutDate"><b>체크아웃</b></label>
-									<input type="text" class="input-small form-control" id="checkOutDate"
+									<input type="text" class="input-small form-control" id="checkOutDate" autocomplete="off" 
 										style="width:200px" name="checkout" placeholder="클릭하세요" value="${checkout }">
 							</div>
 							<div class="form-group mb-30">
