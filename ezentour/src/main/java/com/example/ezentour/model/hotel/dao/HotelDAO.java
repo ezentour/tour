@@ -16,4 +16,6 @@ public interface HotelDAO {
 	public HotelDTO selectHotel_room(int h_no);
 	public HotelDTO selectHotel_room(int h_no, String h_address, String h_type);
 	public List<HotelDTO> dateListHotel(String h_address, int h_room, String h_type); 
+	public List<HotelDTO> priceSearchList(int minPrice, int maxPrice);
+	public HotelDTO selectHotel_roomPrice(int h_no,String h_type); 
 }

@@ -121,6 +121,26 @@ public class HotelController {
 		return "hotel/hotel_review";
 	}
 	
+	@RequestMapping(value="hotel/searchDetail.do", method=RequestMethod.POST)
+	public String hotel_detailSearch(Model model, HttpServletRequest request) throws ParseException {
+		String checkIn = request.getParameter("checkin");
+		String checkOut = request.getParameter("checkout");
+		String hotelType = request.getParameter("hotel-type");
+		int select_room = Integer.parseInt(request.getParameter("room"));
+		int minPrice = Integer.parseInt(request.getParameter("minPrice"));
+		int maxPrice = Integer.parseInt(request.getParameter("maxPrice"));
+		LOG.info("priceCheck HotelController : " + minPrice + ", " + maxPrice);
+				
+		if (checkIn.equals("") && checkOut.equals("")) {
+			List<HotelDTO> list = hotelService.priceSearch(minPrice,maxPrice);
+			model.addAttribute("hsList", list);
+			return "hotel/hotel_home";
+		} else {
+			List<HotelDTO> hsList = hotelService.priceSearchList(minPrice, maxPrice, select_room, checkIn, checkOut, hotelType);
+			model.addAttribute("hsList", hsList);
+			return"hotel/hotel_home";
+		}
+	}
 	// 호텔 리뷰 작성 완료 버튼 클릭
 	@RequestMapping(value = "hotel/hotel_review_writeBtn", method=RequestMethod.POST)
 	public String hotel_review_writeBtn(@ModelAttribute HotelReviewDTO hreDto, HttpServletRequest request, Model model,HttpSession session) {
@@ -141,5 +161,6 @@ public class HotelController {
 		return "redirect:../hotel/detail.do?h_no=" + hre_h_no;
 		
 	}
+	
 	
 }

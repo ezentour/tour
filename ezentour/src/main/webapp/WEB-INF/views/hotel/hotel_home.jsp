@@ -3,6 +3,35 @@
 <!DOCTYPE html>
 <html>
 <%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+	$(function() {
+		$("#slider-range").slider(
+				{
+					range : true,
+					min : 0,
+					max : 500000,
+					values : [ 0, 500000 ],
+
+					slide : function(event, ui) {
+						$("#amount").val(
+								"￦" + ui.values[0] + " - ￦"
+										+ ui.values[1]);
+					}
+				});
+		$("#amount").val(
+				"￦" + $("#slider-range").slider("values", 0) + " - ￦"
+						+ $("#slider-range").slider("values", 1));
+		
+		$("#search").click(function() {
+							document.searchDetail.action = "${path}/hotel/searchDetail.do?minPrice="+$('#slider-range').slider('values', 0)+"&maxPrice="+$('#slider-range').slider('values', 1);
+							document.searchDetail.submit();
+						});
+	});
+		</script>
 <head>
 <title>EzenTour</title>
 	<script>
@@ -98,7 +127,7 @@
 				<div class="col-12 col-lg-4">
 					<!-- Hotel Reservation Area -->
 					<div class="hotel-reservation--area mb-100">
-						<form action="#" method="post">
+						<form method="POST" name="searchDetail">
 							<div class="form-group mb-30">
 								<label for="checkInDate">체크인</label>
 									<input type="text" class="input-small form-control" id="checkInDate"
@@ -114,32 +143,36 @@
 									<div class="col-12">
 										<select name="hotel-type" id="hotel-type" class="form-control">
 											<option value="" selected>전체</option>
-											<option value="type-h">호텔</option>
-											<option value="type-f">팬션</option>
-											<option value="type-g">게스트하우스</option>
-											<option value="type-m">모텔</option>
-											<option value="type-r">리조트/콘도</option>
+											<option value="호텔">호텔</option>
+											<option value="팬션">팬션</option>
+											<option value="게스트하우스">게스트하우스</option>
+											<option value="모텔">모텔</option>
+											<option value="리조트/콘도">리조트/콘도</option>
 										</select>
 									</div>
 								</div>
 							</div>
-							<div class="form-group mb-50">
-								<div class="slider-range">
-									<div class="range-price">가격 설정: ₩0 ~ ₩500000</div>
-									<div data-min="0" data-max="500000" data-unit="₩"
-										class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-										data-value-min="0" data-value-max="500000"
-										data-label-result="가격 설정: ">
-										<div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-										<span class="ui-slider-handle ui-state-default ui-corner-all"
-											tabindex="0"></span> <span
-											class="ui-slider-handle ui-state-default ui-corner-all"
-											tabindex="0"></span>
-									</div>
-								</div>
-							</div>
+							         <div class="col-4 col-md-2" >
+                                <label for="room" >Room</label>
+                                <select name="room" id="room" class="form-control" >
+                                    <option value="1"> 1 &nbsp;</option>
+                                    <option value="2"> 2 &nbsp;</option>
+                                    <option value="3"> 3 &nbsp;</option>
+                                    <option value="4"> 4 &nbsp;</option>
+                                    <option value="5"> 5 &nbsp;</option>
+                                    <option value="6"> 6 &nbsp;</option>
+                                </select>
+                            </div>
+                            <br><br>
+							<p>
+								<label for="amount"><b>Price range:</b></label> <input type="text"
+									id="amount" readonly 
+									style="border: 0; color: #f6931f; font-weight: bold;" >
+							</p>
+							<div id="slider-range" name="price"></div>
+							<br><br>
 							<div class="form-group">
-								<button type="submit" class="btn roberto-btn w-100">숙소 검색</button>
+								<button type="button" class="btn roberto-btn w-100" id="search">숙소 검색</button>
 							</div>
 						</form>
 					</div>

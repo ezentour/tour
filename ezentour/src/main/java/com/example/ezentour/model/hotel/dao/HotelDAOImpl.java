@@ -35,7 +35,6 @@ public class HotelDAOImpl implements HotelDAO {
 	public void updateHotel(HotelDTO hDto) {
 		sqlSession.update("hotel.hotel_update", hDto);
 		
-		
 	}
 
 	@Override
@@ -96,4 +95,23 @@ public class HotelDAOImpl implements HotelDAO {
 		
 		return sqlSession.selectOne("hotel.hoteldto_select", map );
 	}; 
+	@Override
+	public HotelDTO selectHotel_roomPrice(int h_no,String h_type) {
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("h_no", h_no);
+		map.put("h_type", h_type);
+		
+		return sqlSession.selectOne("hotel.hoteldto_selectPrice", map );
+	};
+	
+	@Override
+	public List<HotelDTO> priceSearchList(int minPrice, int maxPrice){
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("minPrice", minPrice);
+		map.put("maxPrice", maxPrice);
+		
+		return sqlSession.selectList("hotel.hotel_priceSearch", map);
+	}
 }
