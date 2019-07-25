@@ -129,16 +129,16 @@
 					<div class="hotel-reservation--area mb-100">
 						<form method="POST" name="searchDetail">
 							<div class="form-group mb-30">
-								<label for="checkInDate">체크인</label>
+								<label for="checkInDate"><b>체크인</b></label>
 									<input type="text" class="input-small form-control" id="checkInDate"
 										style="width:200px" name="checkin" placeholder="클릭하세요" value="${checkin }">
 								<br>
-								<label for="checkOutDate">체크아웃</label>
+								<label for="checkOutDate"><b>체크아웃</b></label>
 									<input type="text" class="input-small form-control" id="checkOutDate"
 										style="width:200px" name="checkout" placeholder="클릭하세요" value="${checkout }">
 							</div>
 							<div class="form-group mb-30">
-								<label for="guests">숙소유형</label>
+								<label for="guests"><b>숙소유형</b></label>
 								<div class="row">
 									<div class="col-12">
 										<select name="hotel-type" id="hotel-type" class="form-control">
@@ -152,8 +152,8 @@
 									</div>
 								</div>
 							</div>
-							         <div class="col-4 col-md-2" >
-                                <label for="room" >Room</label>
+							<div class="form-group mb-30">
+                                <label for="room" ><b>Room</b></label>
                                 <select name="room" id="room" class="form-control" >
                                     <option value="1"> 1 &nbsp;</option>
                                     <option value="2"> 2 &nbsp;</option>
@@ -163,9 +163,9 @@
                                     <option value="6"> 6 &nbsp;</option>
                                 </select>
                             </div>
-                            <br><br>
+                            <br><br> <br>
 							<p>
-								<label for="amount"><b>Price range:</b></label> <input type="text"
+								<label for="amount" style="color:black"><b>Price range</b></label> <input type="text"
 									id="amount" readonly 
 									style="border: 0; color: #f6931f; font-weight: bold;" >
 							</p>

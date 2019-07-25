@@ -86,7 +86,7 @@
 	
 	<select id="hotel_priceSearch" resultType="hotelDto">
 		<![CDATA[ 
-			select * from hotel where h_price >= #{minPrice} and h_price <= #{maxPrice};
+			select * from hotel where h_price >= #{minPrice} and h_price <= #{maxPrice}
 		]]>
 	</select>
 </mapper>
