@@ -38,6 +38,8 @@ Spring, MyBatis를 이용한 숙소 예약 웹 페이지 개발
  ![database.png](/database.png)
 
 
+## Demo 영상
+ https://www.youtube.com/watch?v=DzGxkvKDEaQ
 
 
 ## 공동 제작자
