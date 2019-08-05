@@ -1,5 +1,7 @@
 package com.example.ezentour;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +44,7 @@ public class HomeController {
 	
 	// 홈 조건 검색!
 	@RequestMapping(value = "search.do")
-	public ModelAndView searchList(HttpServletRequest request, ModelAndView mav, HotelDTO hotelDto)
+	public ModelAndView searchList(HttpServletRequest request, ModelAndView mav, HotelDTO hotelDto, HttpServletResponse response)
 			throws ParseException {
 		String h_address = request.getParameter("h_address");
 		String checkin = request.getParameter("checkin-date");
@@ -95,6 +98,16 @@ public class HomeController {
 					if (insert) {
 						hlist.add(shDto);
 					}
+				} else {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = null;
+					try {
+						out = response.getWriter();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					out.println("<script>alert('찾으시는 숙소가 없습니다.'); location.href='/ezentour/';</script>");
+					out.flush();
 				}
 			}
 			mav.setViewName("hotel/hotel_home");

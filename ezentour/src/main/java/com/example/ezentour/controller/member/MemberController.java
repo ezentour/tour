@@ -4,13 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,7 +46,6 @@ private static final Logger LOG = LoggerFactory.getLogger(MemberController.class
 		}else { //로그인 실패
 			mav.setViewName("redirect:/member/login.do");
 			//뷰에 전달할 값
-			//mav.addObject("message", "error");
 		}
 		return mav;
 	}

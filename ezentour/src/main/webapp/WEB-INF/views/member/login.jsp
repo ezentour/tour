@@ -5,6 +5,17 @@
 <%@ include file="../include/header.jsp"%>
 <head>
 	<title>EzenTour</title>
+	<script>
+	function doSign() {
+		var m_id = $("#m_id").val();
+		
+		if(m_id.length == 0) {
+			alert("아이디를 입력해주세요.");
+			$("#m_id").focus();
+			return false;
+		}
+	}
+	</script>
 </head>
 <body>
 	
@@ -38,7 +49,7 @@
 			<form action="${path}/member/login_check.do" method="post">
 				<input type="text" name="m_id" id="m_id" class="form-control" placeholder="Enter your ID" autocomplete="off">
 				<input type="password" name="m_password" id="m_password" class="form-control" placeholder="Enter your Password" autocomplete="off">
-				<button type="submit" class="btn roberto-btn w-100">Login</button>
+				<button type="submit" class="btn roberto-btn w-100" onclick="doSign();">Login</button>
 			</form>
 		</div>
 	</div>
